@@ -22,15 +22,15 @@ email: x423xu@uwaterloo.ca
 description: To record my learning path.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xiaoyu-learning-path.com" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+twitter_username: 
+github_username:  x423xu
 
 # Build settings
 remote_theme: "mmistakes/so-simple-theme@3.2.0"
 #theme: jekyll-theme-so-simple
 plugins:
   - jekyll-feed
-
+markdown: kramdown
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

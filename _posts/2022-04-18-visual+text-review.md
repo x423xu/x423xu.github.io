@@ -1,6 +1,6 @@
 ---
 layout: post_layout
-title: title
+title: visual text review
 time: 2022-04-18 10:52:07
 ---
 # Trends in Integration of Vision and Language Research: A Survey of Tasks, Datasets, and Methods
@@ -67,7 +67,7 @@ time: 2022-04-18 10:52:07
 - Representation
 
 ### CV and NLP integration tasks
-<img src="2022-04-18-13-36-36.png" width=600>
+<img src="vl_framework.png" width=600>
 
 #### Extension of NLP tasks
 - Visual Description Generation: The goal is to generate a human-readable text snippt that describes the input
