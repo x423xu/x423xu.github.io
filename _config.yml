@@ -19,14 +19,15 @@
 # in the templates via {{ site.myvariable }}.
 title: Xiaoyu's page
 email: x423xu@uwaterloo.ca
-description: >- To record my learning path.
+description: To record my learning path.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xiaoyu-learning-path.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: jekyllrb
 github_username:  jekyll
 
 # Build settings
-theme: mmistakes/so-simple-theme
+#theme: mmistakes/so-simple-theme
+theme: minima
 plugins:
   - jekyll-feed
 
