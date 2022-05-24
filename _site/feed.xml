@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-18T15:44:39-04:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Xiaoyu’s page</title><subtitle>To record my learning path.</subtitle><entry><title type="html">visual text review</title><link href="http://localhost:4000/2022/04/18/visual+text-review.html" rel="alternate" type="text/html" title="visual text review" /><published>2022-04-18T00:00:00-04:00</published><updated>2022-04-18T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/18/visual+text-review</id><content type="html" xml:base="http://localhost:4000/2022/04/18/visual+text-review.html">&lt;h1 id=&quot;trends-in-integration-of-vision-and-language-research-a-survey-of-tasks-datasets-and-methods&quot;&gt;Trends in Integration of Vision and Language Research: A Survey of Tasks, Datasets, and Methods&lt;/h1&gt;
+&lt;h2 id=&quot;abstract&quot;&gt;Abstract&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Focus on ten prominent tasks that integrate language and vision by discussing their problem formulation, methods, existing datasets, evaluation measures, and compare results with the SOTA methods.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Multimodal learning models:
+    &lt;ol&gt;
+      &lt;li&gt;generate comprehensible but concise and grammatically well-formed descriptions of the visual content, or vice versa by generating the visual content for a given textual description in a natural language of choice,&lt;/li&gt;
+      &lt;li&gt;identify objets in the visual content and infer their relationships to reson about, or answer arbitrary questions about them,&lt;/li&gt;
+      &lt;li&gt;navigate through and environment by leveraging input from both vision and natural language instructions,&lt;/li&gt;
+      &lt;li&gt;translate textual content from one language to another while leveraging the visual content for sense disambiguation,&lt;/li&gt;
+      &lt;li&gt;generate stories about the visual content, and so on.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Applications:
+    &lt;ol&gt;
+      &lt;li&gt;visually impaired individuals can be asisted thereby.&lt;/li&gt;
+      &lt;li&gt;automatic survelliance&lt;/li&gt;
+      &lt;li&gt;autonomous driving&lt;/li&gt;
+      &lt;li&gt;human-computer interaction&lt;/li&gt;
+      &lt;li&gt;city navigation&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Task-specific multimodal models
+    &lt;ol&gt;
+      &lt;li&gt;image description (Bernardi et al.,2016; Bai &amp;amp; An, 2018; Hossain et al., 2019)&lt;/li&gt;
+      &lt;li&gt;video description generation (Aafaq et al.,2020)&lt;/li&gt;
+      &lt;li&gt;visual question answering (Kafle &amp;amp; Kanan, 2017; Wu et al., 2017)&lt;/li&gt;
+      &lt;li&gt;action recognition (Gella &amp;amp; Keller, 2017)&lt;/li&gt;
+      &lt;li&gt;visual semantics (Liu et al., 2019)&lt;/li&gt;
+      &lt;li&gt;NLP natual language generation (Gatt &amp;amp; Krahmer, 2018; Garbacea &amp;amp; Mei, 2020)&lt;/li&gt;
+      &lt;li&gt;NLP commonsense reasoning (Storks et al., 2019)&lt;/li&gt;
+      &lt;li&gt;understanding the limitations of the integration of vision and language research (Kafle et al., 2019)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;h3 id=&quot;computer-vision-tasks&quot;&gt;Computer vision tasks&lt;/h3&gt;
+&lt;h4 id=&quot;image-as-visual-information&quot;&gt;Image as visual information&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Utilization
+    &lt;ol&gt;
+      &lt;li&gt;the tasks where images are used as input&lt;/li&gt;
+      &lt;li&gt;the representation of images&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Tasks
+    &lt;ol&gt;
+      &lt;li&gt;Image classification&lt;/li&gt;
+      &lt;li&gt;Object localization&lt;/li&gt;
+      &lt;li&gt;Object detection&lt;/li&gt;
+      &lt;li&gt;Object segmentation&lt;/li&gt;
+      &lt;li&gt;Object Identification&lt;/li&gt;
+      &lt;li&gt;Instance segmentation&lt;/li&gt;
+      &lt;li&gt;Panoptic segmentation&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Reoresentation
+    &lt;blockquote&gt;
+      &lt;p&gt;self supervised learning (Jing &amp;amp; Tian, 2019)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;video-as-visual-information&quot;&gt;Video as visual information&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Utilization
+    &lt;ol&gt;
+      &lt;li&gt;knowing the tasks where videos are used as inputs&lt;/li&gt;
+      &lt;li&gt;the representation of a video&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Takss
+    &lt;ol&gt;
+      &lt;li&gt;Object tracking&lt;/li&gt;
+      &lt;li&gt;Action classification&lt;/li&gt;
+      &lt;li&gt;Emotion detection&lt;/li&gt;
+      &lt;li&gt;Scene detection&lt;/li&gt;
+      &lt;li&gt;Automated editing&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;nlp-tasks&quot;&gt;NLP tasks&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Tasks
+    &lt;ol&gt;
+      &lt;li&gt;understanding language&lt;/li&gt;
+      &lt;li&gt;generating language
+        &lt;blockquote&gt;
+          &lt;p&gt;Some of the classical NLP tasks, that are used to comprehend language, are shallow parsing, syntax parsing, semantic role labeling, named entity recognition, entity linking, co-reference resolution, etc.&lt;/p&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Representation&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cv-and-nlp-integration-tasks&quot;&gt;CV and NLP integration tasks&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;vl_framework.png&quot; width=&quot;600&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;extension-of-nlp-tasks&quot;&gt;Extension of NLP tasks&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Visual Description Generation: The goal is to generate a human-readable text snippt that describes the input&lt;/li&gt;
+  &lt;li&gt;Visual Storytelling: A sequence of visual inputs is used to generate a narrative summary based on text aligned with them&lt;/li&gt;
+  &lt;li&gt;Visual Question Answering: Answer questions about a visual input.&lt;/li&gt;
+  &lt;li&gt;Visual Dialog: Aim at creating a meaningful dislog in a natural and conversational language about a visual content.&lt;/li&gt;
+  &lt;li&gt;Visual Reeferring Expression:&lt;/li&gt;
+  &lt;li&gt;Visual Entailment: An inference task for predicting whether the image semantically entails the text.&lt;/li&gt;
+  &lt;li&gt;Multimodal Machine Traslation: Translate from source language to target language by leveraging the visual information as auxiliary modality along with the natural language text in source language.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;extension-of-cv-tasks&quot;&gt;Extension of CV tasks&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Visual generation: generate visual content by conditioning on input text from a chosen natural language.&lt;/li&gt;
+  &lt;li&gt;Visual resoning: It is expected to output a relationship between detected objects by generating an entire visual scene graph. The scene graph is leverage to reason and answer questions about visual content. It can also be used to reason about whether a natural language statement is true or not regarding a visual input.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;extension-of-both-nlp-and-cv-tasks&quot;&gt;Extension of both NLP and CV tasks&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;Vision-and-Language Navigation: natural language navigation should be interpreted based on visual input. Combine both vision and language.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;visual-description-generation-and-storytelling&quot;&gt;Visual Description Generation and Storytelling&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;generate a textual description when conditioned on visual input&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;visual-description-generation&quot;&gt;Visual description generation&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Aim to generate either a global descriptionor dense captions for a given visual input.&lt;/p&gt;
+  &lt;h4 id=&quot;image-description-generation&quot;&gt;Image description generation&lt;/h4&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Standard image description generation: generate a sentence-level description of the scene in a given image&lt;/li&gt;
+    &lt;li&gt;Dense image description generation: create descriptions at the local object-level in a given image.&lt;/li&gt;
+    &lt;li&gt;Image paragraph generation: create paragraphs instead of generating a single simple description. Generated paragraphs are expected to be coherent and contain fine-grained natural language descriptions.&lt;/li&gt;
+    &lt;li&gt;Spoken language image description generation: expand the description generation task to work with spoken language, instead o flimiting to only the written forms of language.&lt;/li&gt;
+    &lt;li&gt;Stylistic image description generation: add style to the standard image description generation, where the generated descriptions adhere to a specific style.&lt;/li&gt;
+    &lt;li&gt;Unseen objects image description generation: leverage images which lack paired descriptions. Generate descriptions for visual object categories previously unseen in image-description corpora.&lt;/li&gt;
+    &lt;li&gt;Diverse image description generation: incorporate variety and diversity in the generated captions.&lt;/li&gt;
+    &lt;li&gt;Controllable image description generation: select specific objects in an image, defined by a control signal, to generate descriptions.&lt;/li&gt;
+    &lt;li&gt;Image caption emendation as generation: build a model to emend both syntactic and semantic errors in the captions.
+      &lt;h4 id=&quot;video-description-generation&quot;&gt;Video description generation&lt;/h4&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Global description generation:
+      &lt;ol&gt;
+        &lt;li&gt;ground sentences that describe actions in the visual information extracted from videos (Motwani &amp;amp; Mooney, 2012; Regneri et al., 2013)&lt;/li&gt;
+        &lt;li&gt;Generate global natural language descriptions for videos with various approaches: &lt;em&gt;leveraging latent topics&lt;/em&gt; (Das et al., 2013), &lt;em&gt;corpora knowledge&lt;/em&gt; (Krishnamoorthy et al., 2013), &lt;em&gt;graphical models&lt;/em&gt; (Rohrbach et al., 2013), and &lt;em&gt;sequence-to-sequence&lt;/em&gt; learning (Venugopalan et al., 2015b, 2015a; Donahue et al., 2015; Srivastava et al., 2015; Xu et al., 2016; Ramanishka et al., 2016; Jin et al., 2016), &lt;em&gt;factor graph&lt;/em&gt;(Thomason et al., 2014) combines visual detection with language statistics.&lt;/li&gt;
+        &lt;li&gt;Seq2seeq based approaches: extra corpora (Venugopalan et al., 2016), soft-attention (Yao et al., 2015), multimodal fusion (Hori et al., 2017), temporal attention (Song et al., 2017), semantic consistency (Gao et al., 2017), residual connections(Li et al., 2019). Incorporation of semantic attributes learned from videos, ensembled-based description generator networks (Shetty et al., 2018), encoder-decoder reconstructors (Wang et al., 2018).&lt;/li&gt;
+        &lt;li&gt;Other approaches: combined with entailment generation task (Pasunuru &amp;amp; Bansal, 2017a), multiple fine-grained actions (Wang et al., 2018b), reinforcement learning (Pasunuru &amp;amp; Bansal, 2017b), Visual Text correction system (Mazaheri &amp;amp; Shah, 2018), object relational graph baed encoder, language model decoder (Zhang et al., 2020).&lt;/li&gt;
+      &lt;/ol&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Dense video description generation:
+    &lt;blockquote&gt;
+      &lt;p&gt;achieve fine-grained video understanding by addressing two sub-problems: (1) localizing events in a video, and (2) generating captions for these localized events. the core challenge, namely the automatic evaluation of video captioning, is still unsolved.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Movie description generation: input movie clips, align books to movies (Tapaswi et al., 2015; Zhu et al., 2015), movie descriptions (Rohrbach et al., 2015).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;visual-storytelling&quot;&gt;Visual storytelling&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The task of visual storytelling aims to encode a sequence of images or frames (in the video) to generate a paragraph which is story-like.&lt;/p&gt;
+  &lt;h4 id=&quot;image-storytelling&quot;&gt;Image storytelling&lt;/h4&gt;
+  &lt;p&gt;The aim of image storytelling is to generate stories from a sequence of images.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;semantic coherence is captured in a photo stream.&lt;/li&gt;
+    &lt;li&gt;discover semantic embeddings correlations (Yu et al., 2017), incorporated with reinforcement learning (Wang et al., 2018), hierarchically structured reinforced training (Huang et al., 2019), adversarial reward learning Wang et al. (2018a).&lt;/li&gt;
+    &lt;li&gt;suffer from &lt;em&gt;repetitiveness&lt;/em&gt;, the same objects/events undermine a good story structure. -&amp;gt; inter-sentence diversity was explored with diverse beam search (Hsu et al., 2018).
+      &lt;h4 id=&quot;video-storytelling-less-explored&quot;&gt;Video storytelling (less explored)&lt;/h4&gt;
+      &lt;p&gt;In comparison to image storytelling, which only deals with a small sequence of images, the aim of video storytelling is to generate coherent and succinct stories for long videos.&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Pinoeer Li et al. (2020) address challenges like diversity in the story and the inherent complexity of video.&lt;/li&gt;
+    &lt;li&gt;goal: offer support to people with visual disabilities or technical issues like internet bandwidth limitations.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;visual-referring-expression-comprehension-and-generation&quot;&gt;Visual Referring Expression Comprehension and Generation&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The objective of the task is to ground a natural language expression (e.g. a noun phrase or a longer piece of text) to objects in a visual input.&lt;/p&gt;
+  &lt;h3 id=&quot;image-referring-expression-comprehension-and-generation&quot;&gt;Image referring expression comprehension and generation&lt;/h3&gt;
+  &lt;p&gt;In a natural environment, people use referring expressions to unambiguously identify, indicate, or point to particular objects. This is usually done with a simple phrase or within a larger context (e.g. a sentence). Having  a larger context provides better scope for avoiding ambiguity and allows the referential expression to easily map to the target object. However, there can also be other possibilities in which people are asked to describe a target object based on its surrounding objects.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;used to generate, an algorithm generates a referring expression for a given target object which is present in a visual scene
+      &lt;ul&gt;
+        &lt;li&gt;approaches: (FitzGerald et al., 2013) tackled the problem from the perspective of density estimation, learn distributions over logical exprssions identifying sets of objects in the world.&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;used to perform comprehension, an algorithm locates in an image the object described by a given referring expression.
+      &lt;ul&gt;
+        &lt;li&gt;approaches: Nagaraja et al. (2016) integrate contexts between objects. Multiple Instance Learning (MIL). Hu et al. (2016) leverage a NLP query of the object to localize a target object, integrating spatial configurations and global scene-level contextual information. (Yu et al., 2018) subject appearence, location, and relationship to other objects. (Cirik et al., 2018a) syntactic analysis, build a dynamic computation graph. variational model (Zhang et al., 2018)&lt;/li&gt;
+        &lt;li&gt;cross-modal: (Yang et al., 2019) cross-modal relationship inference， 1. highlight objects and relationships connected with a referring, 2. multi-modal semantic contexts. (可以将空间的referring用到depth estimation里面吗)。Recursive Grounding Tree (Hong et al., 2019) binary tree to parse referring expression-&amp;gt; visual reasoning. (Liu et al., 2019), combining visual reasoning with referential expressions. object segmentation based referring expression (Liu et al., 2017).&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;image-referring-expression-comprehension-and-generation-combination&quot;&gt;Image referring expression comprehension and generation combination&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;(Mao et al., 2016; Yu et al., 2016) find visual comparison to other objects within an image. &lt;strong&gt;(Yu et al., 2017a)&lt;/strong&gt; a speaker, a listener, and a reinforcer. The speaker generate referring expressions, the listner comprehend referring expressions, the reinforce use a reward function to guide sampling of more discriminative expressions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;video-referring-expression-comprehension-and-generation&quot;&gt;Video referring expression comprehension and generation&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Vasudevan et al. (2018) stereo videos to explore temporal-spatial contextual information. Khoreva et al. (2018) language referring expressions to achieve object segmentation. Wang et al. (2020) video grounding with contextual information.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;visual-question-answering-reasoning-and-entailment&quot;&gt;Visual question answering, reasoning, and entailment&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;they share the common intention of answering questions when conditioned on a visual input&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;visual-question-answering&quot;&gt;Visual question answering&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The goal of Visual Question Answering (VQA) is to learn a model that comprehends visual content at both the global and local level for finding an association with pairs of questions and answers in the natural language form.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Image Q&amp;amp;A as Visual Turing Test (Malinowski &amp;amp; Fritz, 2014; Malinowski et al., 2015; Geman et al., 2015). fill-in-the-blank tasks (Yu et al., 2015), multiple-choice question-answering for images. Address open-ended Image Q&amp;amp;A (Antol et al., 2015; Agrawal et al., 2017), ask free-form natural language question. Binary image Q&amp;amp;A (Zhang et al., 2016). Relate local regions in the images (Zhu et al., 2016) by addressing object-level grounding&lt;/li&gt;
+    &lt;li&gt;Interpretability or explainability by overcoming priors (Agrawal et al., 2018). Generate human-interpretable rules that provide better insights &lt;strong&gt;(Manjunatha et al., 2019)&lt;/strong&gt;. cycle-consistency (Shah et al., 2019a). outside knowledge (Marino et al., 2019)(Shah et al., 2019b).&lt;/li&gt;
+    &lt;li&gt;Multi-task learning, federated learning.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;video-question-answering&quot;&gt;Video question answering&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;is to answer natural language questions about videos.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;(Tu et al., 2014) jointly parsing videos with corresponding text to answer queries. open-ended movie Q&amp;amp;A (Tapaswi et al., 2016). fill-in-the-blank questions (Zhu et al., 2017; Mazaheri et al., 2017). (Zeng et al., 2017) free-form Q&amp;amp;A. High-level concept words (Yu et al., 2017b). Attention (Jang et al., 2017). &lt;strong&gt;spatio-temporal grounding (Lei et al., 2020)&lt;/strong&gt;&lt;/li&gt;
+    &lt;li&gt;STAGE (Lei et al., 2020), aligned fusion is essential for improving Video Q&amp;amp;A.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;visual-reasoning&quot;&gt;Visual reasoning&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;is to learn a model that comprehends the visual content by reasoning about it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;image-reasoning&quot;&gt;Image reasoning&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;s to answer sophisticated queries by reasoning about the visual world.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;(Johnson et al., 2017a) design diagnostic tests going beyond benchmarks. VQA struggle with comparing the attributes of objects or novel attribute combinations. (Johnson et al., 2017b) program generator. (Hu et al., 2017) predict instance-specific network layouts. Santoro et al. (2017) relation-aware visual features. (Cao et al., 2018) global context reasoning.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Mascharka et al. (2018) proposed a set of visual-reasoning primitives.&lt;/strong&gt; Learning-By-Asking (LBA) (Misra et al., 2018b), mimic natural learning with the goal to make it more data efficient. compositional attention networks (Hudson &amp;amp; Manning, 2018) explicit and expressive reasoning.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;neural-symbolic visual question answering (Yi et al., 2018)&lt;/strong&gt;, recover structural scene representation from the image and a program trace from the question. &lt;strong&gt;Neuro-Symbolic Concept Learner (NS-CL) (Mao et al., 2019)&lt;/strong&gt; learns visual concepts, word, and semantic parsing of sentences without explicit supervision. It learns by simply looking at images and reading paired questions and answers. multimodal relation network (Cadène et al., 2019) learn end-to-end reasoning over real images. Aditya et al. (2019) used spatial knowledge to aid visual reasoning, knowledge distillation, relational resoning, probabilistic logical languages. Explainable and explicit neurla modules (Shi et al., 2019) scene graph.&lt;/li&gt;
+    &lt;li&gt;&lt;strong&gt;Andreas et al. (2016a, 2016b)&lt;/strong&gt; exploit the compositional linguistic structure of complex questions by forming  neural module networks which query about the abstract shapes observed in an image. Compositional question answering (Hudson &amp;amp; Manning, 2019). Zellers et al. (2019) commonsense knowledge. NLVR (Suhr et al., 2017) and NLVR2 (Suhr et al., 2019) true or false.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;video-reasoning&quot;&gt;Video reasoning&lt;/h4&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;The goal of COG, Yang et al. (2018), is to address problems related to visual and logical reasoning and memory&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;visual-entailment&quot;&gt;Visual entailment&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;is to learn a model that predicts whether the visual content entails the augmented text along with hypothesis.&lt;/p&gt;
+  &lt;h4 id=&quot;image-entailment&quot;&gt;Image entailment&lt;/h4&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Vu et al. (2018), a visually grounded version of the textual entailment where an image is augmented with textual premise and hypothesis. Xie et al. (2019) predicts whether the image semantically entails the text, given image-sentence pairs, the premise is defined by an image.
+      &lt;h4 id=&quot;video-entailment&quot;&gt;Video entailment&lt;/h4&gt;
+      &lt;p&gt;(Liu et al., 2020) to infer whether the natural language hypothesis is entailed or contradicted when given a video clip aligned with the subtitles information&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;visual-dialog&quot;&gt;Visual Dialog&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;involves a complex interaction between a human and an artificial agent.&lt;/p&gt;
+  &lt;h3 id=&quot;image-dialog&quot;&gt;Image Dialog&lt;/h3&gt;
+  &lt;p&gt;is to create AI agents that can hold dialog with humans in a natural language of choice about a visual content (Das et al., 2017a), represented by an image. To be more specific, given an image, a history of dialogs, and a question about the image, the goal of an AI agent is to ground the question in the image, infer the context from the history, and then answer the question accurately&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;(de Vries et al., 2017) locate an unkown object in the image by asking a swquence of questions. (Mostafazadeh et al., 2017). hold natural-sounding conversations about a shared image.&lt;/li&gt;
+    &lt;li&gt;(Lu et al., 2017a) transfer from dialog generation. Seo et al. (2017) attentive memory. (Wu et al., 2018) reinforcement learning and GAN. (Kottur et al., 2018) form explicit and grounded co-reference between nouns and pronouns. (Niu et al., 2019) recursive visual attention. (Zheng et al., 2019) graphical model inference. Guo et al. (2019) builds an image-question-answer synergistic network. (Shekhar et al., 2019) a visually grounded encoder guessing and asking questions.
+      &lt;h3 id=&quot;video-dialog&quot;&gt;Video dialog&lt;/h3&gt;
+      &lt;p&gt;is to leverage scene information containing both audio (which can be transcribed as subtitles) and visual frames to hold a dialog (i.e., an exchange) with humans in a natural language of choice about the multimedia content (Alamri et al., 2019b 2019a).&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li&gt;multimodal-based video description (Hori et al., 2019).&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;multimodal-machine-translation-mmt&quot;&gt;Multimodal Machine Translation (MMT)&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;is to translate natural language sentences that describe visual content (e.g. image) in a source language into a target language by taking the visual content as an additional input to the source language sentences.&lt;/p&gt;
+  &lt;h3 id=&quot;machine-tanslation-with-image&quot;&gt;Machine tanslation with image&lt;/h3&gt;
+  &lt;p&gt;is to translate sentences, that describe an image, in a source language into equivalent sentences in a target language.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;single source translation, multisource MMT.&lt;/li&gt;
+    &lt;li&gt;multimodal attention (Huang et al., 2016). doubly-attentive decoder incorporated visual features (Calixto et al., 2017). learning to translate, and learning visually grounded representations (Elliott &amp;amp; Kádár, 2017). noisy image captions for MMT (Schamoni et al., 2018).
+      &lt;h3 id=&quot;machine-translation-with-video&quot;&gt;Machine translation with video&lt;/h3&gt;
+      &lt;p&gt;(Wang et al., 2019b) is to translate a source language description into the target language equivalent using the video information as additional spatio-temporal context.&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;language-to-vision-generation&quot;&gt;Language-to-Vision Generation&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;is to generate visual content given their natural language descriptions.&lt;/p&gt;
+  &lt;h3 id=&quot;language-to-image-generation&quot;&gt;Language-to-Image Generation&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;sentence-level language-to-image generation: generate images cnditioned on the natural language descriptions. (Mansimov et al., 2016) iteratively draw patches on a canvas, attending to the relavant words in the description. (Reed et al., 2016b) visual concepts could be translated from characters to pixels with conditional gan. (Reed et al., 2016a) what content should be drawn in which location for high quality image generation. (Nguyen et al., 2017) conditioned on image classes. (Dash et al., 2017) condition on both sentence and class information. stackGAN (Zhang et al., 2017, 2019). attention-based GAN (Xu et al., 2018)&lt;/li&gt;
+    &lt;li&gt;(Hong et al., 2018) infer the semantic layout of the image. Johnson et al. (2018) used image-specific scene graphs enabling explicitly reasoning about objects and their relationships.
+      &lt;h4 id=&quot;image-manipulation&quot;&gt;Image manipulation&lt;/h4&gt;
+    &lt;/li&gt;
+    &lt;li&gt;TAGAN (Nam et al., 2018) generate semantically manipulated images while preserving text-irrelevant contents. Only regions correspond to the given text are modified. (Zhu et al., 2019) attention generator, discriminator. (Li et al., 2020) designed error correction modules to rectify mismatched attributes and complete the missing contents.
+      &lt;h4 id=&quot;fine-grained-image-generation&quot;&gt;Fine-grained image generation&lt;/h4&gt;
+    &lt;/li&gt;
+    &lt;li&gt;(El-Nouby et al., 2018) recurrent image generation, output up to the current step &amp;amp; past instructions. (Hinz et al., 2019) control location of objects by adding a pathway in an iterative manner.
+      &lt;h4 id=&quot;sequential-image-generation&quot;&gt;Sequential image generation&lt;/h4&gt;
+    &lt;/li&gt;
+    &lt;li&gt;StoryGAN (Li et al., 2019b) opposite to storytelling.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;language-to-video-generation&quot;&gt;Language-to-Video generation&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;(Li et al., 2018) conditional generative model&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;vision-and-language-navigation&quot;&gt;Vision-and-Language Navigation&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;is to carry out navigation in an environment by interpreting natural language instructions&lt;/p&gt;
+  &lt;h3 id=&quot;image-and-language-navigation&quot;&gt;Image-and-Language Navigation&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;(Anderson et al., 2018b) an autonomous agent navigate in an environment by interpreting natural language instructions. (Wang et al., 2019a), reinforced cross-modal matching. (Fried et al., 2018) train an action space with an embedded speaker model.&lt;/li&gt;
+    &lt;li&gt;Embodied Question Answering (Das et al., 2018a, 2018b). interactive question answering (Gordon et al., 2018). grounded dialog (de Vries et al., 2018)&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;vison-and-language-pretraining&quot;&gt;Vison-and-Language pretraining&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;To jointly learn representations using both visual and textual content&lt;/p&gt;
+  &lt;h3 id=&quot;single-stream-architectures&quot;&gt;Single-stream architectures&lt;/h3&gt;
+  &lt;ul&gt;
+    &lt;li&gt;BERT-like (Devlin et al., 2019). VideoBERT (Sun et al., 2019). Bounding Boxes in Text Transformer (B2T2) (Alberti et al., 2019). Unicoder-VL (Li et al., 2020). VL-BERT (Su et al., 2020), VLP (Zhou et al., 2020), OSCAR (Li et al., 202), VinVL (Zhang et al., 2021) can jointly understand and generate from cross-modal data. (Cao et al., 2020) probe.
+      &lt;h3 id=&quot;two-stream-architectures&quot;&gt;Two-stream architectures&lt;/h3&gt;
+    &lt;/li&gt;
+    &lt;li&gt;two independent encoders for learning visual and text representations. ViLBERT (Lu et al., 2019) and LXMERT (Tan &amp;amp; Bansal, 2019).&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;-neuro-symbolic reasoning systems (Yi et al., 2018; Vedantam et al., 2019).&lt;/p&gt;</content><author><name></name></author><summary type="html">Trends in Integration of Vision and Language Research: A Survey of Tasks, Datasets, and Methods Abstract Focus on ten prominent tasks that integrate language and vision by discussing their problem formulation, methods, existing datasets, evaluation measures, and compare results with the SOTA methods.</summary></entry><entry><title type="html">Logical Syntax</title><link href="http://localhost:4000/2022/04/09/logical-syntax.html" rel="alternate" type="text/html" title="Logical Syntax" /><published>2022-04-09T00:00:00-04:00</published><updated>2022-04-09T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/09/logical-syntax</id><content type="html" xml:base="http://localhost:4000/2022/04/09/logical-syntax.html">&lt;p&gt;&lt;a href=&quot;#content&quot;&gt;Content&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#background&quot;&gt;Background&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#preface&quot;&gt;Preface&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot;&gt;Introduction&lt;/a&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-logical-syntax&quot;&gt;What is logical syntax&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#language-as-calculi&quot;&gt;Language as calculi&lt;/a&gt;&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href=&quot;#the-definite-language-1&quot;&gt;THE DEFINITE LANGUAGE 1&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#rules-of-formation-for-language-1&quot;&gt;Rules of formation for language 1&lt;/a&gt;
+    &lt;ol&gt;
+      &lt;li&gt;&lt;a href=&quot;#predicates-and-functors&quot;&gt;Predicates and functors&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#syntactical-gothic-symbols&quot;&gt;Syntactical gothic symbols&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#the-junction-symbols&quot;&gt;The junction symbols&lt;/a&gt;
+***&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;content&quot;&gt;Content&lt;/h1&gt;
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Syntax_(logic)&quot;&gt;What is syntax&lt;/a&gt;&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;In logic, syntax is anything having to do with formal languages or formal systems without regard to any interpretation or meaning given to them. Syntax is concerned with the rules used for constructing, or transforming the symbols and words of a language, as contrasted with the semantics of a language which is concerned with its meaning&lt;/p&gt;
+
+      &lt;p&gt;The symbols, formulas, systems, theorems, proofs, and interpretations expressed in formal languages are syntactic entities whose properties may be studied without regard to any meaning they may be given, and, in fact, need not be given any.&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;preface&quot;&gt;Preface&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The purpose of present work is to give a systematic exposition of &lt;em&gt;such a mthod&lt;/em&gt;, namely, of the method of “logical syntax”.&lt;/li&gt;
+  &lt;li&gt;The aim of logical syntax is to provide a system of cocncepts, a language, by the help of which the results of logical analysis will be exactly formulable. &lt;em&gt;phylosophy is to be replaced by he logical syntax of the language of science&lt;/em&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;Language I&lt;/em&gt; covers a narrow field of concepts, &lt;em&gt;lanuage II&lt;/em&gt; is richer in modes of expression.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;h3 id=&quot;what-is-logical-syntax&quot;&gt;What is logical syntax&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;The logical syntax mean the formal theory of the linguistic forms of a language-the systematic statement of the formal rules which govern it together with the development of consequences which follow from these rules.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The syntax of a language is supposed to lay down rules according to which the linguistic structures (e.g. the sentences) are to be built up from the elements (e.g. words). The chief task of logic is supposed to be that of formulating rules according to which judgemets may be inferred from other judgements; in other words, according to which conclusions may be drawn from premisses.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;The logic can be studied with any degree of accuracy when it is based not on judgements (thoughts, or the content of thoughts) but rather on linguistic expressions. &lt;strong&gt;Sentence is the most important&lt;/strong&gt;. The rules of logic are formal, logical characteristics of sentences and the logical relations are dependent on syntactic structure of the sentences. -&amp;gt; &lt;strong&gt;logic will become a part of syntax&lt;/strong&gt;. -&amp;gt; difference: &lt;em&gt;formation rules&lt;/em&gt; &amp;amp; &lt;em&gt;transformation rules&lt;/em&gt;. -&amp;gt; &lt;strong&gt;designate as  &lt;em&gt;logical syntax&lt;/em&gt; the system which comprises the rules of formation and transformation&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;natural word-language (such as German &amp;amp; Latin) is unsystematic and logically imperfect structured. The same arises in the artificial word-languages.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Rules of formation and transformation permit of being formally apprehended.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;-&amp;gt; Consider the syntax of two artificially constructed formal symbolic language (employ formal symbols instead of words).&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The sentences, definitions, and rules of the syntax of a language are concerned with the forms of that language.
+    &lt;ol&gt;
+      &lt;li&gt;how are them correctly expressed?&lt;/li&gt;
+      &lt;li&gt;is a kind of super-language necessary?&lt;/li&gt;
+      &lt;li&gt;a third language to explain the super-language?&lt;/li&gt;
+      &lt;li&gt;is it possible to formulate  the syntax of a language with in the language itself?
+        &lt;ul&gt;
+          &lt;li&gt;-&amp;gt; it is possible to express the syntax of a language in the language itself.&lt;/li&gt;
+          &lt;li&gt;start by constructing the syntax, then procced to formalize its concepts and thereby determine its logical character.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;object-language, syntax-language&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;language-as-calculi&quot;&gt;Language as calculi&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;ol&gt;
+      &lt;li&gt;A system of conventions or rules is understood by a calculus.&lt;/li&gt;
+      &lt;li&gt;The rules are concerned with &lt;strong&gt;symbols&lt;/strong&gt; about the nature, and relations of the nature are distributed in various classes.&lt;/li&gt;
+      &lt;li&gt;Any finite series of these symbols is called an &lt;strong&gt;expression&lt;/strong&gt; of the calculus in question.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;The rules of the calculus determine
+    &lt;ol&gt;
+      &lt;li&gt;the condition under which an expression can be said to belong to a certain category of expressions. -&amp;gt; formation = syntactic rules&lt;/li&gt;
+      &lt;li&gt;under what conditions the transformation of one or more expressions into another or others are allowed. -&amp;gt; transformation = logical laws of deduction.
+        &lt;ul&gt;
+          &lt;li&gt;a system of a language is a calculus&lt;/li&gt;
+          &lt;li&gt;every well-determined mathematical discipline is a calculus.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;logical syntax&lt;/em&gt; is the same thing as the construction and manipulation of a calculus. Languages are the most important examples of calculi.&lt;/li&gt;
+  &lt;li&gt;The syntax is only concerned with the formal properties of expressions, thw design of the individual symbols is indifferent.&lt;/li&gt;
+  &lt;li&gt;Any series of any things will equally well serve as terms or expressions in a calculus, or in a language.&lt;/li&gt;
+  &lt;li&gt;pure syntax and descriptive syntax ~ mathmetical geometry and physical geometry
+    &lt;ol&gt;
+      &lt;li&gt;pure syntax &lt;em&gt;concerned with&lt;/em&gt; the forms of sentences.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;the-definite-language-1&quot;&gt;THE DEFINITE LANGUAGE 1&lt;/h1&gt;
+&lt;h2 id=&quot;rules-of-formation-for-language-1&quot;&gt;Rules of formation for language 1&lt;/h2&gt;
+&lt;h3 id=&quot;predicates-and-functors&quot;&gt;Predicates and functors&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;previous knowledge:
+    &lt;ol&gt;
+      &lt;li&gt;objects: proper names. e.g. house name, color names. name-language&lt;/li&gt;
+      &lt;li&gt;sysematic positional co-ordinates (symbols show the place of the objects in the system, and their positions in relation to one another). e.g. house number, color figures/letters. co-ordinate-language&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;In language 1, natural numbers as co-ordinates.&lt;/li&gt;
+  &lt;li&gt;predicates: to express a property of an object, or of a position, or a relation between several objects or positions.&lt;/li&gt;
+  &lt;li&gt;predicates are proper names for the properties of positions.&lt;/li&gt;
+  &lt;li&gt;descripptive predicates: express empirical properties or relations&lt;/li&gt;
+  &lt;li&gt;logical predicates:&lt;/li&gt;
+  &lt;li&gt;functors: express properties or relations of position by means of numbers.&lt;/li&gt;
+  &lt;li&gt;descriptive functors, logical functors.&lt;/li&gt;
+  &lt;li&gt;numerical expression: an expression which in any way designates a number. e.g. “te(3), sum(3,4)”&lt;/li&gt;
+  &lt;li&gt;sentence: an expression which corresponds to a propositional sentence of a word-language. e.g.”te(3)=5, sum(3,4)=7, blue(3)”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;syntactical-gothic-symbols&quot;&gt;Syntactical gothic symbols&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;two expressions are equal when their corresponding symbols are equal symbols. If two symbols or two expressions are equal, they have same syntactical design.&lt;/li&gt;
+  &lt;li&gt;An exprssion of I consists of an ordered series of symbols of I.&lt;/li&gt;
+  &lt;li&gt;By a syntactic &lt;em&gt;form&lt;/em&gt; we understand any kind or category of expressions which is syntactically determined.&lt;/li&gt;
+  &lt;li&gt;Five kinds of symbols:
+    &lt;ol&gt;
+      &lt;li&gt;eleven indivisual symbols:&lt;/li&gt;
+      &lt;li&gt;variables&lt;/li&gt;
+      &lt;li&gt;constant&lt;/li&gt;
+      &lt;li&gt;predicates&lt;/li&gt;
+      &lt;li&gt;fuctors&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;the-junction-symbols&quot;&gt;The junction symbols&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;The one-term or two-term junction symols are used to costruct a new sentences outof one or two sentences respectively.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Content Background Preface Introduction What is logical syntax Language as calculi</summary></entry><entry><title type="html">Paper summary</title><link href="http://localhost:4000/2022/04/06/paper-summary-last-weekend.html" rel="alternate" type="text/html" title="Paper summary" /><published>2022-04-06T00:00:00-04:00</published><updated>2022-04-06T00:00:00-04:00</updated><id>http://localhost:4000/2022/04/06/paper-summary-last-weekend</id><content type="html" xml:base="http://localhost:4000/2022/04/06/paper-summary-last-weekend.html">&lt;h1 id=&quot;2022331--202246&quot;&gt;2022/3/31 ~ 2022/4/6&lt;/h1&gt;
+&lt;h2 id=&quot;order-embeddings-of-images-and-language&quot;&gt;Order-Embeddings of images and Language&lt;/h2&gt;
+&lt;h3 id=&quot;core-idea&quot;&gt;Core idea&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Explicitly modeling the partial order structure of the hierarchy over language and image -&amp;gt; &lt;strong&gt;Visual sematic hierarchy&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-to-do-it&quot;&gt;How to do it&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Penalize order violations
+\(E(x,y) = ||max(0,y-x)||^2\)
+where $E(x,y)=0 \Leftrightarrow x \preceq y$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;modeling-heterogeneous-hierarchies-with-relation-specific-hyperbolic-cones&quot;&gt;Modeling heterogeneous hierarchies with relation-specific hyperbolic cones&lt;/h2&gt;
+&lt;h3 id=&quot;core-idea-1&quot;&gt;Core idea&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Embeds entities into hyperbolic cones &amp;amp; models relations as transformations between the cones&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-to-do-it-1&quot;&gt;How to do it&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;table&gt;
+      &lt;tbody&gt;
+        &lt;tr&gt;
+          &lt;td&gt;Poincare entailment cone at apex $x$ $$\zeta_x = {y\in \Beta^d&lt;/td&gt;
+          &lt;td&gt;\angle_xy\leq\sin^{-1}(K\frac{1-&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;x&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;^2}{&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;x&lt;/td&gt;
+          &lt;td&gt; &lt;/td&gt;
+          &lt;td&gt;})}$$&lt;/td&gt;
+        &lt;/tr&gt;
+      &lt;/tbody&gt;
+    &lt;/table&gt;
+  &lt;/li&gt;
+  &lt;li&gt;embed entity: $h=(h_1,h_2,\cdots,h_{d})$, where $h_i\in\Beta^2$ is the apex of the $i-$th 2D hyperbolic cone.&lt;/li&gt;
+  &lt;li&gt;Transformation:
+    &lt;ol&gt;
+      &lt;li&gt;Rotation transformation: $f_1(h,r) = \exp_o(\mathbf{G}(\theta)\log_o(h))$, where $\mathbf{G(\theta)=\left[\begin{matrix}cos(\theta)&amp;amp;-sin(\theta)\sin(\theta)&amp;amp;cos(\theta)\end{matrix}\right]}$&lt;/li&gt;
+      &lt;li&gt;Restricted rotation transformation:$f_2(h,r)=\exp_h(s\cdot \mathbf{G}(\theta\frac{\phi}{\pi})\bar h), r=(s,\theta)$&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Loss function:
+    &lt;ol&gt;
+      &lt;li&gt;
+        &lt;table&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td&gt;$\ell_d=-\log\sigma(\psi(h,r,t))-\sum_{t^{‘}}\frac{1}{&lt;/td&gt;
+              &lt;td&gt;T&lt;/td&gt;
+              &lt;td&gt;}\log\sigma(-\psi(h,r,t^{‘}))$&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/li&gt;
+      &lt;li&gt;$\ell_a(h,r,t)=m\cdot(max(0,\angle_{h_i}t_i-\phi(h_i)))$&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;learning-to-detect-unseen-object-classes-by-between-class-attribute-transfer&quot;&gt;Learning to detect unseen object classes by between-class attribute transfer&lt;/h2&gt;
+&lt;h3 id=&quot;core-idea-2&quot;&gt;Core idea&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Decompose an image/object into high-level semantic attributes such as shape, color, geographic information. Then detect new classes based on their attribute representations.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-to-do-it-2&quot;&gt;How to do it&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Direct attribute prediction:
+    &lt;ol&gt;
+      &lt;li&gt;decouple training images into attribute variables $\alpha_m$&lt;/li&gt;
+      &lt;li&gt;per-attribute parameters $\beta_m$&lt;/li&gt;
+      &lt;li&gt;at test: image $x\rightarrow\beta_m\rightarrow \alpha_m\rightarrow class$
+ \(p(z|x)=\sum_{a\in\{0,1\}^M}p(z|a)p(a|x) = \frac{p(z)}{p(a^z)}\prod_{m=1}^{M}p(a_m^z|x)\)&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Indirect attribute prediction
+    &lt;ol&gt;
+      &lt;li&gt;add an attribute layer between two label layers&lt;/li&gt;
+      &lt;li&gt;
+        &lt;table&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td&gt;for the indirect one, $p(a_m&lt;/td&gt;
+              &lt;td&gt;x)=\sum_{k=1}^K p(a_m&lt;/td&gt;
+              &lt;td&gt;y_k)p(y_k&lt;/td&gt;
+              &lt;td&gt;x)$&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;zero-shot-learning-via-joint-similarity-embedding&quot;&gt;Zero-shot learning via joint similarity embedding&lt;/h2&gt;
+
+&lt;h3 id=&quot;core-idea-3&quot;&gt;Core idea&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;To test if source-target pair matches each other&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;multi-grained-vision-language-pre-training-aligning-texts-with-visual-concepts&quot;&gt;Multi-grained vision language pre-training: aligning texts with visual concepts&lt;/h2&gt;
+&lt;h3 id=&quot;core-idea-4&quot;&gt;Core idea&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Locate visual concepts in the image given the associated texts &amp;amp; align the texts with the visual concepts.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-to-do-it-3&quot;&gt;How to do it&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Bounding box loss:
+\(\ell_{bbox} = \mathbb{E}_{(V^j,T^j)\sim I;I\sim D}\left[\ell_{iou}(b_j,\hat{b}_j)+||b_j-\hat{b}_j||_1\right]\)&lt;/li&gt;
+  &lt;li&gt;Contrastive learning:
+\(p^{v2t}(V) = \frac{\exp(s(V,t)/\tau)}{\sum_{i=1}^{N}\exp(s(V,T^i)/\tau)}\)
+\(p^{t2v}(T) = \frac{\exp(s(V,t)/\tau)}{\sum_{i=1}^{N}\exp(s(V^i,T)/\tau)}\)
+\(\ell_{cl}=\frac{1}{2}\mathbb{E}_{V,T\sim D}\left[H(y^{v2t}(V),p^{v2t}(V))+H(y^{t2v}(T),p^{t2v}(T))\right]\)&lt;/li&gt;
+  &lt;li&gt;Match prediction: whether a pair of visual concept and text is matched.
+\(\ell_{match} = \mathbb{E}_{V,T\sim D}H(y^{match},p^{match}(V,T))\)&lt;/li&gt;
+  &lt;li&gt;Masked Language Modeling: predict the masked words in the text based on the visual concept
+\(\ell_{mlm} = \mathbb{E}_{t_j\sim \hat{T};(V,\hat{T}\sim D)}H(y^j, p^j(V,\hat{T}))\)&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">2022/3/31 ~ 2022/4/6 Order-Embeddings of images and Language Core idea Explicitly modeling the partial order structure of the hierarchy over language and image -&amp;gt; Visual sematic hierarchy</summary></entry><entry><title type="html">Jekyll</title><link href="http://localhost:4000/2022/03/20/jekyll.html" rel="alternate" type="text/html" title="Jekyll" /><published>2022-03-20T00:00:00-04:00</published><updated>2022-03-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/03/20/jekyll</id><content type="html" xml:base="http://localhost:4000/2022/03/20/jekyll.html">&lt;h1 id=&quot;using-jekyll-to-create-a-gitpage-on-windows&quot;&gt;Using Jekyll to create a gitpage on windows&lt;/h1&gt;
+&lt;h2 id=&quot;understanding-jekyll-gem-bundle-ruby&quot;&gt;Understanding Jekyll, Gem, Bundle, Ruby&lt;/h2&gt;
+&lt;h3 id=&quot;what-is-ruby&quot;&gt;&lt;a href=&quot;https://www.ruby-lang.org/en/&quot;&gt;what is Ruby&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Ruby is a dynamic, open source programming language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Ruby is most used for &lt;strong&gt;building web applications&lt;/strong&gt;. However, it is a general-purpose language similar to Python, so it has many other applications like data analysis, prototyping, and proof of concepts.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-a-ruby-gem&quot;&gt;&lt;a href=&quot;https://www.rubyguides.com/2018/09/ruby-gems-gemfiles-bundler/&quot;&gt;What is a Ruby gem?&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;A gem is a package that you can download &amp;amp; install. When you require an installed gem you’re adding extra functionality to your Ruby program.&lt;/p&gt;
+
+&lt;h3 id=&quot;what-is-bundler&quot;&gt;&lt;a href=&quot;https://www.rubyguides.com/2018/09/ruby-gems-gemfiles-bundler/&quot;&gt;What Is Bundler?&lt;/a&gt;&lt;/h3&gt;
+
+&lt;p&gt;While learning about Ruby gems you may also read about Bundler. But what is Bundler exactly? Bundler is a tool for dependency management. Didn’t RubyGems already handle this? Well, it does… but only for the gems themselves. Your regular Ruby application isn’t built as a gem, so it doesn’t get this feature. That’s why Bundler exists!&lt;/p&gt;
+
+&lt;p&gt;Bundler (and RubyGems since version 2.0) can read Gemfile &amp;amp; install the requested versions of the gems.&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem 'rails', '~&amp;gt; 5.2.1'&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem 'puma', '~&amp;gt; 3.11'&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;TODO:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;what is gem&lt;/li&gt;
+  &lt;li&gt;what is Bundle&lt;/li&gt;
+  &lt;li&gt;What is Jekyll&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;using-jekyll-to-create-a-hello-world-post&quot;&gt;Using jekyll to create a “Hello world” post&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Install Ruby, Gem&lt;/li&gt;
+  &lt;li&gt;Using Gem to install Jekyll, Bundler, Wdm, Webrick:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem install jekyll bundler wdm webrick&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Create a directory to deposite your personal website:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mkdir docs, cd docs&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Create &lt;strong&gt;Gemfile&lt;/strong&gt; to list project’s dependencies: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle init&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Modify &lt;strong&gt;Gemfile&lt;/strong&gt; by adding:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem &quot;jekyll&quot;&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem webrick&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem 'wdm', '&amp;gt;= 0.1.0' if Gem.win_platform?&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create your site by creating an &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;index.html&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Write something:
+  ```&amp;lt;!DOCTYPE html&amp;gt;
+    &lt;html&gt;
+  &lt;head&gt;
+      &lt;meta charset=&quot;utf-8&quot; /&gt;
+      &lt;title&gt;Home&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+      &lt;h1&gt;Hello World!&lt;/h1&gt;
+  &lt;/body&gt;
+  &lt;/html&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Create local site: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Using Jekyll to create a gitpage on windows Understanding Jekyll, Gem, Bundle, Ruby what is Ruby Ruby is a dynamic, open source programming language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write.</summary></entry><entry><title type="html">RemoteX11 configuration on vscode</title><link href="http://localhost:4000/2022/03/20/x11-for-vscode.html" rel="alternate" type="text/html" title="RemoteX11 configuration on vscode" /><published>2022-03-20T00:00:00-04:00</published><updated>2022-03-20T00:00:00-04:00</updated><id>http://localhost:4000/2022/03/20/x11-for-vscode</id><content type="html" xml:base="http://localhost:4000/2022/03/20/x11-for-vscode.html">&lt;h1 id=&quot;remote-x11-understanding&quot;&gt;Remote X11 understanding&lt;/h1&gt;
+
+&lt;p&gt;Suppose we have a local machine (windows/linux), wanna do some deep learning training or data analysis in a remote linux server to . To show images like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.plot() &amp;amp; plt.show()&lt;/code&gt; in local machine we need X11 forwarding which directly renderes images in local machine.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Ok, first step we should connect to a remote linux server from our local machine. Supposing using SSH connection in MobaXterm, we need a private key in local machine and a public key in remote server. Then &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh user@ip -X&lt;/code&gt;. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-X&lt;/code&gt; here enables X11 forwarding. W.o. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-X&lt;/code&gt;, any plot command like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;plt.plot() &amp;amp; plt.show()&lt;/code&gt; wouldn’t be shown in local machine.&lt;/li&gt;
+  &lt;li&gt;Next, what we need to care about is the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;$DISPLAY&lt;/code&gt; variable in remote server. Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo $DISPLAY&lt;/code&gt; in local terminal to check the value. If the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-X&lt;/code&gt; args is enabled, the it will output something like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost:10.0&lt;/code&gt;, wehre &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;localhost&lt;/code&gt; refers to hostname of your computer (&lt;strong&gt;I’m not sure whether it refers to remote server or local machine&lt;/strong&gt;). &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10&lt;/code&gt; display name, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt; screen name. Generally speaking, a display is composed of a screen, a keyboard and a mouse.&lt;/li&gt;
+  &lt;li&gt;Now use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xclock&lt;/code&gt; in your terminal to test GUI.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;configure-on-vscode&quot;&gt;configure on vscode&lt;/h1&gt;
+&lt;ul&gt;
+  &lt;li&gt;Install &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remoet X11&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remote X11 (ssh)&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo $DISPLAY&lt;/code&gt; in vscode terminal to check display value&lt;/li&gt;
+  &lt;li&gt;If display value is none, add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;export DISPLAY=localhost:10.0&lt;/code&gt; to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;~/.bashrc&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;source ~/.bashrc&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Open vscode configuration &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ctrl+shit+p&lt;/code&gt; and find out &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;remote X11 settings&lt;/code&gt;, set up the display &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;10&lt;/code&gt;, screen &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;xclock&lt;/code&gt; to test&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;notice&quot;&gt;Notice&lt;/h1&gt;
+&lt;p&gt;The default X11 forwarding can’t render images or videos generated by python &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gym&lt;/code&gt; library. Because, the X11 forwarding only supports OPENGL1.5 and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gym&lt;/code&gt; requires higher version. To render &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gym&lt;/code&gt; images, it involves a technique named “VirtualGL”. It is complicated, I need some time to figure it out. Maybe next time.&lt;/p&gt;</content><author><name></name></author><summary type="html">Remote X11 understanding Suppose we have a local machine (windows/linux), wanna do some deep learning training or data analysis in a remote linux server to . To show images like plt.plot() &amp;amp; plt.show() in local machine we need X11 forwarding which directly renderes images in local machine. Ok, first step we should connect to a remote linux server from our local machine. Supposing using SSH connection in MobaXterm, we need a private key in local machine and a public key in remote server. Then ssh user@ip -X. The -X here enables X11 forwarding. W.o. -X, any plot command like plt.plot() &amp;amp; plt.show() wouldn’t be shown in local machine. Next, what we need to care about is the $DISPLAY variable in remote server. Using echo $DISPLAY in local terminal to check the value. If the -X args is enabled, the it will output something like localhost:10.0, wehre localhost refers to hostname of your computer (I’m not sure whether it refers to remote server or local machine). 10 display name, 0 screen name. Generally speaking, a display is composed of a screen, a keyboard and a mouse. Now use xclock in your terminal to test GUI. configure on vscode Install remoet X11 and remote X11 (ssh) Use echo $DISPLAY in vscode terminal to check display value If display value is none, add export DISPLAY=localhost:10.0 to ~/.bashrc and source ~/.bashrc. Open vscode configuration ctrl+shit+p and find out remote X11 settings, set up the display 10, screen 0. Using xclock to test Notice The default X11 forwarding can’t render images or videos generated by python gym library. Because, the X11 forwarding only supports OPENGL1.5 and gym requires higher version. To render gym images, it involves a technique named “VirtualGL”. It is complicated, I need some time to figure it out. Maybe next time.</summary></entry></feed>

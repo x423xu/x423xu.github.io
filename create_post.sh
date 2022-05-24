@@ -16,7 +16,7 @@ touch ${file_name}
 # write front page
 > ${file_name}
 echo "---" >> ${file_name}
-echo "layout: post_layout" >> ${file_name}
+echo "layout: post" >> ${file_name}
 echo "title: ${title}" >> ${file_name}
 echo "time: ${time_date}" >> ${file_name}
 echo "---" >> ${file_name}
