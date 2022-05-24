@@ -1,5 +1,5 @@
 ---
-layout: post_layout
+layout: post
 title:  "Paper summary" 
 time:   2022-04-06 11:58:35 -0400
 ---
