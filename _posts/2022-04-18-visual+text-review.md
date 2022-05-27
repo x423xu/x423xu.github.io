@@ -1,5 +1,5 @@
 ---
-layout: post_layout
+layout: post
 title: visual text review
 time: 2022-04-18 10:52:07
 ---
