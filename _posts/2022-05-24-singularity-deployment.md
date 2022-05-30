@@ -83,6 +83,3 @@ An example shell file:
 
     singularity exec --nv -B /scratch/xiaoyu -B /project/def-zhouwang/xiaoyu /project/def-zhouwang/xiaoyu/xiaoyu.sif /scratch/xiaoyu/venv/bin/python train_mde.py ${arg_arr[$SLURM_ARRAY_TASK_ID]}
     ```
-# Create a neurodocker image using singularity (To install anaconda)
-1. Download neurodocker image from dockerhub using command: `singularity run docker://repronim/neurodocker:0.7.0`. The docker image would be cached in `$HOME/.singularity/cache/oci-tmp/*hashcode*/xxx.sif`
-2. Run a shell environment: `singularity shell docker://repronim/neurodocker:0.7.0`
