@@ -10,3 +10,10 @@ time: 2022-05-30 13:57:35
 4. close the window `ctrl+shift+w`
 5. move among tabs `ctrl+tab`
 6. search in tab `ctrl+k/ctrl+e/ctrl+l/alt+d`
+
+# shell shortcuts
+1. to the left side: `ctrl+a`
+2. to the right side `ctrl+e`
+3. delete all before `ctrl+u`
+4. delete all behind `ctrl+k`
+5. switch between tab `ctrl+page up/page down`
