@@ -26,8 +26,8 @@ twitter_username:
 github_username:  x423xu
 
 # Build settings
-remote_theme: "mmistakes/so-simple-theme@3.2.0"
-#theme: jekyll-theme-so-simple
+# remote_theme: "mmistakes/so-simple-theme@3.2.0"
+theme: jekyll-theme-so-simple
 plugins:
   - jekyll-feed
 markdown: kramdown

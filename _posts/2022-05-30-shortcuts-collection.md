@@ -1,6 +1,6 @@
 ---
 layout: post
-title: shorts-collection
+title: shortcuts-collection
 time: 2022-05-30 13:57:35
 ---
 # Chrome shortcuts
