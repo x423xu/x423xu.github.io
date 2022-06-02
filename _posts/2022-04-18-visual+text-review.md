@@ -67,7 +67,7 @@ time: 2022-04-18 10:52:07
 - Representation
 
 ### CV and NLP integration tasks
-<img src="assets/images/vl_framework.png" width=600>
+<img src="/assets/images/vl_framework.png" width=600>
 
 #### Extension of NLP tasks
 - Visual Description Generation: The goal is to generate a human-readable text snippt that describes the input

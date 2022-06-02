@@ -15,5 +15,15 @@ time: 2022-06-01 14:41:09
 1. Concepts of objects and attributes are shared across tasks.
 2. Word-region verification sub-task by inner product.
 
-?
+<!-- <script src="https://kit.fontawesome.com/c7a4fc0b4e.js" crossorigin="anonymous"></script>
+<i class="fa-solid fa-user"></i> -->
+? Shared visual-language representations leads to a greater inductive transfer
 
+### Using images to improve word representations
+Limitations of learning only from text:
+1. Text consists of intepretations of concepts, rather than description of visual appearance.
+2. Single co-occurrence type, actually more than one way.
+
+## Challenge 2: Mapping tectual references to image-regions without strong supervision.
+
+## Challeng 3: MOdelling interactions between objects

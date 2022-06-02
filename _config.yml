@@ -17,20 +17,82 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+theme: jekyll-theme-so-simple
+skin: "/assets/css/skins/default.css"
+locale: en-US
 title: Xiaoyu's page
 email: x423xu@uwaterloo.ca
 description: To record my learning path.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://xiaoyu-learning-path.com" # the base hostname & protocol for your site, e.g. http://example.com
+date_format: "%B %-d, %Y"
+read_time: True
+words_per_minute: 200
+mathjax:
+  enable: true # MathJax equations, e.g. true, false (default)
+  combo:  "tex-svg" # "tex-svg" (default), "tex-mml-chtml", etc.: docs.mathjax.org/en/latest/web/components/combined.html
+  tags:  "ams" # "none", "ams" (default), "all"
+google_fonts:
+  - name: "Source Sans Pro"
+    weights: "400,400i,700,700i"
+  - name: "Lora"
+    weights: "400,400i,700,700i"
+google_analytics: UA-NNNNNNNN-N
+disqus:
+  shortname: # Disqus shortname, e.g. "my_disqus_shortname"
+
 twitter_username: 
 github_username:  x423xu
 
+# Liquid
+liquid:
+  error_mode: strict
+
+permalink: /:categories/:title/
 # Build settings
-remote_theme: "mmistakes/so-simple-theme@3.2.0"
-# theme: jekyll-theme-so-simple
+# remote_theme: "mmistakes/so-simple-theme@3.2.0"
+
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
 markdown: kramdown
+
+feed:
+  path: atom.xml
+
+search_full_content: false
+
+defaults:
+  # Posts defaults
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: post
+      share: true
+
+author:
+  name:
+  picture:
+  email:
+  twitter:
+  links:
+    - title:
+      url:
+      icon:
+
+footer_links:
+  - title: Feed
+    url: atom.xml
+    icon: fas fa-rss-square
+ 
+paginate: 10  # amount of posts to show per page
+paginate_path: /page:num/
+category_archive_path: "/categories/#"
+tag_archive_path: "/tags/#"
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to
