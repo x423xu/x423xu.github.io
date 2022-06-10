@@ -28,10 +28,7 @@ url: "https://xiaoyu-learning-path.com" # the base hostname & protocol for your 
 date_format: "%B %-d, %Y"
 read_time: True
 words_per_minute: 200
-mathjax:
-  enable: true # MathJax equations, e.g. true, false (default)
-  combo:  "tex-svg" # "tex-svg" (default), "tex-mml-chtml", etc.: docs.mathjax.org/en/latest/web/components/combined.html
-  tags:  "ams" # "none", "ams" (default), "all"
+
 google_fonts:
   - name: "Source Sans Pro"
     weights: "400,400i,700,700i"
@@ -58,6 +55,10 @@ plugins:
   - jekyll-sitemap
   - jekyll-paginate
 markdown: kramdown
+mathjax:
+  enable: true
+  combo:  "tex-svg"
+  tgs:  "ams"
 
 feed:
   path: atom.xml

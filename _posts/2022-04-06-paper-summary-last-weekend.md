@@ -62,3 +62,30 @@ $$\ell_{bbox} = \mathbb{E}_{(V^j,T^j)\sim I;I\sim D}\left[\ell_{iou}(b_j,\hat{b}
   $$\ell_{match} = \mathbb{E}_{V,T\sim D}H(y^{match},p^{match}(V,T))$$
 - Masked Language Modeling: predict the masked words in the text based on the visual concept
   $$\ell_{mlm} = \mathbb{E}_{t_j\sim \hat{T};(V,\hat{T}\sim D)}H(y^j, p^j(V,\hat{T}))$$
+
+---
+
+# Visual Turing test for computer vision system
+## Abstract
+- An operator-assisted device that produces a stochastic sequence of binary questions from a given test image. The query engine proposes a question, the operator either provides correct answer or rejects the question as ambiguous. 
+- The system is designed to produce streams of questions that follw natural storylines, from the instantiation of a unique object, through an exploration of its properties, and on to its relationships with other uniquely instantiated objects.
+
+## Introduction
+- Alan Turing proposed that the ultimate test of a machine could think ot think at least as well as a person was for a human judge to be unable to tell which was which based on natural language conversations in an appropriately cloaked scenario. Or how well a computer can imitate a human.
+- Semantic image interpretation-image to words
+
+**Research shows that human brain can only think about one idea at a time**
+
+---
+
+# Visual grounding overview
+## TransVG: End-to-End Visual Grounding with Transformers
+<img src="/assets/images/TransVG.png" width=600>
+
+### Introduction
+- Two-stage methods measure the similarity between region and expression embedding with an MLP.
+- One-stage methods encode the language vector to visual feature by direct concatenation.
+- Challenges: 
+  1. lead to sub-optimal results on long and complex language expressions. 
+  2. Built on pre-defined structures of language queries or image scenes. 
+  3. Ground object in an indirect way: candidates are sparse region proposals, or dense anchors. So the performance would be influenced by the proposals.

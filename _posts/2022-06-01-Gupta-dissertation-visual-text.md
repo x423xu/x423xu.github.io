@@ -26,4 +26,18 @@ Limitations of learning only from text:
 
 ## Challenge 2: Mapping tectual references to image-regions without strong supervision.
 
-## Challeng 3: MOdelling interactions between objects
+## Challeng 3: MOdelling interactions between object
+
+----
+# Background
+
+## Visual representations
+
+1. Mean pooling or learned transformations for CNN features
+2. Region-level representations: unsupervised [13], [14].
+
+## Language representations
+
+1. Word-level representations: co-occurrence
+2. Sentence-level representations
+3. Contextualized word representations
