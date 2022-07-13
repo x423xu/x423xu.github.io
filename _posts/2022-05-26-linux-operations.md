@@ -23,7 +23,10 @@ time: 2022-05-26 17:31:22
     统计当前目录下文件的个数（不包括目录）： ls -l | grep "^-" | wc -l
     统计当前目录下文件的个数（包括子目录）： ls -lR| grep "^-" | wc -l
     查看某目录下文件夹(目录)的个数（包括子目录）： ls -lR | grep "^d" | wc -l
+    
     set git using *ssh* rather than *https*: git remote set-url origin git@github.com:x423xu/x423xu.github.io
+    复制ssh key: ssh-copy-id -i id_rsa.pub zduanmu@129.97.68.248
+    按规则同步: rsync -av --include="*.jpg" --exclude=* ./ xiaoyu@graham.computecanada.ca:/scratch/xiaoyu/depth-estimation/source/RaMDE/test_imgs/ --progress
 
     open html in remote server:
     1. remote server: python -m http.server 8000
