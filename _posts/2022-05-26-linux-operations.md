@@ -88,6 +88,48 @@ time: 2022-05-26 17:31:22
     python ~/Documents/compression/models/bls2017.py --model_path ~/scratch/compression_models/bls2017_49 -V \
     rdcurve --npy_path ~/scratch/bls2017_stats/rdstats_49.npy --split train
 
+    github cheatsheet:
+    1.token: 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
+
+    git push:
+        git init
+        git add README.md
+        git commit -m "first commit"
+        git branch -M main
+        git remote add origin https://github.com/x423xu/x423xu.github.io.git
+        git push -u origin main
+
+    make a new jekyll static site:
+        step 1: jekyll new xxx #make a new directory
+        step 2: cd xxx
+        step 3: bundle exec jekyll serve #make it available on a local server
+        step 4: push to github
+        
+    git set remote url:
+        git remote set-url origin xxx
+        
+    !ERROR: Updates were rejected because the remote contains work that you do not have locally. This is usually caused by another repository pushing to the same ref. You may want to first integrate the remote changes (e.g., 'git pull ...') before pushing again.
+        git push -f origin main
+        #comment: this error is caused by the difference of local branch and remote branch. with '-f' arg, the local branch will be forced to update to the remote.
+
+    configure github login with access token:
+        gh auth login
+        
+    delete remote branch or local branch:
+        git push origin --delete main #delete
+        git branch -D main	       #local
+
+    create local branch:
+        git branch main
+        
+    switch to a different branch:
+        git checkout xxx
+        
+    add all files to branch:
+        git add -f .
+
+    uncommit 1 committing: git reset HEAD~1
+    
     tmux常用命令:
     1.创建session: tmux new -s xxy
     2.列出现有session: tmux ls
