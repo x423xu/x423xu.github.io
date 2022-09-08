@@ -31,6 +31,7 @@ Questions:
 - disentangled multi-scale aggregation to clearly distinguish between relevant pedestrians
 - multi-relational GCN to extract sophisticated social interaction in a scene.
 - a global temporal aggregation to compensate accumulated errors from over-avoidance.
+
 # Gaze target estimation
 
 # Dual Attention Guided Gaze Target Detection in the Wild
@@ -50,3 +51,16 @@ Questions:
 - 3D geometry could br reconstructed by absolute depth and camera parameters
 
 FOV-based initial heatmap.
+
+# Multimodal Across Domains Gaze Target Detection
+- gaze target detection also referred as gaze-following
+- false detections occur when there are multiple object-of-interests at different depths but along with the subject's gaze direction
+- 'dual' potentially being error-prone in real-life processing, e.g., when the eyes are not visible or not detectable
+- 'ESCNET' auxiliary estimating depth, depend on depth and pseudo labels.
+- not require gaze angles as supervision
+- only spatial processing, but still detect gaze target
+- use depth image
+
+**how different modalities should be jointly learned for performing effective gaze target detection**
+
+- solve domain shift problem
