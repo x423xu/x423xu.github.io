@@ -2,3 +2,5 @@ baseURL: http://example.org/
 languageCode: en-us
 title: Xiaoyu's blog
 theme: "PaperMod"
+Params:
+  math: true
