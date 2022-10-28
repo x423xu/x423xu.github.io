@@ -1,4 +1,5 @@
 baseURL: "https://x423xu.github.io/"
+publishDir: "docs"
 languageCode: en-us
 title: Xiaoyu's blog
 theme: "PaperMod"
