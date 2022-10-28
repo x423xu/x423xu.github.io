@@ -18,9 +18,9 @@ Params:
   ShareButtons: ["twitter"]
 
   # for home page
-  homeInfoParams:
-      Title: Hi! Welcome to xiaoyu's blog
-      Content: This webpageis to record learned contents, including research, tools, mathematics, algorithms, paper readings and all other stuffs.
+  # homeInfoParams:
+  #     Title: Hi! Welcome to xiaoyu's blog
+  #     Content: This webpageis to record learned contents, including research, tools, mathematics, algorithms, paper readings and all other stuffs.
 
   socialIcons: # optional
     - name: "github"
@@ -65,22 +65,26 @@ outputs:
 # add menu
 menu:
   main:
+    - identifier: home
+      name: home
+      url: "/"
+      weight: 9
     - identifier: categories
       name: categories
       url: /categories/
-      weight: 10
+      weight: 11
     - identifier: tags
       name: tags
       url: /tags/
-      weight: 20
+      weight: 12
     - identifier: archives
       name: archives
       url: archives/
-      weight: 21
+      weight: 10
     - identifier: search
       name: search
       url: search/
-      weight: 22
+      weight: 13
 
 # markdown highlight
 markup:
