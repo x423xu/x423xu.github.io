@@ -1,7 +1,7 @@
 ---
 layout: post
 title: shortcuts-collection
-time: 2022-05-30 13:57:35
+date: 2022-05-30 13:57:35
 ---
 # Chrome shortcuts
 1. open a new tab `ctrl+t`

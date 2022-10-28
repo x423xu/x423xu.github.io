@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Gupta-dissertation-visual-text
-time: 2022-06-01 14:41:09
+date: 2022-06-01 14:41:09
 ---
 **keywords: unsupervised, visual+text, representations**
 

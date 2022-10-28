@@ -1,7 +1,7 @@
 ---
 layout: post
 title: point-cloud-CVPR2022
-time: 2022-07-24 16:03:26
+date: 2022-07-24 16:03:26
 ---
 1. Voxel Set Transformer: A Set-to-Set Approach to 3D Object Detection From Point Clouds
 2. 3DJCG: A Unified Framework for Joint Dense Captioning and Visual Grounding on 3D Point Clouds

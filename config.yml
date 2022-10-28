@@ -3,4 +3,72 @@ languageCode: en-us
 title: Xiaoyu's blog
 theme: "PaperMod"
 Params:
+  # configurations
   math: true
+  defaultTheme: dark
+  ShowReadingTime: true
+  enableEmoji: true
+  ShowToc: true
+  TocOpen: true
+  ShowBreadCrumbs: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShareButtons: ["twitter"]
+
+  # for home page
+  homeInfoParams:
+      Title: Hi! Welcome to xiaoyu's blog
+      Content: This webpageis to record learned contents, including research, tools, mathematics, algorithms, paper readings and all other stuffs.
+
+  socialIcons: # optional
+    - name: "github"
+      url: "https://github.com/x423xu/x423xu.github.io.git"
+    - name: "twitter"
+      url: "https://twitter.com/xuxiaoyu2022"
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/xiaoyu-uwaterloo/"
+    - name: "facebook"
+      url: "https://www.facebook.com/xiaoyu.xu.777363"
+
+  # for profile mode
+  profileMode:
+        enabled: false
+        title: "Hi! Welcome to xiaoyu's blog" # optional default will be site title
+        subtitle: "This webpageis to record learned contents, including research, tools, mathematics, algorithms, paper readings and all other stuffs."
+        imageUrl: "/assets/avatar/xxy.png" # optional
+        imageTitle: "UoW-xxy" # optional
+        imageWidth: 120 # custom size
+        imageHeight: 120 # custom size
+        buttons:
+            - name: Archives
+              url: "/archives"
+  
+  # for search page
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+# for search page
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # is necessary
+
+# add menu
+menu:
+    main:
+        - identifier: categories
+          name: categories
+          url: /categories/
+          weight: 10
+        - identifier: tags
+          name: tags
+          url: /tags/
+          weight: 20

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: pedestrain-trajectory
-time: 2022-08-17 13:30:03
+date: 2022-08-17 13:30:03
 ---
 
 # Pedestrain trajectory

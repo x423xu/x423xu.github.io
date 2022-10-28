@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Logical Syntax
-time: 2022-04-09 17:14:27
+date: 2022-04-09 17:14:27
 ---
 
 [Content](#content)
