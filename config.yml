@@ -63,12 +63,21 @@ outputs:
 
 # add menu
 menu:
-    main:
-        - identifier: categories
-          name: categories
-          url: /categories/
-          weight: 10
-        - identifier: tags
-          name: tags
-          url: /tags/
-          weight: 20
+  main:
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 20
+
+markup:
+  highlight:
+    # anchorLineNos: true
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
+    # noClasses: false
+    style: monokai
