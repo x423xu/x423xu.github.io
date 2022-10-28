@@ -1,0 +1,4 @@
+- [ ] improve search to show searched text
+- [ ] add list at the left colum
+- [ ] add paypal and kofi icon
+- [ ] add emoji support
