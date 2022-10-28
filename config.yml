@@ -1,4 +1,4 @@
-baseURL: http://example.org/
+baseURL: "https://x423xu.github.io/posts/"
 languageCode: en-us
 title: Xiaoyu's blog
 theme: "PaperMod"
