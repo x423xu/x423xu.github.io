@@ -2,6 +2,7 @@
 layout: post
 title: Gupta-dissertation-visual-text
 date: 2022-06-01 14:41:09
+tags: ["paper-reading"]
 ---
 **keywords: unsupervised, visual+text, representations**
 

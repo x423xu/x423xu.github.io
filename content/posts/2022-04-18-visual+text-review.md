@@ -2,6 +2,7 @@
 layout: post
 title: visual text review
 date: 2022-04-18 10:52:07
+tags: ["paper-reading"]
 ---
 # Trends in Integration of Vision and Language Research: A Survey of Tasks, Datasets, and Methods
 ## Abstract

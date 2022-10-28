@@ -2,6 +2,7 @@
 layout: post
 title: pedestrain-trajectory
 date: 2022-08-17 13:30:03
+tags: ["paper-reading"]
 ---
 
 # Pedestrain trajectory

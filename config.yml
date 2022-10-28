@@ -73,6 +73,7 @@ menu:
       url: /tags/
       weight: 20
 
+# markdown highlight
 markup:
   highlight:
     # anchorLineNos: true

@@ -2,6 +2,7 @@
 layout: post
 title: Logical Syntax
 date: 2022-04-09 17:14:27
+tags: ["paper-reading"]
 ---
 
 [Content](#content)

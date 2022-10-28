@@ -2,6 +2,7 @@
 layout: post
 title: shortcuts-collection
 date: 2022-05-30 13:57:35
+tags: ["tools"]
 ---
 # Chrome shortcuts
 1. open a new tab `ctrl+t`

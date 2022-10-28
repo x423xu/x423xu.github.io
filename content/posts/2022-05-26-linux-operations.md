@@ -1,7 +1,7 @@
 ---
 layout: post
 title: linux-operations
-date: 2022-05-26 17:31:22
+tags: ["tools"]
 ---
 # Mout a disk
 1. using gparted to format the disk to `ext4` file system: `sudo apt-get install gparted` -> `sudo gparted` -> format the disk
