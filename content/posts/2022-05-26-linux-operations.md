@@ -9,8 +9,76 @@ tags: ["tools"]
 3. Permanently mounting: `cat /etc/fstab` to get UUID -> [here](https://devconnected.com/how-to-mount-and-unmount-drives-on-linux/)
 4. change the ownership of the folder ~/HDD: sudo chown xxy ~/
 
-# collections
+# vim cheatsheet
+
+# vscode cheetsheat
 ```
+    skip to the front of the line: `home`
+    skip to the end of the line: `end`
+    select to the end: `shift+end`
+    close editor:`ctrl+w`
+    open recent: `ctrl+R`
+```
+# singularity cheatsheet
+```
+    build sif file:
+    sudo singularity build xiaoyu.sif install.def
+
+    using singularity:
+    singularity shell --nv -B /scratch/xiaoyu -B /project/6002585/xiaoyu -B /project/6002585/xiaoyu/depth-estimation/source /project/6002585/xiaoyu/xiaoyu.sif
+    singularity shell --nv -B /scratch/xiaoyu -B /project/def-zhouwang/xiaoyu /project/def-zhouwang/xiaoyu/xiaoyu.sif
+    singularity shell --nv -B /scratch/xiaoyu -B /project/def-zhouwang/xiaoyu /scratch/xiaoyu/xiaoyu.sif
+
+    CC交互模式:  salloc --time=3:0:0 --nodes=1 --gres=gpu:4 --cpus-per-task=8 --mem-per-cpu=3000M --account=rrg-zhouwang
+
+    CC singularity使用: 1.打开交互模式；2. module load singularity; 3. singularity加载sif文件。或者: 1. module load singularity; 2. sbatch挂载任务
+
+    (apt install -y python3-opencv)
+    singularity sandbox build:
+    1. sudo singularity build --sandbox ./sif/ install.def
+    2.sudo singularity shell --writable sif/
+    3.sudo singularity build xiaoyu.sif ./sif/
+```
+# github cheetsheat
+```
+set git using *ssh* rather than *https*: git remote set-url origin git@github.com:x423xu/x423xu.github.io
+create branch: git checkout --orphan branch-name
+git push:
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git branch -M main
+    git remote add origin https://github.com/x423xu/x423xu.github.io.git
+    git push -u origin main
+git set remote url:
+    git remote set-url origin xxx
+
+!ERROR: Updates were rejected because the remote contains work that you do not have locally. This is usually caused by another repository pushing to the same ref. You may want to first integrate the remote changes (e.g., 'git pull ...') before pushing again.
+        git push -f origin main
+#comment: this error is caused by the difference of local branch and remote branch. with '-f' arg, the local branch will be forced to update to the remote.
+
+configure github login with access token:
+    gh auth login
+    
+delete remote branch or local branch:
+    git push origin --delete main #delete
+    git branch -D main	       #local
+
+create local branch:
+    git branch main
+    
+switch to a different branch:
+    git checkout xxx
+    
+add all files to branch:
+    git add -f .
+
+uncommit 1 committing: git reset HEAD~1
+```
+
+# linux cheatsheet
+```
+    remove all after: `ctrl+k`
     后台运行：nohup python f.py >log 2>&1 &
     解压： tar -xvf
     compress: tar -czvf x.tar.gz path
@@ -23,8 +91,6 @@ tags: ["tools"]
     统计当前目录下文件的个数（不包括目录）： ls -l | grep "^-" | wc -l
     统计当前目录下文件的个数（包括子目录）： ls -lR| grep "^-" | wc -l
     查看某目录下文件夹(目录)的个数（包括子目录）： ls -lR | grep "^d" | wc -l
-    
-    set git using *ssh* rather than *https*: git remote set-url origin git@github.com:x423xu/x423xu.github.io
     复制ssh key: ssh-copy-id -i id_rsa.pub zduanmu@129.97.68.248
     按规则同步: rsync -av --include="*.jpg" --exclude=* ./ xiaoyu@graham.computecanada.ca:/scratch/xiaoyu/depth-estimation/source/RaMDE/test_imgs/ --progress
 
@@ -36,104 +102,26 @@ tags: ["tools"]
     open a new tab in terminal: ctrl shift t
     set warning error: python -W error
 
-    github tricks:
-    create branch: git checkout --orphan branch-name
-
-    vim tricks:
-
-
-    vnc tricks:
-    server:
-        ssh graham
-        vncserver -MaxConnectionTime 3600 -AlwaysShared	
-        grep port /home/xiaoyu/.vnc/gra-login1:3.log
-        
-        vncserver -list
-        vncserver -kill :44
-    local:
-        ssh graham -L 5901:gra-login1:5903
-        vncviewer localhost:5901
-
-
-    singularity 命令:
-    1. build sif file:
-    sudo singularity build xiaoyu.sif install.def
-    2. using singularity:
-    singularity shell --nv -B /scratch/xiaoyu -B /project/6002585/xiaoyu -B /project/6002585/xiaoyu/depth-estimation/source /project/6002585/xiaoyu/xiaoyu.sif
-    singularity shell --nv -B /scratch/xiaoyu -B /project/def-zhouwang/xiaoyu /project/def-zhouwang/xiaoyu/xiaoyu.sif
-    singularity shell --nv -B /scratch/xiaoyu -B /project/def-zhouwang/xiaoyu /scratch/xiaoyu/xiaoyu.sif
-    3. CC交互模式:  salloc --time=3:0:0 --nodes=1 --gres=gpu:4 --cpus-per-task=8 --mem-per-cpu=3000M --account=rrg-zhouwang
-    4. CC singularity使用: 1.打开交互模式；2. module load singularity; 3. singularity加载sif文件。或者: 1. module load singularity; 2. sbatch挂载任务
-
-    (apt install -y python3-opencv)
-    singularity sandbox build:
-    1. sudo singularity build --sandbox ./sif/ install.def
-    2.sudo singularity shell --writable sif/
-    3.sudo singularity build xiaoyu.sif ./sif/
-
-    CC setup.py:
-    1. python -m venv ./venv --system-site-packages
-    2. source /project/6002585/xiaoyu/venv/bin/activate
-    3. cd ~rcnn
-    4. python setup.py build develop
-
-    singularity脚本:
-    #!/bin/bash
-    #SBATCH --account=rrg-zhouwang
-    #SBATCH --time=00:40:00
-    #SBATCH --job-name=bls2017_49
-    #SBATCH --gres=gpu:1
-    #SBATCH --cpus-per-task=8
-    #SBATCH --mem-per-cpu=3000M
-    #SBATCH --output=/home/z777li/scratch/output/%x-%j.out
-    module load singularity
-    singularity exec --nv -B /home -B /scratch ~/Documents/tfcompression.sif \
-    python ~/Documents/compression/models/bls2017.py --model_path ~/scratch/compression_models/bls2017_49 -V \
-    rdcurve --npy_path ~/scratch/bls2017_stats/rdstats_49.npy --split train
-
-    github cheatsheet:
-    1.token: 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
-
-    git push:
-        git init
-        git add README.md
-        git commit -m "first commit"
-        git branch -M main
-        git remote add origin https://github.com/x423xu/x423xu.github.io.git
-        git push -u origin main
-
-    make a new jekyll static site:
-        step 1: jekyll new xxx #make a new directory
-        step 2: cd xxx
-        step 3: bundle exec jekyll serve #make it available on a local server
-        step 4: push to github
-        
-    git set remote url:
-        git remote set-url origin xxx
-        
-    !ERROR: Updates were rejected because the remote contains work that you do not have locally. This is usually caused by another repository pushing to the same ref. You may want to first integrate the remote changes (e.g., 'git pull ...') before pushing again.
-        git push -f origin main
-        #comment: this error is caused by the difference of local branch and remote branch. with '-f' arg, the local branch will be forced to update to the remote.
-
-    configure github login with access token:
-        gh auth login
-        
-    delete remote branch or local branch:
-        git push origin --delete main #delete
-        git branch -D main	       #local
-
-    create local branch:
-        git branch main
-        
-    switch to a different branch:
-        git checkout xxx
-        
-    add all files to branch:
-        git add -f .
-
-    uncommit 1 committing: git reset HEAD~1
-    
-    tmux常用命令:
+    to the left side: `ctrl+a`
+    to the right side `ctrl+e`
+    delete all before `ctrl+u`
+    delete all behind `ctrl+k`
+    switch between tab `ctrl+page up/page down`
+```
+# chrome cheatsheet
+```
+open a new tab `ctrl+t`
+open a new window `ctrl+n`
+close the tab `ctrl+w`
+close the window `ctrl+shift+w`
+move among tabs `ctrl+tab`
+search in tab `ctrl+k/ctrl+e/ctrl+l/alt+d`
+```
+# tmux cheatsheet
+```
+    make a vertical split: ctrl+b+%
+    make a horizontal split: ctrl+b+"
+    move to the left pane: ctrl+b+left arrow
     1.创建session: tmux new -s xxy
     2.列出现有session: tmux ls
     3.删除session: tmux kill-session -t xxy
@@ -164,7 +152,47 @@ tags: ["tools"]
     //显示pane编号：Ctrl+b q
     //按顺序移动pane位置：Ctrl+b Ctrl+o
 
-    python train_mde.py --bs 4 --workers 2 --data_path ../../data/kitti_data --filenames_file ./train_test_inputs/kitti_eigen_train_files_with_gt.txt --data_path_eval ../../data/kitti_data --filenames_file_eval ./train_test_inputs/kitti_eigen_test_files_with_gt.txt --gt_path ../../data/kitti_depth/ --gt_path_eval ../../data/kitti_depth/ --dataset kitti --do_kb_crop --max_depth 80 --max_eval_num 50 --algo tri_graph
+```
 
-    python train_mde.py --bs 16 --workers 4 --data_path ../../data/NYUv2Whole/nyudepthv2/train --data_path_eval ../../data/NYUv2Whole/nyudepthv2/val --dataset nyu --max_depth 10 --max_eval_num 50 --algo tri_graph --validate_every 1 --print_every 1
+# vnc cheatsheet
+```
+server:
+    ssh graham
+    vncserver -MaxConnectionTime 3600 -AlwaysShared	
+    grep port /home/xiaoyu/.vnc/gra-login1:3.log
+    
+    vncserver -list
+    vncserver -kill :44
+local:
+    ssh graham -L 5901:gra-login1:5903
+    vncviewer localhost:5901
+```
+
+# other collections
+```
+    CC setup.py:
+    1. python -m venv ./venv --system-site-packages
+    2. source /project/6002585/xiaoyu/venv/bin/activate
+    3. cd ~rcnn
+    4. python setup.py build develop
+
+    singularity脚本:
+    #!/bin/bash
+    #SBATCH --account=rrg-zhouwang
+    #SBATCH --time=00:40:00
+    #SBATCH --job-name=bls2017_49
+    #SBATCH --gres=gpu:1
+    #SBATCH --cpus-per-task=8
+    #SBATCH --mem-per-cpu=3000M
+    #SBATCH --output=/home/z777li/scratch/output/%x-%j.out
+    module load singularity
+    singularity exec --nv -B /home -B /scratch ~/Documents/tfcompression.sif \
+    python ~/Documents/compression/models/bls2017.py --model_path ~/scratch/compression_models/bls2017_49 -V \
+    rdcurve --npy_path ~/scratch/bls2017_stats/rdstats_49.npy --split train
+
+    make a new jekyll static site:
+        step 1: jekyll new xxx #make a new directory
+        step 2: cd xxx
+        step 3: bundle exec jekyll serve #make it available on a local server
+        step 4: push to github
 ```

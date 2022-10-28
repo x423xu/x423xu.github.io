@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Spectral Gnn | Xiaoyu&#39;s blog</title>
+<meta name="keywords" content="paper-reading">
+<meta name="description" content="Preface To understand the basics of the graph neural network, it can&rsquo;t circumvent the topic of &ldquo;Spectral-GNN&rdquo;. Today, I&rsquo;d like to deeply explore what the spectral GNN is and how does it works.
+Table of contents Theory part
+Basic theory 1 &lt;The Emerging Field of Signal Processing on Graphs&gt; challenges a &ldquo;classical&rdquo; signal $f(t)$ has a concept of &ldquo;translate to the right by 3&rdquo; to get $f(t-3)$. But for graph signal, it is not clear to say &ldquo;translate by 3&rdquo;.">
+<meta name="author" content="">
+<link rel="canonical" href="https://x423xu.github.io/posts/2022-10-27-spectral-gnn/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://x423xu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://x423xu.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://x423xu.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://x423xu.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://x423xu.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<meta property="og:title" content="Spectral Gnn" />
+<meta property="og:description" content="Preface To understand the basics of the graph neural network, it can&rsquo;t circumvent the topic of &ldquo;Spectral-GNN&rdquo;. Today, I&rsquo;d like to deeply explore what the spectral GNN is and how does it works.
+Table of contents Theory part
+Basic theory 1 &lt;The Emerging Field of Signal Processing on Graphs&gt; challenges a &ldquo;classical&rdquo; signal $f(t)$ has a concept of &ldquo;translate to the right by 3&rdquo; to get $f(t-3)$. But for graph signal, it is not clear to say &ldquo;translate by 3&rdquo;." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://x423xu.github.io/posts/2022-10-27-spectral-gnn/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-27T22:05:32-04:00" />
+<meta property="article:modified_time" content="2022-10-27T22:05:32-04:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Spectral Gnn"/>
+<meta name="twitter:description" content="Preface To understand the basics of the graph neural network, it can&rsquo;t circumvent the topic of &ldquo;Spectral-GNN&rdquo;. Today, I&rsquo;d like to deeply explore what the spectral GNN is and how does it works.
+Table of contents Theory part
+Basic theory 1 &lt;The Emerging Field of Signal Processing on Graphs&gt; challenges a &ldquo;classical&rdquo; signal $f(t)$ has a concept of &ldquo;translate to the right by 3&rdquo; to get $f(t-3)$. But for graph signal, it is not clear to say &ldquo;translate by 3&rdquo;."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://x423xu.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Spectral Gnn",
+      "item": "https://x423xu.github.io/posts/2022-10-27-spectral-gnn/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Spectral Gnn",
+  "name": "Spectral Gnn",
+  "description": "Preface To understand the basics of the graph neural network, it can\u0026rsquo;t circumvent the topic of \u0026ldquo;Spectral-GNN\u0026rdquo;. Today, I\u0026rsquo;d like to deeply explore what the spectral GNN is and how does it works.\nTable of contents Theory part\nBasic theory 1 \u0026lt;The Emerging Field of Signal Processing on Graphs\u0026gt; challenges a \u0026ldquo;classical\u0026rdquo; signal $f(t)$ has a concept of \u0026ldquo;translate to the right by 3\u0026rdquo; to get $f(t-3)$. But for graph signal, it is not clear to say \u0026ldquo;translate by 3\u0026rdquo;.",
+  "keywords": [
+    "paper-reading"
+  ],
+  "articleBody": "Preface To understand the basics of the graph neural network, it can’t circumvent the topic of “Spectral-GNN”. Today, I’d like to deeply explore what the spectral GNN is and how does it works.\nTable of contents Theory part\nBasic theory 1 challenges a “classical” signal $f(t)$ has a concept of “translate to the right by 3” to get $f(t-3)$. But for graph signal, it is not clear to say “translate by 3”. Because it doesn’t have a clear order, thus is not “shift-invariant”. Multiplying a signal with a complex exponential signal corresponds to translation in Fourier domain. But the signal on graph is irregulaly spaced, hard to define translation in spectral domain. Hard to down sample a signal on graph vertices. Need a method to create a coarser graph which somehow captures the structural properties from the original one. Need a method, localized operations, to compute information from a small neighboring vertices. Problem settings A weighted graph $G$ is always expressed as $G = {V, E, W}$, which contains vertices $V$ with $|V| = N$, a set of edges $E$ and adjacency matrix $W$. If the edge $e(i,j)$ which connect two vertices $i, j$ exists, the entry $w_{i,j}$ denotes the weight of the edge; otherwise $w_{i,j} = 0$. Sometimes the graph $G$ can be separated into several subgraphs, these subgraphs are insides connected while not connected mutually. So the graph would be represented as $M$ pieces connected components. A signal or function defined on the vertices are denoted as ${f:V\\rightarrow \\real, f\\in \\real^N}$. In a graph neural network, the $f$ generally represented embedded features with $f\\in\\real^{S\\times N}$, where $S$ denotes the shape of features.\nThe Graph Laplacian Here the graph laplacian refers to the unormalized one. Generally in a graph, the laplacian is defined as $L = D-W$. $D$ is a degree matrix, which is diagonal with $i$-th diagonal entry $D_i = \\sum_j w_{i,j}$. Given the defined signal $f$ on the graph, the laplacian operation of the $f$ is formulated as: $$(Lf)(i) = \\sum_{i\\in N_i}w_{i,j}[f(i)-f(j)]$$ The laplacian operator in actually a difference operator, which describe the average difference level between the vertice $i$ and its neighboring vertices $N_i$.\nThere are some definitions and properties for laplacian matrix to be explained in advance for better comprehension\nThe laplacian matrix is a real symmetric matrix, it has a complete set of orthonormal eigenvectors, denoted as ${u_l}$, and corresponding real nonpositive eigenvalues ${\\lambda_l}_{l= 0,1,\\cdots,N-1}$ The number of zero eigenvalues indicates the number of connected componnets, namely subgraphs. The eigenvalues of laplacian matrix is sorted as $0=\\lambda_0\u003c\\lambda_1\\leq\\lambda_2\\cdots\\leq\\lambda_{N-1}=\\lambda_{max}$. The spectrum of the laplacian matrix is defined as ${\\lambda_0, \\lambda_1,\\cdots,\\lambda_{N-1}}$ A graph transform Recall the classical Fourier transform on one-dimensional continuous signal $$\\hat{f}(\\xi) = =\\int_{\\real}f(t)e^{-2\\pi j\\xi t}dt$$ The Fourier transform can be understood as the expansion of the signal $f(t)$ with the complex exponentials $e^{2\\pi j\\xi t}$. What is interesting is the complex exponential $e^{2\\pi j \\xi t}$ is an eigenfunction of laplace operator $$-\\Delta(e^{2\\pi j \\xi t}) = -\\frac{\\partial^2}{\\partial t^2}e^{2\\pi j \\xi t} =K\\cdot e^{2\\pi j \\xi t}$$ One step further, the $e^{2\\pi j \\xi t}$ is the eigenfunction for any order derivation operators. The Fourier transform can be understood as to project a signal from temporal domain to spectral domain. According to the same way, the graph transform is defined as $$\\hat{f}(\\lambda_l) = =\\sum_i f(i)u^*_i$$ The connections between the graph transform and Fourier transform can be explained in this way: for Fourier transform, it has a space which is constructed on bases $e^{2\\pi j \\xi t}$. Each signal $f(t)$ can be represented by these bases, the coefficient of which is exactly the $\\hat{f}(\\xi)$. The bases can be seen as the eigenvectors for Fourier transform, and the eigenvalue is ${f}(\\xi)$ (this is just a kind of analogy, since the Fourier trasform is operated on continuous signal). For graph transform, each graph signal $f$ is transformed into the spectral domain, which has bases ${u_1, u_2,\\cdots u_i }$. So the eigenvectors $u_l$ corresponding to low frequency $\\lambda_l$ vary slowly across the graph and vice versa.\nSpectral graph convolution Given the node features $X$ and convolutional kernel $H$, the process of the spectral-based GNN is formulated in the following steps:\nEigen-decomposition of Laplacian matrix $L$: $L = U \\Lambda U^{\\top}$. Each column of the $U$ is the eigenvector of the $L$. $\\Lambda$ is a diagonal matrix composed of eigenvalues. Now the Laplacian matrix of a graph $G$ is decomposed into a set of orthogonal bases. The input node features $X$ can be projected to the space formed with the bases.\nProject the $G$ and $X$ to the spectral domain using $U$: $$ \\begin{split} \\hat{H} \u0026= U^{\\top}\\cdot H \\ \\hat{X} \u0026= U^{\\top}\\cdot X \\end{split} $$\nSpectral multiplication and reprojection: $$ \\begin{split} X^{\\prime} \u0026= U(\\hat{H}\\cdot \\hat{X}) \\ \u0026= U(U^{\\top}\\cdot H \\cdot U^{\\top}\\cdot X) \\end{split} $$\nThe $X^{\\prime}$ denotes the output feature of one GNN layer. To get deep GNN, multiple layers need to be stacked and rerun the above steps. For the final output node features, there are two kinds of tasks that can be applied. One is the node-level task, such as social media accounts classification, in which each social media account is represented as one node. The second is the graph-level task, such as text classification, in which each word in the text is seen as one node and the whole graph can be classified as spam or not.\nMethods Demos to evaluate the properties ",
+  "wordCount" : "909",
+  "inLanguage": "en",
+  "datePublished": "2022-10-27T22:05:32-04:00",
+  "dateModified": "2022-10-27T22:05:32-04:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x423xu.github.io/posts/2022-10-27-spectral-gnn/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xiaoyu's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x423xu.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://x423xu.github.io/" accesskey="h" title="Xiaoyu&#39;s blog (Alt + H)">Xiaoyu&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://x423xu.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://x423xu.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://x423xu.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Spectral Gnn
+    </h1>
+    <div class="post-meta"><span title='2022-10-27 22:05:32 -0400 EDT'>October 27, 2022</span>&nbsp;·&nbsp;5 min
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#preface" aria-label="Preface">Preface</a></li>
+                <li>
+                    <a href="#table-of-contents" aria-label="Table of contents">Table of contents</a></li>
+                <li>
+                    <a href="#basic-theory" aria-label="Basic theory">Basic theory</a><ul>
+                        
+                <li>
+                    <a href="#challenges" aria-label="challenges">challenges</a></li>
+                <li>
+                    <a href="#problem-settings" aria-label="Problem settings">Problem settings</a></li>
+                <li>
+                    <a href="#the-graph-laplacian" aria-label="The Graph Laplacian">The Graph Laplacian</a></li>
+                <li>
+                    <a href="#a-graph-transform" aria-label="A graph transform">A graph transform</a></li>
+                <li>
+                    <a href="#spectral-graph-convolution" aria-label="Spectral graph convolution">Spectral graph convolution</a></li></ul>
+                </li>
+                <li>
+                    <a href="#methods" aria-label="Methods">Methods</a></li>
+                <li>
+                    <a href="#demos-to-evaluate-the-properties" aria-label="Demos to evaluate the properties">Demos to evaluate the properties</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="preface">Preface<a hidden class="anchor" aria-hidden="true" href="#preface">#</a></h1>
+<p>To understand the basics of the graph neural network, it can&rsquo;t circumvent the topic of &ldquo;Spectral-GNN&rdquo;. Today, I&rsquo;d like to deeply explore what the spectral GNN is and how does it works.</p>
+<h1 id="table-of-contents">Table of contents<a hidden class="anchor" aria-hidden="true" href="#table-of-contents">#</a></h1>
+<p><a href="#basic-theory">Theory part</a></p>
+<h1 id="basic-theory">Basic theory<a hidden class="anchor" aria-hidden="true" href="#basic-theory">#</a></h1>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>&lt;The Emerging Field of Signal Processing on Graphs&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="challenges">challenges<a hidden class="anchor" aria-hidden="true" href="#challenges">#</a></h2>
+<ul>
+<li>a &ldquo;classical&rdquo; signal $f(t)$ has a concept of &ldquo;translate to the right by 3&rdquo; to get $f(t-3)$. But for graph signal, it is not clear to say &ldquo;translate by 3&rdquo;. Because it doesn&rsquo;t have a clear order, thus is not &ldquo;shift-invariant&rdquo;.</li>
+<li>Multiplying a signal with a complex exponential signal corresponds to translation in Fourier domain. But the signal on graph is irregulaly spaced, hard to define translation in spectral domain.</li>
+<li>Hard to down sample a signal on graph vertices.</li>
+<li>Need a method to create a coarser graph which somehow captures the structural properties from the original one.</li>
+<li>Need a method, localized operations, to compute information from a small neighboring vertices.</li>
+</ul>
+<h2 id="problem-settings">Problem settings<a hidden class="anchor" aria-hidden="true" href="#problem-settings">#</a></h2>
+<p>A weighted graph $G$ is always expressed as $G = {V, E, W}$, which contains vertices $V$ with $|V| = N$, a set of edges $E$ and adjacency matrix $W$. If the edge $e(i,j)$ which connect two vertices $i, j$ exists, the entry $w_{i,j}$ denotes the weight of the edge; otherwise $w_{i,j} = 0$. Sometimes the graph $G$ can be separated into several subgraphs, these subgraphs are insides connected while not connected mutually. So the graph would be represented as $M$ pieces connected components. A signal or function defined on the vertices are denoted as ${f:V\rightarrow \real, f\in \real^N}$. In a graph neural network, the $f$ generally represented embedded features with $f\in\real^{S\times N}$, where $S$ denotes the shape of features.</p>
+<h2 id="the-graph-laplacian">The Graph Laplacian<a hidden class="anchor" aria-hidden="true" href="#the-graph-laplacian">#</a></h2>
+<p>Here the graph laplacian refers to the unormalized one. Generally in a graph, the laplacian is defined as $L = D-W$. $D$ is a degree matrix, which is diagonal with $i$-th diagonal entry $D_i = \sum_j w_{i,j}$. Given the defined signal $f$ on the graph, the laplacian operation of the $f$ is formulated as:
+$$(Lf)(i) = \sum_{i\in N_i}w_{i,j}[f(i)-f(j)]$$
+The laplacian operator in actually a difference operator, which describe the average difference level between the vertice $i$ and its neighboring vertices $N_i$.</p>
+<p>There are some definitions and properties for laplacian matrix to be explained in advance for better comprehension</p>
+<ol>
+<li>The laplacian matrix is a real symmetric matrix, it has a complete set of orthonormal eigenvectors, denoted as ${u_l}$, and corresponding real nonpositive eigenvalues ${\lambda_l}_{l= 0,1,\cdots,N-1}$</li>
+<li>The number of zero eigenvalues indicates the number of connected componnets, namely subgraphs.</li>
+<li>The eigenvalues of laplacian matrix is sorted as $0=\lambda_0&lt;\lambda_1\leq\lambda_2\cdots\leq\lambda_{N-1}=\lambda_{max}$. The spectrum of the laplacian matrix is defined as ${\lambda_0, \lambda_1,\cdots,\lambda_{N-1}}$</li>
+</ol>
+<h2 id="a-graph-transform">A graph transform<a hidden class="anchor" aria-hidden="true" href="#a-graph-transform">#</a></h2>
+<p>Recall the classical Fourier transform on one-dimensional continuous signal
+$$\hat{f}(\xi) = &lt;f, e^{2\pi j\xi t}&gt;=\int_{\real}f(t)e^{-2\pi j\xi t}dt$$
+The Fourier transform can be understood as the expansion of the signal $f(t)$ with the complex exponentials $e^{2\pi j\xi t}$. What is interesting is the complex exponential $e^{2\pi j \xi t}$ is an eigenfunction of laplace operator
+$$-\Delta(e^{2\pi j \xi t}) = -\frac{\partial^2}{\partial t^2}e^{2\pi j \xi t} =K\cdot e^{2\pi j \xi t}$$
+One step further, the $e^{2\pi j \xi t}$ is the eigenfunction for any order derivation operators. The Fourier transform can be understood as to project a signal from temporal domain to spectral domain. According to the same way, the graph transform is defined as
+$$\hat{f}(\lambda_l) = &lt;f, u_l&gt;=\sum_i f(i)u^*_i$$
+The connections between the graph transform and Fourier transform can be explained in this way: for Fourier transform, it has a space which is constructed on bases $e^{2\pi j \xi t}$. Each signal $f(t)$ can be represented by these bases, the coefficient of which is exactly the $\hat{f}(\xi)$. The bases can be seen as the eigenvectors for Fourier transform, and the eigenvalue is ${f}(\xi)$ (this is just a kind of analogy, since the Fourier trasform is operated on continuous signal). For graph transform, each graph signal $f$ is transformed into the spectral domain, which has bases ${u_1, u_2,\cdots u_i }$. So the eigenvectors $u_l$ corresponding to low frequency $\lambda_l$ vary slowly across the graph and vice versa.</p>
+<h2 id="spectral-graph-convolution">Spectral graph convolution<a hidden class="anchor" aria-hidden="true" href="#spectral-graph-convolution">#</a></h2>
+<p>Given the node features $X$ and convolutional kernel $H$, the process of the spectral-based GNN is formulated in the following steps:</p>
+<ol>
+<li>
+<p>Eigen-decomposition of Laplacian matrix $L$: $L = U \Lambda U^{\top}$. Each column of the $U$ is the eigenvector of the $L$. $\Lambda$ is a diagonal matrix composed of eigenvalues. Now the Laplacian matrix of a graph $G$ is decomposed into a set of orthogonal bases. The input node features $X$ can be projected to the space formed with the bases.</p>
+</li>
+<li>
+<p>Project the $G$ and $X$ to the spectral domain using $U$:
+$$
+\begin{split}
+\hat{H} &amp;= U^{\top}\cdot H \
+\hat{X} &amp;= U^{\top}\cdot X
+\end{split}
+$$</p>
+</li>
+<li>
+<p>Spectral multiplication and reprojection:
+$$
+\begin{split}
+X^{\prime} &amp;= U(\hat{H}\cdot \hat{X}) \
+&amp;= U(U^{\top}\cdot H \cdot U^{\top}\cdot X)
+\end{split}
+$$</p>
+</li>
+</ol>
+<p>The $X^{\prime}$ denotes the output feature of one GNN layer. To get deep GNN, multiple layers need to be stacked and rerun the above steps.
+For the final output node features, there are two kinds of tasks that can be applied. One is the node-level task, such as social media accounts classification, in which each social media account is represented as one node. The second is the graph-level task, such as text classification, in which each word in the text is seen as one node and the whole graph can be classified as spam or not.</p>
+<h1 id="methods">Methods<a hidden class="anchor" aria-hidden="true" href="#methods">#</a></h1>
+<h1 id="demos-to-evaluate-the-properties">Demos to evaluate the properties<a hidden class="anchor" aria-hidden="true" href="#demos-to-evaluate-the-properties">#</a></h1>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://x423xu.github.io/tags/paper-reading/">paper-reading</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://x423xu.github.io/posts/2022-08-17-pedestrain-trajectory/">
+    <span class="title">Next »</span>
+    <br>
+    <span>pedestrain-trajectory</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Spectral Gnn on twitter"
+        href="https://twitter.com/intent/tweet/?text=Spectral%20Gnn&amp;url=https%3a%2f%2fx423xu.github.io%2fposts%2f2022-10-27-spectral-gnn%2f&amp;hashtags=paper-reading">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://x423xu.github.io/">Xiaoyu&#39;s blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
