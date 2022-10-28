@@ -72,6 +72,14 @@ menu:
       name: tags
       url: /tags/
       weight: 20
+    - identifier: archives
+      name: archives
+      url: archives/
+      weight: 21
+    - identifier: search
+      name: search
+      url: search/
+      weight: 22
 
 # markdown highlight
 markup:
