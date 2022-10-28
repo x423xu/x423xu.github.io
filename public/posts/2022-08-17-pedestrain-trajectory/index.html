@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>pedestrain-trajectory | Xiaoyu&#39;s blog</title>
+<meta name="keywords" content="paper-reading">
+<meta name="description" content="Pedestrain trajectory Questions: 1. only pedestrain relation considered? hoe about environment 2. what is the general framework for pedestrain trajectory prediction.
+SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021) SGCN framework superfulous interactions: dense interaction -&gt; one pedestrain is related to all other pedestrains while in fact it is not sparse undirected -&gt; equal interactions for a pair of pedestrains spatial GCN -&gt; sparse directed -&gt; not all pedestrains &#43; not equal interaction temporal GCN -&gt; motion tendency Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021) Use CNN to generalize complex interpersonal relations a graph representation: node as pedestrian, edges correspond to distance challeges only simple social relationship like collision avoidance is aggregated modelling social norms is not suitable for determining the end-points of pedestrians in the last frame (over-avoidance) contributions disentangled multi-scale aggregation to clearly distinguish between relevant pedestrians multi-relational GCN to extract sophisticated social interaction in a scene.">
+<meta name="author" content="">
+<link rel="canonical" href="https://x423xu.github.io/posts/2022-08-17-pedestrain-trajectory/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://x423xu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://x423xu.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://x423xu.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://x423xu.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://x423xu.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<meta property="og:title" content="pedestrain-trajectory" />
+<meta property="og:description" content="Pedestrain trajectory Questions: 1. only pedestrain relation considered? hoe about environment 2. what is the general framework for pedestrain trajectory prediction.
+SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021) SGCN framework superfulous interactions: dense interaction -&gt; one pedestrain is related to all other pedestrains while in fact it is not sparse undirected -&gt; equal interactions for a pair of pedestrains spatial GCN -&gt; sparse directed -&gt; not all pedestrains &#43; not equal interaction temporal GCN -&gt; motion tendency Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021) Use CNN to generalize complex interpersonal relations a graph representation: node as pedestrian, edges correspond to distance challeges only simple social relationship like collision avoidance is aggregated modelling social norms is not suitable for determining the end-points of pedestrians in the last frame (over-avoidance) contributions disentangled multi-scale aggregation to clearly distinguish between relevant pedestrians multi-relational GCN to extract sophisticated social interaction in a scene." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://x423xu.github.io/posts/2022-08-17-pedestrain-trajectory/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-17T13:30:03+00:00" />
+<meta property="article:modified_time" content="2022-08-17T13:30:03+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="pedestrain-trajectory"/>
+<meta name="twitter:description" content="Pedestrain trajectory Questions: 1. only pedestrain relation considered? hoe about environment 2. what is the general framework for pedestrain trajectory prediction.
+SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021) SGCN framework superfulous interactions: dense interaction -&gt; one pedestrain is related to all other pedestrains while in fact it is not sparse undirected -&gt; equal interactions for a pair of pedestrains spatial GCN -&gt; sparse directed -&gt; not all pedestrains &#43; not equal interaction temporal GCN -&gt; motion tendency Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021) Use CNN to generalize complex interpersonal relations a graph representation: node as pedestrian, edges correspond to distance challeges only simple social relationship like collision avoidance is aggregated modelling social norms is not suitable for determining the end-points of pedestrians in the last frame (over-avoidance) contributions disentangled multi-scale aggregation to clearly distinguish between relevant pedestrians multi-relational GCN to extract sophisticated social interaction in a scene."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://x423xu.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "pedestrain-trajectory",
+      "item": "https://x423xu.github.io/posts/2022-08-17-pedestrain-trajectory/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "pedestrain-trajectory",
+  "name": "pedestrain-trajectory",
+  "description": "Pedestrain trajectory Questions: 1. only pedestrain relation considered? hoe about environment 2. what is the general framework for pedestrain trajectory prediction.\nSGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021) SGCN framework superfulous interactions: dense interaction -\u0026gt; one pedestrain is related to all other pedestrains while in fact it is not sparse undirected -\u0026gt; equal interactions for a pair of pedestrains spatial GCN -\u0026gt; sparse directed -\u0026gt; not all pedestrains + not equal interaction temporal GCN -\u0026gt; motion tendency Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021) Use CNN to generalize complex interpersonal relations a graph representation: node as pedestrian, edges correspond to distance challeges only simple social relationship like collision avoidance is aggregated modelling social norms is not suitable for determining the end-points of pedestrians in the last frame (over-avoidance) contributions disentangled multi-scale aggregation to clearly distinguish between relevant pedestrians multi-relational GCN to extract sophisticated social interaction in a scene.",
+  "keywords": [
+    "paper-reading"
+  ],
+  "articleBody": "Pedestrain trajectory Questions: 1. only pedestrain relation considered? hoe about environment 2. what is the general framework for pedestrain trajectory prediction.\nSGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021) SGCN framework superfulous interactions: dense interaction -\u003e one pedestrain is related to all other pedestrains while in fact it is not sparse undirected -\u003e equal interactions for a pair of pedestrains spatial GCN -\u003e sparse directed -\u003e not all pedestrains + not equal interaction temporal GCN -\u003e motion tendency Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021) Use CNN to generalize complex interpersonal relations a graph representation: node as pedestrian, edges correspond to distance challeges only simple social relationship like collision avoidance is aggregated modelling social norms is not suitable for determining the end-points of pedestrians in the last frame (over-avoidance) contributions disentangled multi-scale aggregation to clearly distinguish between relevant pedestrians multi-relational GCN to extract sophisticated social interaction in a scene. a global temporal aggregation to compensate accumulated errors from over-avoidance. Gaze target estimation Dual Attention Guided Gaze Target Detection in the Wild challenges: prior works: gaze direction in 2D representations + barely depth-channel gaze. forward, backward, sideward. (refer to one person) salient objects from 2d cues. two candidates different depth along same gaze direction, hard to tell apart. (refer to one person with the scene understanding) fixation inconsistency: facing forward looking downward. solutions: estimate 3D gaze direction from head image. dual attention module -\u003e depth-aware perspective in the scene ?hasn’t found effective solution in the paper? -\u003e solved in the first stage? so is it still an independent challenge? or should be merged to the first challenge? ESCNet: Gaze Target Detection with the Understanding of 3D Scenes hard to handle: multiple salient objects lie in the same depth layer and field of view. occlusion plays an important role in gaze estimation , one cannot see through occluders. 3D geometry could br reconstructed by absolute depth and camera parameters FOV-based initial heatmap.\nMultimodal Across Domains Gaze Target Detection gaze target detection also referred as gaze-following false detections occur when there are multiple object-of-interests at different depths but along with the subject’s gaze direction ‘dual’ potentially being error-prone in real-life processing, e.g., when the eyes are not visible or not detectable ‘ESCNET’ auxiliary estimating depth, depend on depth and pseudo labels. not require gaze angles as supervision only spatial processing, but still detect gaze target use depth image how different modalities should be jointly learned for performing effective gaze target detection\nsolve domain shift problem ",
+  "wordCount" : "417",
+  "inLanguage": "en",
+  "datePublished": "2022-08-17T13:30:03Z",
+  "dateModified": "2022-08-17T13:30:03Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x423xu.github.io/posts/2022-08-17-pedestrain-trajectory/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xiaoyu's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x423xu.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://x423xu.github.io/" accesskey="h" title="Xiaoyu&#39;s blog (Alt + H)">Xiaoyu&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://x423xu.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://x423xu.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://x423xu.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      pedestrain-trajectory
+    </h1>
+    <div class="post-meta"><span title='2022-08-17 13:30:03 +0000 UTC'>August 17, 2022</span>&nbsp;·&nbsp;2 min
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#pedestrain-trajectory" aria-label="Pedestrain trajectory">Pedestrain trajectory</a></li>
+                <li>
+                    <a href="#sgcn-sparse-graph-convolution-network-for-pedestrain-trajectory-prediction-cvpr2021" aria-label="SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021)">SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021)</a><ul>
+                        
+                <li>
+                    <a href="#sgcn-framework" aria-label="SGCN framework">SGCN framework</a></li></ul>
+                </li>
+                <li>
+                    <a href="#disentangled-multi-relational-graph-convolutional-network-for-pedestrian-trajectory-prediction-aaai2021" aria-label="Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021)">Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021)</a><ul>
+                        
+                <li>
+                    <a href="#challeges" aria-label="challeges">challeges</a></li>
+                <li>
+                    <a href="#contributions" aria-label="contributions">contributions</a></li></ul>
+                </li>
+                <li>
+                    <a href="#gaze-target-estimation" aria-label="Gaze target estimation">Gaze target estimation</a></li>
+                <li>
+                    <a href="#dual-attention-guided-gaze-target-detection-in-the-wild" aria-label="Dual Attention Guided Gaze Target Detection in the Wild">Dual Attention Guided Gaze Target Detection in the Wild</a></li>
+                <li>
+                    <a href="#escnet-gaze-target-detection-with-the-understanding-of-3d-scenes" aria-label="ESCNet: Gaze Target Detection with the Understanding of 3D Scenes">ESCNet: Gaze Target Detection with the Understanding of 3D Scenes</a></li>
+                <li>
+                    <a href="#multimodal-across-domains-gaze-target-detection" aria-label="Multimodal Across Domains Gaze Target Detection">Multimodal Across Domains Gaze Target Detection</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><h1 id="pedestrain-trajectory">Pedestrain trajectory<a hidden class="anchor" aria-hidden="true" href="#pedestrain-trajectory">#</a></h1>
+<p>Questions:
+1. only pedestrain relation considered? hoe about environment
+2. what is the general framework for pedestrain trajectory prediction.</p>
+<h1 id="sgcn-sparse-graph-convolution-network-for-pedestrain-trajectory-prediction-cvpr2021">SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021)<a hidden class="anchor" aria-hidden="true" href="#sgcn-sparse-graph-convolution-network-for-pedestrain-trajectory-prediction-cvpr2021">#</a></h1>
+<h2 id="sgcn-framework">SGCN framework<a hidden class="anchor" aria-hidden="true" href="#sgcn-framework">#</a></h2>
+<p><img loading="lazy" src="/assets/images/SGCN-framework.png" alt="SGCN framework"  />
+</p>
+<ul>
+<li>superfulous interactions:
+<ol>
+<li>dense interaction -&gt; one pedestrain is related to all other pedestrains while in fact it is not</li>
+<li>sparse undirected -&gt; equal interactions for a pair of pedestrains</li>
+</ol>
+</li>
+<li>spatial GCN -&gt; sparse directed -&gt; not all pedestrains + not equal interaction</li>
+<li>temporal GCN -&gt; motion tendency</li>
+</ul>
+<h1 id="disentangled-multi-relational-graph-convolutional-network-for-pedestrian-trajectory-prediction-aaai2021">Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021)<a hidden class="anchor" aria-hidden="true" href="#disentangled-multi-relational-graph-convolutional-network-for-pedestrian-trajectory-prediction-aaai2021">#</a></h1>
+<ul>
+<li>Use CNN to generalize complex interpersonal relations</li>
+<li>a graph representation: node as pedestrian, edges correspond to distance</li>
+</ul>
+<h2 id="challeges">challeges<a hidden class="anchor" aria-hidden="true" href="#challeges">#</a></h2>
+<ul>
+<li>only simple social relationship like collision avoidance is aggregated</li>
+<li>modelling social norms is not suitable for determining the end-points of pedestrians in the last frame (over-avoidance)</li>
+</ul>
+<h2 id="contributions">contributions<a hidden class="anchor" aria-hidden="true" href="#contributions">#</a></h2>
+<ul>
+<li>disentangled multi-scale aggregation to clearly distinguish between relevant pedestrians</li>
+<li>multi-relational GCN to extract sophisticated social interaction in a scene.</li>
+<li>a global temporal aggregation to compensate accumulated errors from over-avoidance.</li>
+</ul>
+<h1 id="gaze-target-estimation">Gaze target estimation<a hidden class="anchor" aria-hidden="true" href="#gaze-target-estimation">#</a></h1>
+<h1 id="dual-attention-guided-gaze-target-detection-in-the-wild">Dual Attention Guided Gaze Target Detection in the Wild<a hidden class="anchor" aria-hidden="true" href="#dual-attention-guided-gaze-target-detection-in-the-wild">#</a></h1>
+<ul>
+<li>challenges:
+<ol>
+<li>prior works: gaze direction in 2D representations + barely depth-channel gaze. forward, backward, sideward. (refer to one person)</li>
+<li>salient objects from 2d cues. two candidates different depth along same gaze direction, hard to tell apart. (refer to one person with the scene understanding)</li>
+<li>fixation inconsistency: facing forward looking downward.</li>
+</ol>
+</li>
+<li>solutions:
+<ol>
+<li>estimate 3D gaze direction from head image.</li>
+<li>dual attention module -&gt; depth-aware perspective in the scene</li>
+<li>?hasn&rsquo;t found effective solution in the paper? -&gt; solved in the first stage? so is it still an independent challenge? or should be merged to the first challenge?</li>
+</ol>
+</li>
+</ul>
+<h1 id="escnet-gaze-target-detection-with-the-understanding-of-3d-scenes">ESCNet: Gaze Target Detection with the Understanding of 3D Scenes<a hidden class="anchor" aria-hidden="true" href="#escnet-gaze-target-detection-with-the-understanding-of-3d-scenes">#</a></h1>
+<ul>
+<li>hard to handle: multiple salient objects lie in the same depth layer and field of view. occlusion plays an important role in gaze estimation , one cannot see through occluders.</li>
+<li>3D geometry could br reconstructed by absolute depth and camera parameters</li>
+</ul>
+<p>FOV-based initial heatmap.</p>
+<h1 id="multimodal-across-domains-gaze-target-detection">Multimodal Across Domains Gaze Target Detection<a hidden class="anchor" aria-hidden="true" href="#multimodal-across-domains-gaze-target-detection">#</a></h1>
+<ul>
+<li>gaze target detection also referred as gaze-following</li>
+<li>false detections occur when there are multiple object-of-interests at different depths but along with the subject&rsquo;s gaze direction</li>
+<li>&lsquo;dual&rsquo; potentially being error-prone in real-life processing, e.g., when the eyes are not visible or not detectable</li>
+<li>&lsquo;ESCNET&rsquo; auxiliary estimating depth, depend on depth and pseudo labels.</li>
+<li>not require gaze angles as supervision</li>
+<li>only spatial processing, but still detect gaze target</li>
+<li>use depth image</li>
+</ul>
+<p><strong>how different modalities should be jointly learned for performing effective gaze target detection</strong></p>
+<ul>
+<li>solve domain shift problem</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://x423xu.github.io/tags/paper-reading/">paper-reading</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://x423xu.github.io/posts/2022-07-24-point-cloud-cvpr2022/">
+    <span class="title">Next »</span>
+    <br>
+    <span>point-cloud-CVPR2022</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share pedestrain-trajectory on twitter"
+        href="https://twitter.com/intent/tweet/?text=pedestrain-trajectory&amp;url=https%3a%2f%2fx423xu.github.io%2fposts%2f2022-08-17-pedestrain-trajectory%2f&amp;hashtags=paper-reading">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://x423xu.github.io/">Xiaoyu&#39;s blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

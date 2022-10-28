@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Posts on Xiaoyu&#39;s blog</title>
+    <link>https://x423xu.github.io/posts/</link>
+    <description>Recent content in Posts on Xiaoyu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Aug 2022 13:30:03 +0000</lastBuildDate><atom:link href="https://x423xu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pedestrain-trajectory</title>
+      <link>https://x423xu.github.io/posts/2022-08-17-pedestrain-trajectory/</link>
+      <pubDate>Wed, 17 Aug 2022 13:30:03 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-08-17-pedestrain-trajectory/</guid>
+      <description>Pedestrain trajectory Questions: 1. only pedestrain relation considered? hoe about environment 2. what is the general framework for pedestrain trajectory prediction.
+SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021) SGCN framework superfulous interactions: dense interaction -&amp;gt; one pedestrain is related to all other pedestrains while in fact it is not sparse undirected -&amp;gt; equal interactions for a pair of pedestrains spatial GCN -&amp;gt; sparse directed -&amp;gt; not all pedestrains + not equal interaction temporal GCN -&amp;gt; motion tendency Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021) Use CNN to generalize complex interpersonal relations a graph representation: node as pedestrian, edges correspond to distance challeges only simple social relationship like collision avoidance is aggregated modelling social norms is not suitable for determining the end-points of pedestrians in the last frame (over-avoidance) contributions disentangled multi-scale aggregation to clearly distinguish between relevant pedestrians multi-relational GCN to extract sophisticated social interaction in a scene.</description>
+    </item>
+    
+    <item>
+      <title>point-cloud-CVPR2022</title>
+      <link>https://x423xu.github.io/posts/2022-07-24-point-cloud-cvpr2022/</link>
+      <pubDate>Sun, 24 Jul 2022 16:03:26 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-07-24-point-cloud-cvpr2022/</guid>
+      <description>Voxel Set Transformer: A Set-to-Set Approach to 3D Object Detection From Point Clouds 3DJCG: A Unified Framework for Joint Dense Captioning and Visual Grounding on 3D Point Clouds Multi-Instance Point Cloud Registration by Efficient Correspondence Clustering Contrastive Boundary Learning for Point Cloud Segmentation Lepard: Learning Partial Point Cloud Matching in Rigid and Deformable Scenes CrossPoint: Self-Supervised Cross-Modal Contrastive Learning for 3D Point Cloud Understanding Density-Preserving Deep Point Cloud Compression Robust Structured Declarative Classifiers for 3D Point Clouds: Defending Adversarial Attacks With Implicit Gradients Neural Points: Point Cloud Representation With Neural Fields for Arbitrary Upsampling Not All Points Are Equal: Learning Highly Efficient Point-Based Detectors for 3D LiDAR Point Clouds Equivariant Point Cloud Analysis via Learning Orientations for Message Passing Point Cloud Pre-Training With Natural 3D Structures A Unified Query-Based Paradigm for Point Cloud Understanding REGTR: End-to-End Point Cloud Correspondences With Transformers 3DeformRS: Certifying Spatial Deformations on Point Clouds IDEA-Net: Dynamic 3D Point Cloud Interpolation via Deep Embedding Alignment AziNorm: Exploiting the Radial Symmetry of Point Cloud for Azimuth-Normalized 3D Perception Surface Reconstruction From Point Clouds by Learning Predictive Context Priors Point2Cyl: Reverse Engineering 3D Objects From Point Clouds to Extrusion Cylinders RigidFlow: Self-Supervised Scene Flow Learning on Point Clouds by Local Rigidity Prior Deterministic Point Cloud Registration via Novel Transformation Decomposition Surface Representation for Point Clouds 3D-VField: Adversarial Augmentation of Point Clouds for Domain Generalization in 3D Object Detection An MIL-Derived Transformer for Weakly Supervised Point Cloud Segmentation Why Discard if You Can Recycle?</description>
+    </item>
+    
+    <item>
+      <title>graph and machine learning</title>
+      <link>https://x423xu.github.io/posts/2022-06-10-graph-cs224w/</link>
+      <pubDate>Fri, 10 Jun 2022 18:29:35 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-06-10-graph-cs224w/</guid>
+      <description>1 Jure Leskovec, Stanford CS224W: Machine Learning with Graphs, http://cs224w.stanford.edu Why graphs relations of entities Similar data points arbitrary sizes, no spatial index, no reference order representation learning Map nodes to d-dimensional embeddings-&amp;gt; similar nodes in the network are embedded close together Applications of Graph ML different tasks: Node classification Link prediction: knowledge graph completion Graph classification: molecule property prediction Clustering Graph generation Graph evolution: physical simulation Examples: node-level: Protein folding Recommender system: recommend related pins to users by edge level classification subgraph-level: traffic prediction: nodes: road segments, edges: connectivity between nodes-&amp;gt; predict time arrival etc graph-level: drug discovery: nodes: atoms, edges: chemical bonds.</description>
+    </item>
+    
+    <item>
+      <title>Gupta-dissertation-visual-text</title>
+      <link>https://x423xu.github.io/posts/2022-06-01-gupta-dissertation-visual-text/</link>
+      <pubDate>Wed, 01 Jun 2022 14:41:09 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-06-01-gupta-dissertation-visual-text/</guid>
+      <description>keywords: unsupervised, visual+text, representations
+Challenges Challenge 1: Accurate and generalizable representations The model learn a representation does not generalize, by overfitting. Concepts such as objects, attributes, relationships or interactions are shared across vision-language tasks. Such representations are multi-modal. Now separately. Work towards the challenge Concepts of objects and attributes are shared across tasks. Word-region verification sub-task by inner product. ? Shared visual-language representations leads to a greater inductive transfer
+Using images to improve word representations Limitations of learning only from text:</description>
+    </item>
+    
+    <item>
+      <title>shortcuts-collection</title>
+      <link>https://x423xu.github.io/posts/2022-05-30-shortcuts-collection/</link>
+      <pubDate>Mon, 30 May 2022 13:57:35 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-05-30-shortcuts-collection/</guid>
+      <description>Chrome shortcuts open a new tab ctrl+t open a new window ctrl+n close the tab ctrl+w close the window ctrl+shift+w move among tabs ctrl+tab search in tab ctrl+k/ctrl+e/ctrl+l/alt+d shell shortcuts to the left side: ctrl+a to the right side ctrl+e delete all before ctrl+u delete all behind ctrl+k switch between tab ctrl+page up/page down </description>
+    </item>
+    
+    <item>
+      <title>How to deploy singularity for data processing</title>
+      <link>https://x423xu.github.io/posts/2022-05-24-singularity-deployment/</link>
+      <pubDate>Tue, 24 May 2022 11:20:09 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-05-24-singularity-deployment/</guid>
+      <description>Installation Install on local machine from singularity-installation Create an &amp;ldquo;install.def&amp;rdquo; file: An example file: (docker image downloaded from here) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 Bootstrap: docker From: pytorch/pytorch:1.9.0-cuda11.1-cudnn8-devel %post apt-get update apt-get install -y gcc apt-get install -y g++ apt-get install -y libglib2.</description>
+    </item>
+    
+    <item>
+      <title>visual text review</title>
+      <link>https://x423xu.github.io/posts/2022-04-18-visual&#43;text-review/</link>
+      <pubDate>Mon, 18 Apr 2022 10:52:07 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-04-18-visual&#43;text-review/</guid>
+      <description>Trends in Integration of Vision and Language Research: A Survey of Tasks, Datasets, and Methods Abstract Focus on ten prominent tasks that integrate language and vision by discussing their problem formulation, methods, existing datasets, evaluation measures, and compare results with the SOTA methods.
+Introduction Multimodal learning models: generate comprehensible but concise and grammatically well-formed descriptions of the visual content, or vice versa by generating the visual content for a given textual description in a natural language of choice, identify objets in the visual content and infer their relationships to reson about, or answer arbitrary questions about them, navigate through and environment by leveraging input from both vision and natural language instructions, translate textual content from one language to another while leveraging the visual content for sense disambiguation, generate stories about the visual content, and so on.</description>
+    </item>
+    
+    <item>
+      <title>Logical Syntax</title>
+      <link>https://x423xu.github.io/posts/2022-04-09-logical-syntax/</link>
+      <pubDate>Sat, 09 Apr 2022 17:14:27 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-04-09-logical-syntax/</guid>
+      <description>Content
+Background Preface Introduction What is logical syntax Language as calculi THE DEFINITE LANGUAGE 1
+Rules of formation for language 1 Predicates and functors Syntactical gothic symbols The junction symbols Content Background What is syntax
+In logic, syntax is anything having to do with formal languages or formal systems without regard to any interpretation or meaning given to them. Syntax is concerned with the rules used for constructing, or transforming the symbols and words of a language, as contrasted with the semantics of a language which is concerned with its meaning</description>
+    </item>
+    
+    <item>
+      <title>Paper summary</title>
+      <link>https://x423xu.github.io/posts/2022-04-06-paper-summary-last-weekend/</link>
+      <pubDate>Wed, 06 Apr 2022 11:58:35 -0400</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-04-06-paper-summary-last-weekend/</guid>
+      <description>2022/3/31 ~ 2022/4/6 Order-Embeddings of images and Language Core idea Explicitly modeling the partial order structure of the hierarchy over language and image -&amp;gt; Visual sematic hierarchy How to do it Penalize order violations $$ E(x,y) = ||max(0,y-x)||^2 $$ where $E(x,y)=0 \Leftrightarrow x \preceq y$ Modeling heterogeneous hierarchies with relation-specific hyperbolic cones Core idea Embeds entities into hyperbolic cones &amp;amp; models relations as transformations between the cones How to do it Poincare entailment cone at apex $x$ $$\zeta_x = {y\in \Beta^d | \angle_xy\leq\sin^{-1}(K\frac{1-||x||^2}{||x||})}$$ embed entity: $h=(h_1,h_2,\cdots,h_{d})$, where $h_i\in\Beta^2$ is the apex of the $i-$th 2D hyperbolic cone.</description>
+    </item>
+    
+    <item>
+      <title>RemoteX11 configuration on vscode</title>
+      <link>https://x423xu.github.io/posts/2022-03-20-x11-for-vscode/</link>
+      <pubDate>Sun, 20 Mar 2022 13:57:00 -0400</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-03-20-x11-for-vscode/</guid>
+      <description>Remote X11 understanding Suppose we have a local machine (windows/linux), wanna do some deep learning training or data analysis in a remote linux server to . To show images like plt.plot() &amp;amp; plt.show() in local machine we need X11 forwarding which directly renderes images in local machine.
+Ok, first step we should connect to a remote linux server from our local machine. Supposing using SSH connection in MobaXterm, we need a private key in local machine and a public key in remote server.</description>
+    </item>
+    
+    <item>
+      <title>Jekyll</title>
+      <link>https://x423xu.github.io/posts/2022-03-20-jekyll/</link>
+      <pubDate>Sun, 20 Mar 2022 14:30:54 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-03-20-jekyll/</guid>
+      <description>Using Jekyll to create a gitpage on windows Understanding Jekyll, Gem, Bundle, Ruby what is Ruby :hear_no_evil:
+Ruby is a dynamic, open source programming language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write.
+Ruby is most used for building web applications. However, it is a general-purpose language similar to Python, so it has many other applications like data analysis, prototyping, and proof of concepts.</description>
+    </item>
+    
+    <item>
+      <title>linux-operations</title>
+      <link>https://x423xu.github.io/posts/2022-05-26-linux-operations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-05-26-linux-operations/</guid>
+      <description>Mout a disk using gparted to format the disk to ext4 file system: sudo apt-get install gparted -&amp;gt; sudo gparted -&amp;gt; format the disk mount the disk to mountpoint, eg: sudo mount /dev/sda2 ~/HDD Permanently mounting: cat /etc/fstab to get UUID -&amp;gt; here change the ownership of the folder ~/HDD: sudo chown xxy ~/ collections 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 后台运行：nohup python f.</description>
+    </item>
+    
+  </channel>
+</rss>

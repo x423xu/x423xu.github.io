@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>point-cloud-CVPR2022 | Xiaoyu&#39;s blog</title>
+<meta name="keywords" content="paper-reading">
+<meta name="description" content="Voxel Set Transformer: A Set-to-Set Approach to 3D Object Detection From Point Clouds 3DJCG: A Unified Framework for Joint Dense Captioning and Visual Grounding on 3D Point Clouds Multi-Instance Point Cloud Registration by Efficient Correspondence Clustering Contrastive Boundary Learning for Point Cloud Segmentation Lepard: Learning Partial Point Cloud Matching in Rigid and Deformable Scenes CrossPoint: Self-Supervised Cross-Modal Contrastive Learning for 3D Point Cloud Understanding Density-Preserving Deep Point Cloud Compression Robust Structured Declarative Classifiers for 3D Point Clouds: Defending Adversarial Attacks With Implicit Gradients Neural Points: Point Cloud Representation With Neural Fields for Arbitrary Upsampling Not All Points Are Equal: Learning Highly Efficient Point-Based Detectors for 3D LiDAR Point Clouds Equivariant Point Cloud Analysis via Learning Orientations for Message Passing Point Cloud Pre-Training With Natural 3D Structures A Unified Query-Based Paradigm for Point Cloud Understanding REGTR: End-to-End Point Cloud Correspondences With Transformers 3DeformRS: Certifying Spatial Deformations on Point Clouds IDEA-Net: Dynamic 3D Point Cloud Interpolation via Deep Embedding Alignment AziNorm: Exploiting the Radial Symmetry of Point Cloud for Azimuth-Normalized 3D Perception Surface Reconstruction From Point Clouds by Learning Predictive Context Priors Point2Cyl: Reverse Engineering 3D Objects From Point Clouds to Extrusion Cylinders RigidFlow: Self-Supervised Scene Flow Learning on Point Clouds by Local Rigidity Prior Deterministic Point Cloud Registration via Novel Transformation Decomposition Surface Representation for Point Clouds 3D-VField: Adversarial Augmentation of Point Clouds for Domain Generalization in 3D Object Detection An MIL-Derived Transformer for Weakly Supervised Point Cloud Segmentation Why Discard if You Can Recycle?">
+<meta name="author" content="">
+<link rel="canonical" href="https://x423xu.github.io/posts/2022-07-24-point-cloud-cvpr2022/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://x423xu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://x423xu.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://x423xu.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://x423xu.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://x423xu.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<meta property="og:title" content="point-cloud-CVPR2022" />
+<meta property="og:description" content="Voxel Set Transformer: A Set-to-Set Approach to 3D Object Detection From Point Clouds 3DJCG: A Unified Framework for Joint Dense Captioning and Visual Grounding on 3D Point Clouds Multi-Instance Point Cloud Registration by Efficient Correspondence Clustering Contrastive Boundary Learning for Point Cloud Segmentation Lepard: Learning Partial Point Cloud Matching in Rigid and Deformable Scenes CrossPoint: Self-Supervised Cross-Modal Contrastive Learning for 3D Point Cloud Understanding Density-Preserving Deep Point Cloud Compression Robust Structured Declarative Classifiers for 3D Point Clouds: Defending Adversarial Attacks With Implicit Gradients Neural Points: Point Cloud Representation With Neural Fields for Arbitrary Upsampling Not All Points Are Equal: Learning Highly Efficient Point-Based Detectors for 3D LiDAR Point Clouds Equivariant Point Cloud Analysis via Learning Orientations for Message Passing Point Cloud Pre-Training With Natural 3D Structures A Unified Query-Based Paradigm for Point Cloud Understanding REGTR: End-to-End Point Cloud Correspondences With Transformers 3DeformRS: Certifying Spatial Deformations on Point Clouds IDEA-Net: Dynamic 3D Point Cloud Interpolation via Deep Embedding Alignment AziNorm: Exploiting the Radial Symmetry of Point Cloud for Azimuth-Normalized 3D Perception Surface Reconstruction From Point Clouds by Learning Predictive Context Priors Point2Cyl: Reverse Engineering 3D Objects From Point Clouds to Extrusion Cylinders RigidFlow: Self-Supervised Scene Flow Learning on Point Clouds by Local Rigidity Prior Deterministic Point Cloud Registration via Novel Transformation Decomposition Surface Representation for Point Clouds 3D-VField: Adversarial Augmentation of Point Clouds for Domain Generalization in 3D Object Detection An MIL-Derived Transformer for Weakly Supervised Point Cloud Segmentation Why Discard if You Can Recycle?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://x423xu.github.io/posts/2022-07-24-point-cloud-cvpr2022/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-07-24T16:03:26+00:00" />
+<meta property="article:modified_time" content="2022-07-24T16:03:26+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="point-cloud-CVPR2022"/>
+<meta name="twitter:description" content="Voxel Set Transformer: A Set-to-Set Approach to 3D Object Detection From Point Clouds 3DJCG: A Unified Framework for Joint Dense Captioning and Visual Grounding on 3D Point Clouds Multi-Instance Point Cloud Registration by Efficient Correspondence Clustering Contrastive Boundary Learning for Point Cloud Segmentation Lepard: Learning Partial Point Cloud Matching in Rigid and Deformable Scenes CrossPoint: Self-Supervised Cross-Modal Contrastive Learning for 3D Point Cloud Understanding Density-Preserving Deep Point Cloud Compression Robust Structured Declarative Classifiers for 3D Point Clouds: Defending Adversarial Attacks With Implicit Gradients Neural Points: Point Cloud Representation With Neural Fields for Arbitrary Upsampling Not All Points Are Equal: Learning Highly Efficient Point-Based Detectors for 3D LiDAR Point Clouds Equivariant Point Cloud Analysis via Learning Orientations for Message Passing Point Cloud Pre-Training With Natural 3D Structures A Unified Query-Based Paradigm for Point Cloud Understanding REGTR: End-to-End Point Cloud Correspondences With Transformers 3DeformRS: Certifying Spatial Deformations on Point Clouds IDEA-Net: Dynamic 3D Point Cloud Interpolation via Deep Embedding Alignment AziNorm: Exploiting the Radial Symmetry of Point Cloud for Azimuth-Normalized 3D Perception Surface Reconstruction From Point Clouds by Learning Predictive Context Priors Point2Cyl: Reverse Engineering 3D Objects From Point Clouds to Extrusion Cylinders RigidFlow: Self-Supervised Scene Flow Learning on Point Clouds by Local Rigidity Prior Deterministic Point Cloud Registration via Novel Transformation Decomposition Surface Representation for Point Clouds 3D-VField: Adversarial Augmentation of Point Clouds for Domain Generalization in 3D Object Detection An MIL-Derived Transformer for Weakly Supervised Point Cloud Segmentation Why Discard if You Can Recycle?"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://x423xu.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "point-cloud-CVPR2022",
+      "item": "https://x423xu.github.io/posts/2022-07-24-point-cloud-cvpr2022/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "point-cloud-CVPR2022",
+  "name": "point-cloud-CVPR2022",
+  "description": "Voxel Set Transformer: A Set-to-Set Approach to 3D Object Detection From Point Clouds 3DJCG: A Unified Framework for Joint Dense Captioning and Visual Grounding on 3D Point Clouds Multi-Instance Point Cloud Registration by Efficient Correspondence Clustering Contrastive Boundary Learning for Point Cloud Segmentation Lepard: Learning Partial Point Cloud Matching in Rigid and Deformable Scenes CrossPoint: Self-Supervised Cross-Modal Contrastive Learning for 3D Point Cloud Understanding Density-Preserving Deep Point Cloud Compression Robust Structured Declarative Classifiers for 3D Point Clouds: Defending Adversarial Attacks With Implicit Gradients Neural Points: Point Cloud Representation With Neural Fields for Arbitrary Upsampling Not All Points Are Equal: Learning Highly Efficient Point-Based Detectors for 3D LiDAR Point Clouds Equivariant Point Cloud Analysis via Learning Orientations for Message Passing Point Cloud Pre-Training With Natural 3D Structures A Unified Query-Based Paradigm for Point Cloud Understanding REGTR: End-to-End Point Cloud Correspondences With Transformers 3DeformRS: Certifying Spatial Deformations on Point Clouds IDEA-Net: Dynamic 3D Point Cloud Interpolation via Deep Embedding Alignment AziNorm: Exploiting the Radial Symmetry of Point Cloud for Azimuth-Normalized 3D Perception Surface Reconstruction From Point Clouds by Learning Predictive Context Priors Point2Cyl: Reverse Engineering 3D Objects From Point Clouds to Extrusion Cylinders RigidFlow: Self-Supervised Scene Flow Learning on Point Clouds by Local Rigidity Prior Deterministic Point Cloud Registration via Novel Transformation Decomposition Surface Representation for Point Clouds 3D-VField: Adversarial Augmentation of Point Clouds for Domain Generalization in 3D Object Detection An MIL-Derived Transformer for Weakly Supervised Point Cloud Segmentation Why Discard if You Can Recycle?",
+  "keywords": [
+    "paper-reading"
+  ],
+  "articleBody": " Voxel Set Transformer: A Set-to-Set Approach to 3D Object Detection From Point Clouds 3DJCG: A Unified Framework for Joint Dense Captioning and Visual Grounding on 3D Point Clouds Multi-Instance Point Cloud Registration by Efficient Correspondence Clustering Contrastive Boundary Learning for Point Cloud Segmentation Lepard: Learning Partial Point Cloud Matching in Rigid and Deformable Scenes CrossPoint: Self-Supervised Cross-Modal Contrastive Learning for 3D Point Cloud Understanding Density-Preserving Deep Point Cloud Compression Robust Structured Declarative Classifiers for 3D Point Clouds: Defending Adversarial Attacks With Implicit Gradients Neural Points: Point Cloud Representation With Neural Fields for Arbitrary Upsampling Not All Points Are Equal: Learning Highly Efficient Point-Based Detectors for 3D LiDAR Point Clouds Equivariant Point Cloud Analysis via Learning Orientations for Message Passing Point Cloud Pre-Training With Natural 3D Structures A Unified Query-Based Paradigm for Point Cloud Understanding REGTR: End-to-End Point Cloud Correspondences With Transformers 3DeformRS: Certifying Spatial Deformations on Point Clouds IDEA-Net: Dynamic 3D Point Cloud Interpolation via Deep Embedding Alignment AziNorm: Exploiting the Radial Symmetry of Point Cloud for Azimuth-Normalized 3D Perception Surface Reconstruction From Point Clouds by Learning Predictive Context Priors Point2Cyl: Reverse Engineering 3D Objects From Point Clouds to Extrusion Cylinders RigidFlow: Self-Supervised Scene Flow Learning on Point Clouds by Local Rigidity Prior Deterministic Point Cloud Registration via Novel Transformation Decomposition Surface Representation for Point Clouds 3D-VField: Adversarial Augmentation of Point Clouds for Domain Generalization in 3D Object Detection An MIL-Derived Transformer for Weakly Supervised Point Cloud Segmentation Why Discard if You Can Recycle?: A Recycling Max Pooling Module for 3D Point Cloud Analysis ART-Point: Improving Rotation Robustness of Point Cloud Classifiers via Adversarial Rotation Pyramid Architecture for Multi-Scale Processing in Point Cloud Segmentation Finding Good Configurations of Planar Primitives in Unorganized Point Clouds No-Reference Point Cloud Quality Assessment via Domain Adaptation Learning Local Displacements for Point Cloud Completion Point-BERT: Pre-Training 3D Point Cloud Transformers With Masked Point Modeling Point Cloud Color Constancy Multimodal Colored Point Cloud to Image Alignment Self-Supervised Arbitrary-Scale Point Clouds Upsampling via Implicit Neural Representation Shape-Invariant 3D Adversarial Point Clouds Deformation and Correspondence Aware Unsupervised Synthetic-to-Real Scene Flow Estimation for Point Clouds LiDARCap: Long-Range Marker-Less 3D Human Motion Capture With LiDAR Point Clouds Domain Adaptation on Point Clouds via Geometry-Aware Implicits SC2-PCR: A Second Order Spatial Compatibility for Efficient and Robust Point Cloud Registration WarpingGAN: Warping Multiple Uniform Priors for Adversarial 3D Point Cloud Generation Weakly Supervised Segmentation on Outdoor 4D Point Clouds With Temporal Matching and Spatial Graph Propagation LAKe-Net: Topology-Aware Point Cloud Completion by Localizing Aligned Keypoints No Pain, Big Gain: Classify Dynamic Point Cloud Sequences With Static Models by Fitting Feature-Level Space-Time Surfaces PTTR: Relational 3D Point Cloud Object Tracking With Transformer ZZ-Net: A Universal Rotation Equivariant Architecture for 2D Point Clouds SS3D: Sparsely-Supervised 3D Object Detection From Point Cloud 3DAC: Learning Attribute Compression for Point Clouds Learning a Structured Latent Space for Unsupervised Point Cloud Completion RCP: Recurrent Closest Point for Point Cloud Upright-Net: Learning Upright Orientation for 3D Point Cloud Reconstructing Surfaces for Sparse Point Clouds With On-Surface Priors HybridCR: Weakly-Supervised 3D Point Cloud Semantic Segmentation via Hybrid Contrastive Regularization Self-Supervised Global-Local Structure Modeling for Point Cloud Domain Adaptation With Reliable Voted Pseudo Labels PointCLIP: Point Cloud Understanding by CLIP Geometric Transformer for Fast and Robust Point Cloud Registration Beyond 3D Siamese Tracking: A Motion-Centric Paradigm for 3D Single Object Tracking in Point Clouds Boosting 3D Object Detection by Simulating Multimodality on Point Clouds SemAffiNet: Semantic-Affine Transformation for Point Cloud Segmentation DiGS: Divergence Guided Shape Implicit Neural Representation for Unoriented Point Clouds SoftGroup for 3D Instance Segmentation on Point Clouds Bridged Transformer for Vision and Point Cloud 3D Object Detection Stratified Transformer for 3D Point Cloud Segmentation ",
+  "wordCount" : "606",
+  "inLanguage": "en",
+  "datePublished": "2022-07-24T16:03:26Z",
+  "dateModified": "2022-07-24T16:03:26Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x423xu.github.io/posts/2022-07-24-point-cloud-cvpr2022/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xiaoyu's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x423xu.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://x423xu.github.io/" accesskey="h" title="Xiaoyu&#39;s blog (Alt + H)">Xiaoyu&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://x423xu.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://x423xu.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://x423xu.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      point-cloud-CVPR2022
+    </h1>
+    <div class="post-meta"><span title='2022-07-24 16:03:26 +0000 UTC'>July 24, 2022</span>&nbsp;·&nbsp;3 min
+
+</div>
+  </header> 
+
+  <div class="post-content"><ol>
+<li>Voxel Set Transformer: A Set-to-Set Approach to 3D Object Detection From Point Clouds</li>
+<li>3DJCG: A Unified Framework for Joint Dense Captioning and Visual Grounding on 3D Point Clouds</li>
+<li>Multi-Instance Point Cloud Registration by Efficient Correspondence Clustering</li>
+<li>Contrastive Boundary Learning for Point Cloud Segmentation</li>
+<li>Lepard: Learning Partial Point Cloud Matching in Rigid and Deformable Scenes</li>
+<li>CrossPoint: Self-Supervised Cross-Modal Contrastive Learning for 3D Point Cloud Understanding</li>
+<li>Density-Preserving Deep Point Cloud Compression</li>
+<li>Robust Structured Declarative Classifiers for 3D Point Clouds: Defending Adversarial Attacks With Implicit Gradients</li>
+<li>Neural Points: Point Cloud Representation With Neural Fields for Arbitrary Upsampling</li>
+<li>Not All Points Are Equal: Learning Highly Efficient Point-Based Detectors for 3D LiDAR Point Clouds</li>
+<li>Equivariant Point Cloud Analysis via Learning Orientations for Message Passing</li>
+<li>Point Cloud Pre-Training With Natural 3D Structures</li>
+<li>A Unified Query-Based Paradigm for Point Cloud Understanding</li>
+<li>REGTR: End-to-End Point Cloud Correspondences With Transformers</li>
+<li>3DeformRS: Certifying Spatial Deformations on Point Clouds</li>
+<li>IDEA-Net: Dynamic 3D Point Cloud Interpolation via Deep Embedding Alignment</li>
+<li>AziNorm: Exploiting the Radial Symmetry of Point Cloud for Azimuth-Normalized 3D Perception</li>
+<li>Surface Reconstruction From Point Clouds by Learning Predictive Context Priors</li>
+<li>Point2Cyl: Reverse Engineering 3D Objects From Point Clouds to Extrusion Cylinders</li>
+<li>RigidFlow: Self-Supervised Scene Flow Learning on Point Clouds by Local Rigidity Prior</li>
+<li>Deterministic Point Cloud Registration via Novel Transformation Decomposition</li>
+<li>Surface Representation for Point Clouds</li>
+<li>3D-VField: Adversarial Augmentation of Point Clouds for Domain Generalization in 3D Object Detection</li>
+<li>An MIL-Derived Transformer for Weakly Supervised Point Cloud Segmentation</li>
+<li>Why Discard if You Can Recycle?: A Recycling Max Pooling Module for 3D Point Cloud Analysis</li>
+<li>ART-Point: Improving Rotation Robustness of Point Cloud Classifiers via Adversarial Rotation</li>
+<li>Pyramid Architecture for Multi-Scale Processing in Point Cloud Segmentation</li>
+<li>Finding Good Configurations of Planar Primitives in Unorganized Point Clouds</li>
+<li>No-Reference Point Cloud Quality Assessment via Domain Adaptation</li>
+<li>Learning Local Displacements for Point Cloud Completion</li>
+<li>Point-BERT: Pre-Training 3D Point Cloud Transformers With Masked Point Modeling</li>
+<li>Point Cloud Color Constancy</li>
+<li>Multimodal Colored Point Cloud to Image Alignment</li>
+<li>Self-Supervised Arbitrary-Scale Point Clouds Upsampling via Implicit Neural Representation</li>
+<li>Shape-Invariant 3D Adversarial Point Clouds</li>
+<li>Deformation and Correspondence Aware Unsupervised Synthetic-to-Real Scene Flow Estimation for Point Clouds</li>
+<li>LiDARCap: Long-Range Marker-Less 3D Human Motion Capture With LiDAR Point Clouds</li>
+<li>Domain Adaptation on Point Clouds via Geometry-Aware Implicits</li>
+<li>SC2-PCR: A Second Order Spatial Compatibility for Efficient and Robust Point Cloud Registration</li>
+<li>WarpingGAN: Warping Multiple Uniform Priors for Adversarial 3D Point Cloud Generation</li>
+<li>Weakly Supervised Segmentation on Outdoor 4D Point Clouds With Temporal Matching and Spatial Graph Propagation</li>
+<li>LAKe-Net: Topology-Aware Point Cloud Completion by Localizing Aligned Keypoints</li>
+<li>No Pain, Big Gain: Classify Dynamic Point Cloud Sequences With Static Models by Fitting Feature-Level Space-Time Surfaces</li>
+<li>PTTR: Relational 3D Point Cloud Object Tracking With Transformer</li>
+<li>ZZ-Net: A Universal Rotation Equivariant Architecture for 2D Point Clouds</li>
+<li>SS3D: Sparsely-Supervised 3D Object Detection From Point Cloud</li>
+<li>3DAC: Learning Attribute Compression for Point Clouds</li>
+<li>Learning a Structured Latent Space for Unsupervised Point Cloud Completion</li>
+<li>RCP: Recurrent Closest Point for Point Cloud</li>
+<li>Upright-Net: Learning Upright Orientation for 3D Point Cloud</li>
+<li>Reconstructing Surfaces for Sparse Point Clouds With On-Surface Priors</li>
+<li>HybridCR: Weakly-Supervised 3D Point Cloud Semantic Segmentation via Hybrid Contrastive Regularization</li>
+<li>Self-Supervised Global-Local Structure Modeling for Point Cloud Domain Adaptation With Reliable Voted Pseudo Labels</li>
+<li>PointCLIP: Point Cloud Understanding by CLIP</li>
+<li>Geometric Transformer for Fast and Robust Point Cloud Registration</li>
+<li>Beyond 3D Siamese Tracking: A Motion-Centric Paradigm for 3D Single Object Tracking in Point Clouds</li>
+<li>Boosting 3D Object Detection by Simulating Multimodality on Point Clouds</li>
+<li>SemAffiNet: Semantic-Affine Transformation for Point Cloud Segmentation</li>
+<li>DiGS: Divergence Guided Shape Implicit Neural Representation for Unoriented Point Clouds</li>
+<li>SoftGroup for 3D Instance Segmentation on Point Clouds</li>
+<li>Bridged Transformer for Vision and Point Cloud 3D Object Detection</li>
+<li>Stratified Transformer for 3D Point Cloud Segmentation</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://x423xu.github.io/tags/paper-reading/">paper-reading</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://x423xu.github.io/posts/2022-08-17-pedestrain-trajectory/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>pedestrain-trajectory</span>
+  </a>
+  <a class="next" href="https://x423xu.github.io/posts/2022-06-10-graph-cs224w/">
+    <span class="title">Next »</span>
+    <br>
+    <span>graph and machine learning</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share point-cloud-CVPR2022 on twitter"
+        href="https://twitter.com/intent/tweet/?text=point-cloud-CVPR2022&amp;url=https%3a%2f%2fx423xu.github.io%2fposts%2f2022-07-24-point-cloud-cvpr2022%2f&amp;hashtags=paper-reading">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://x423xu.github.io/">Xiaoyu&#39;s blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

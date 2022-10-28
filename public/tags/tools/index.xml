@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>tools on Xiaoyu&#39;s blog</title>
+    <link>https://x423xu.github.io/tags/tools/</link>
+    <description>Recent content in tools on Xiaoyu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 30 May 2022 13:57:35 +0000</lastBuildDate><atom:link href="https://x423xu.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>shortcuts-collection</title>
+      <link>https://x423xu.github.io/posts/2022-05-30-shortcuts-collection/</link>
+      <pubDate>Mon, 30 May 2022 13:57:35 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-05-30-shortcuts-collection/</guid>
+      <description>Chrome shortcuts open a new tab ctrl+t open a new window ctrl+n close the tab ctrl+w close the window ctrl+shift+w move among tabs ctrl+tab search in tab ctrl+k/ctrl+e/ctrl+l/alt+d shell shortcuts to the left side: ctrl+a to the right side ctrl+e delete all before ctrl+u delete all behind ctrl+k switch between tab ctrl+page up/page down </description>
+    </item>
+    
+    <item>
+      <title>How to deploy singularity for data processing</title>
+      <link>https://x423xu.github.io/posts/2022-05-24-singularity-deployment/</link>
+      <pubDate>Tue, 24 May 2022 11:20:09 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-05-24-singularity-deployment/</guid>
+      <description>Installation Install on local machine from singularity-installation Create an &amp;ldquo;install.def&amp;rdquo; file: An example file: (docker image downloaded from here) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 Bootstrap: docker From: pytorch/pytorch:1.9.0-cuda11.1-cudnn8-devel %post apt-get update apt-get install -y gcc apt-get install -y g++ apt-get install -y libglib2.</description>
+    </item>
+    
+    <item>
+      <title>RemoteX11 configuration on vscode</title>
+      <link>https://x423xu.github.io/posts/2022-03-20-x11-for-vscode/</link>
+      <pubDate>Sun, 20 Mar 2022 13:57:00 -0400</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-03-20-x11-for-vscode/</guid>
+      <description>Remote X11 understanding Suppose we have a local machine (windows/linux), wanna do some deep learning training or data analysis in a remote linux server to . To show images like plt.plot() &amp;amp; plt.show() in local machine we need X11 forwarding which directly renderes images in local machine.
+Ok, first step we should connect to a remote linux server from our local machine. Supposing using SSH connection in MobaXterm, we need a private key in local machine and a public key in remote server.</description>
+    </item>
+    
+    <item>
+      <title>Jekyll</title>
+      <link>https://x423xu.github.io/posts/2022-03-20-jekyll/</link>
+      <pubDate>Sun, 20 Mar 2022 14:30:54 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-03-20-jekyll/</guid>
+      <description>Using Jekyll to create a gitpage on windows Understanding Jekyll, Gem, Bundle, Ruby what is Ruby :hear_no_evil:
+Ruby is a dynamic, open source programming language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write.
+Ruby is most used for building web applications. However, it is a general-purpose language similar to Python, so it has many other applications like data analysis, prototyping, and proof of concepts.</description>
+    </item>
+    
+    <item>
+      <title>linux-operations</title>
+      <link>https://x423xu.github.io/posts/2022-05-26-linux-operations/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-05-26-linux-operations/</guid>
+      <description>Mout a disk using gparted to format the disk to ext4 file system: sudo apt-get install gparted -&amp;gt; sudo gparted -&amp;gt; format the disk mount the disk to mountpoint, eg: sudo mount /dev/sda2 ~/HDD Permanently mounting: cat /etc/fstab to get UUID -&amp;gt; here change the ownership of the folder ~/HDD: sudo chown xxy ~/ collections 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 后台运行：nohup python f.</description>
+    </item>
+    
+  </channel>
+</rss>

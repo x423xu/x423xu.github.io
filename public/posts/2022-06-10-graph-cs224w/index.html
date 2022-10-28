@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>graph and machine learning | Xiaoyu&#39;s blog</title>
+<meta name="keywords" content="paper-reading">
+<meta name="description" content="1 Jure Leskovec, Stanford CS224W: Machine Learning with Graphs, http://cs224w.stanford.edu Why graphs relations of entities Similar data points arbitrary sizes, no spatial index, no reference order representation learning Map nodes to d-dimensional embeddings-&gt; similar nodes in the network are embedded close together Applications of Graph ML different tasks: Node classification Link prediction: knowledge graph completion Graph classification: molecule property prediction Clustering Graph generation Graph evolution: physical simulation Examples: node-level: Protein folding Recommender system: recommend related pins to users by edge level classification subgraph-level: traffic prediction: nodes: road segments, edges: connectivity between nodes-&gt; predict time arrival etc graph-level: drug discovery: nodes: atoms, edges: chemical bonds.">
+<meta name="author" content="">
+<link rel="canonical" href="https://x423xu.github.io/posts/2022-06-10-graph-cs224w/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://x423xu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://x423xu.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://x423xu.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://x423xu.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://x423xu.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<meta property="og:title" content="graph and machine learning" />
+<meta property="og:description" content="1 Jure Leskovec, Stanford CS224W: Machine Learning with Graphs, http://cs224w.stanford.edu Why graphs relations of entities Similar data points arbitrary sizes, no spatial index, no reference order representation learning Map nodes to d-dimensional embeddings-&gt; similar nodes in the network are embedded close together Applications of Graph ML different tasks: Node classification Link prediction: knowledge graph completion Graph classification: molecule property prediction Clustering Graph generation Graph evolution: physical simulation Examples: node-level: Protein folding Recommender system: recommend related pins to users by edge level classification subgraph-level: traffic prediction: nodes: road segments, edges: connectivity between nodes-&gt; predict time arrival etc graph-level: drug discovery: nodes: atoms, edges: chemical bonds." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://x423xu.github.io/posts/2022-06-10-graph-cs224w/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-10T18:29:35+00:00" />
+<meta property="article:modified_time" content="2022-06-10T18:29:35+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="graph and machine learning"/>
+<meta name="twitter:description" content="1 Jure Leskovec, Stanford CS224W: Machine Learning with Graphs, http://cs224w.stanford.edu Why graphs relations of entities Similar data points arbitrary sizes, no spatial index, no reference order representation learning Map nodes to d-dimensional embeddings-&gt; similar nodes in the network are embedded close together Applications of Graph ML different tasks: Node classification Link prediction: knowledge graph completion Graph classification: molecule property prediction Clustering Graph generation Graph evolution: physical simulation Examples: node-level: Protein folding Recommender system: recommend related pins to users by edge level classification subgraph-level: traffic prediction: nodes: road segments, edges: connectivity between nodes-&gt; predict time arrival etc graph-level: drug discovery: nodes: atoms, edges: chemical bonds."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://x423xu.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "graph and machine learning",
+      "item": "https://x423xu.github.io/posts/2022-06-10-graph-cs224w/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "graph and machine learning",
+  "name": "graph and machine learning",
+  "description": "1 Jure Leskovec, Stanford CS224W: Machine Learning with Graphs, http://cs224w.stanford.edu Why graphs relations of entities Similar data points arbitrary sizes, no spatial index, no reference order representation learning Map nodes to d-dimensional embeddings-\u0026gt; similar nodes in the network are embedded close together Applications of Graph ML different tasks: Node classification Link prediction: knowledge graph completion Graph classification: molecule property prediction Clustering Graph generation Graph evolution: physical simulation Examples: node-level: Protein folding Recommender system: recommend related pins to users by edge level classification subgraph-level: traffic prediction: nodes: road segments, edges: connectivity between nodes-\u0026gt; predict time arrival etc graph-level: drug discovery: nodes: atoms, edges: chemical bonds.",
+  "keywords": [
+    "paper-reading"
+  ],
+  "articleBody": " 1 Jure Leskovec, Stanford CS224W: Machine Learning with Graphs, http://cs224w.stanford.edu Why graphs relations of entities Similar data points arbitrary sizes, no spatial index, no reference order representation learning Map nodes to d-dimensional embeddings-\u003e similar nodes in the network are embedded close together Applications of Graph ML different tasks: Node classification Link prediction: knowledge graph completion Graph classification: molecule property prediction Clustering Graph generation Graph evolution: physical simulation Examples: node-level: Protein folding Recommender system: recommend related pins to users by edge level classification subgraph-level: traffic prediction: nodes: road segments, edges: connectivity between nodes-\u003e predict time arrival etc graph-level: drug discovery: nodes: atoms, edges: chemical bonds. graph generation, generate new molecules in a targeted way. physicalsimulation: nodes: particles, edges interactions between particles-\u003e predict how a graph will evolve over. Choice of Graph representation Node degree (ubdirected): the number of edges adjacent to node i in-degree, out-degree(directed) Bipartite graph: two disjoint sets U and V. e. author to papers. two different type of nodes Adjacency matrix. For a directed graph, adjacency matrix is not symmetric Adjacency sparse for most real-word networks. represent as a list of edges. represent as an adjacency list node and edge attributes: weight, ranking, type, sign, etc. weighted and unweighted adjacency matrix. self-loop node, multigraph-\u003eadjacency matrix different. connected graph: any two nodes canbe joined by a graph. A graph with mutiple components: adjacency matrix can be written in a block way. Strongly connected directed graph: has a directed path to every other node. weakly connected directed: is connected if disregard the edge direction strongly connected directed components: in the component, it is strongly connected. Traditional methods: Node hand-designed features Node-level node degree node centrality: A node is important if surrounded by important neighboring nodes $u\\in N(v)$ $$c_v = \\frac{1}{\\lambda}\\sum_{u\\in N(v)}c_u \\rightarrow \\lambda \\mathbb{c}=\\mathbb{Ac}$$ Where \u0026A\u0026 is adjacency matrix. Clossness centrality: clustering coefficient: count triangles that a node touches graphlets: graph degree vector: counts the occurence of the graphlets Link-level the key is design of the feature of pair nodes. Links missing prediction links overtime prediction compute score c(x,y)-\u003e sort score-\u003e keep top k representation: shortest path between two nodes. common neighbors between two nodes jaccard’s coefficient Adamic-adar index Global neighborhood overlap: computing number of paths between two nodes: can be obtained by computing power of adjacency matrix power: $P^{(K)} = A^K$-\u003e means # paths of length K between $u$ and $v$. katz index:$S_{v_1 v_2} = \\sum_{l=1}^{\\inf}\\beta^lA_{v_1 v_2}^l$ katz index matrix: $S=\\sum_{i=1}^{\\inf}\\beta^i A^i= (I-\\beta A)^{-1}-I$ graph-level features to characterize the structure of an entire graph Kernel methods: $K(a,b) = \\phi(a)^T\\phi(b)$. kernel matrix K has to be semi-definite and can be orthogonally decomposed. goal: design graph feature vector $\\phi(G)$ Key idea: bag of words for a graph. bag of degrees nodes graphlet kernel: # different graphlets in a graph. graphlets list(g1,g2,g3,…) (not need to be connected different from nodel-level graphlets which has to be connected) -limitations: counting graphlets is expensive weisfeiler-Lehman kernel goal: design an efficient graph feature desciptor idea: use neighborhood structure to iteratively enrich node vocabulary.-\u003e color refinement $c^{k+1}(v) = HASH({c^{k}(v), {c^k(u)}}_{u\\in N(v)})$. HASH maps input to colors. K steps summarize the structure of k-hop neighborhood Node embedding eg. 2d embedding of nodes of the Zachary’s Karate Club network from “Deepwalk:Online learning of social representations”\nkey idea: define a node similarity function $P(v|z_u)$ the probability of visiting node v on random walk starting from the node u. Softmax function/Sigmoid Random walk; $z_u^Tz_v$ probability u and v cooccur at a random walk unsupervised feature learning: maximize log-likelihood: $\\max_f\\sum_{u\\in V}logP(N(u)|Z_u)$ Given a node U, we want to learn feature representations that are predictive of the nodes in its random walk neighborhood $N_R(u)$, wehere R is ramdom walk strategy Intuition: optimize embeddings to maximize the likelihood of random walk co-occurrences Negative sampling: $P(v|z_u) = softmax(z_u^Tz_v)\\rightarrow log(\\frac{exp(z_u^Tz_v)}{\\sum_{n\\in V}exp(z_u^Tz_n)})\\rightarrow log(\\sigma(z_u^Tz_v))-\\sum_{i=1}^k\\log(\\sigma(z_u^Tz_{n_i})), n_i~P_V, \\sigma Sigmoid$ NCE approximation How to select strategy Node2vec: local and global: BFS and DFS biased fixed-length random walk: 2-nd order random walks: return/ BFS/DFS two parameters: p and q parallelizable Embed entire graph simple idea: just sum up the node embeddings in the graph-\u003e classification Virtual node to represent the (sub)graph Anonymous walk embeddings represent the graph as a probability distribution over these walks Learn walk embeddings PageRank, random walk and embeddings $r = Mr$ for directed graph. eigen vector centrality: $\\lambda c = Ac$ for undirected graph. Random walk with restarts and personalized pagerank Personalized pagerank: ranks proximity of nodes to the teleport nodes S. idea every node has importance; importance gets evenly split among all edges and pushed to the neighbors. Matrix factorization above all random walk based methods\nGraph neural network Message passing and node classification Correlation: nearby nodes same class Homophily: the tendency of individuals to associate and bond with similar others. Influence: social connections can influence the individual charactersictis of a person Relational classification and Iterative classification Relational: class probability of node v is a weighted average of class probability of its neighbors. Iterative: use attributes and labels of neighbor nodes. Collective classification A dynamic programming approach answering probability queries in a graph iterative way: neighbor nodes talk to each other. I believe you belong to class 1 with likelihood. Graph neural networks Encoder: $z(v) = ENC(v)$, decoder: similarity function. can also embed subgraphs, graphs modern depplearning tool box is designed for simple sequences and grids. networks: arbitrary size, complex topological structure, no fixed ordering or reference point, dynamic Deep learning for graphs A naive appproach join adjacency matrix and features Challenges: no ordering nodes, how to use convolutiuon Solution: $\\sum W_i h_i$. Node’s neighborhood defines a computation graph. step 1, define computation graph step 2, propagat einformation. Aggregate neighbors: nodes aggregate information from their neighbors using neural network. Every node define a computation graph based on its neighborhood. Model can be of arbitrary depth. Only do for limited steps. layer-k embeddings get k-hop information. Permutation invariant How to train the model: feed embedding into any loss function and run SGD to train the parameters. Unsupervised settingL use the graph structure as the supervision. $L = \\sum_{z_u,z_v}CE(y_{u,v},DEC(z_u, z_v))$ A general perspective on GNN GNN layer = Message + Aggregation A single layer of GNN GraphSAGE: $h_v^{(l)} = \\sigma(w^{(l)}\\cdot CONCAT(h_v^{(l-1)}, AGG({h_u^{(l-1)},\\forall u \\in N(v)})))$ Graph attention networks: $h_v^{(l)} = \\sigma(\\sum_{u\\in N(v)}\\alpha_{vu}W^{(l)}h_u^{(l-1)})$, where $a_{vu}$ is attention weight. in graphSAGE, it is $\\frac{1}{|N(v)|}$ multi-head attention: $a_{vu}^1, a_{vu}^2,a_{vu}^3$ Stacking layers of a GNN GNN suffers from over-smoothing problem: all the node embeddings coverge to the same value. Why it happens: the receptive of the GNN is too big, so all the node receive the same information, so the final output tend to be the same. Explanation: two nodes have highly overlapped receptive fields, their embeddings are highly similar. Overcome: be cautious when adding GNN layers. Increase the expressive power within each GNN layer: linear aggregation to non-linear/ deep neural network. Add layers do not pass messages. Add skip connection in GNNs Graph augmentation Idea: Raw input graph $\\neq$ computational graph graph feature augmentation: input graph lacks features-\u003e feature computation graph structure augmentation: too sparse, too dense, too large-\u003eadd virtual nodes/edges it is unlikely the input graph to be the optimal computational graph.-\u003esample subgraphs Feature augmentation: input graph doesn’t have node fatures: assign constant values to nodes assign IDs to nodes and onr-hot encoding node cannot differentiate the circle and infinitely long series Use cycle count as node features:[0,0,0,1,0,0] and [0,0,0,0,1,0] Structure augmentation Add virtual edges: connect 2-hop neighbors via virtual edges intuition: adjacency matrix: $A+A^2$ Add virtual nodes: in a sparse graph the fdistance too large adding virtual nodes, distance will be two Node neighborhood sampling sample a node’s neighborhood for messgae passing Train a GNN prediction head: node-level tasks edge-level tasks graph-level tasks options for edge: concatenation of $h_u, h_v$ + Linear prediction dot product: $\\hat{y}_{uv} = h_u\\cdot h_v$ graph-level prediction make prediction using all node embeddings options global mean pooling global max pooling global sum pooling issues lose information hierarchical pooling: aggregate partially and then aggregate aggregations supervised vs unsupervised e.g. link prediction Unsupervised -\u003e self-supervised Setting up graph training each data point is a node, test data influence prediction on training data\noptions:\ntransductive settings: the graph structure can be observed over all stages inductive setting: different graphs for different stages link prediction: self-supervised\ntwo kinds of edges: message passing and predictive edges transductive or inductive setting tools: DeepSNAP, GraphGym\nHow expressive are graph neural networks Key idea: generate node embedding based on local network neighborhoods Intuition: Nodes aggregate information from neighbors using NN how powerful are GNNs proposed: GCN, GAT, graphsage, design space GCN: Meanpooling GraphSAGE: max pooling How well can a GNN distinguish different graph structures can GNN node embeddings distinguish different node’s local neighborhood structures? if so, when? if not when will a GNN fail? How a GNN captures local neighborhood structure?-\u003e computational graph. computational structure = rooted subtree structure Injective function: function: injective if it maps different elements into different outputs. it retains all information of the input Most expressuve GNN should map subtrees to the node embeddings injectively. If each step of GNN’s aggregation can fully retain the neighboring information the generated node embeddings can distinguish different rooted subtrees In another words, most expressive GNN would use an injective neighbor aggregation function at each step. Design the most expressive GNN key idea: expressive power of GNNs can be characterized by that of neighbor aggregation functions they use. ObeservationL neighbor aggregation can be abstracted as a function over a multi-set GCN: $Mean({x_u}{u\\in N(v)})$, GraphSAGE: $Max({x_u}{u\\in N(v)})$ GCN \u0026 GraphSAGE cannot distinguish different multi-sets with the same color proportion. Any injective multi-set function can be expressed as :$\\phi(\\sum_{x\\in S}f(x))$, where $\\phi, f$ refer to non-linear function Graph Isomorphism Network relation to WL kernel Heterogeneous graphs relational GCNs, Knowledge graph, embeddings for KG Completion $G = (V,E,R,T)$, nodes, edges, node type, relation type Relational GCn multiple edge types recap GCN: what if the GCN has multiple relation types Use different network weights for different relation types:$h_v^{(l+1)} = \\sigma(\\sum_{r\\in R}\\sum_{u \\in N_v^r}\\frac{1}{C_{v,r}}W_r^{(l)}h_u^{(l)}+W_0^{(l)}h_v^{(l)})$ Share weights across relations represent the matrix of each relation as a linear combination of basis transformations $W_r = \\sub_b a_{rb}V_b$, where $V_b$ is share across all relations, so each relation only needs to learn $a_{rb}$ link prediction: Knowledge graph completion KG in graph: entities, types, relationships. KG task: predict the missing tails. shallow encoding: the encoder is just an embedding lookup KG representation: (head relation, tail)=(h,r,t) given the (h,r,t), the embedding (h,r) should be close to t. scoring function: $f_r(h,t) = -||h+r-t||$ relations in a heterougeneous KG have different properties. relation patterns: symmetric, antisymmetric, inverse, composition, 1-to-N antisymmetric: TansE cannot model symmetric or antisymmetric, 1-to-N TransR: $h^\\prime = M_r h, t^\\prime = M_r t$ scoring function: $f_r(h,t) = -||h^\\prime+r-t^\\prime||$ DisMult: cannot model antisymmetric, inverse, compositional. scoring function (hrt) ComplEx Reasoning in KG Goal: How to perform multi-hop reasoning over KGs one-hop, path, conjunctive KG incompleteness is not able to identify all anser entities. Answering in KGs TransE: $a = v_a + r_1 + r_2 + \\cdots$, TransR, DistMult, ComplEx cannot handle the path queries KGs and Box embeddings: entity embeddings: entites are seen as a zero-volume boxes relation: each relation takes a box and produces a new box: Generative models for graphs motivation for graph generation: we want to generate realistic graph understand formulation of graphs predictions graph use same process to general novel graph instances Road map properties of real-world graphs traditional fraph generative models deep graph generative models propertites: degree distribution: probability a randomly chosen node has degree k clustering coefficient: how connected are i’s neighbors to each other connectivity: size of the largest connected component Path length: 90% within 8 hops-\u003e small world model Erdos-Renyi Random Graphs $G_{np}$ undirected graph on n nodes where each edge iid with probability -. propertities: Degree distribution: binomial distribution clustering coefficient path length Deep grah generation generate graph are similar to a given set of graphs goal-direted graph generation given $p_{data}(G)$ learn the distribution $p_{model}(G)$ sample $p_{model}(G)$ the most common approach: sample $z_i$ and transform to graph $x$ with $f(z_i)$ auto-regressive models: $p_{model}(x;\\theta)$ is used for both density estimation and sampling. (VAE and GAN have 2 or more models, each playing one of the rules) idea: chain rule. $p_{model}(x;\\theta) = \\prod_{t=1}^n p_{model}(x_t|x_1,x_2, \\cdots, x_{t-1};\\theta)$ where $x_t$ will be the t-th action (add node, add edge) GraphRNN generating graphs via sequentially adding nodes and edges.\nnode-level: add nodes, one at a time edge-level: add edges each node step is an edge sequences. each time add a new node, decision on edge connection to every former nodes has to be made. Summary: a graph + a node ordering = a sequence of sequences. transform to a sequence generation problem-\u003e RNN has a nodel-level RNN adn an edge-level RNN scaling up by Breadth First Search (BFS)\nCompare sets of training graph statistics and generated graph statistics\nhow to compare two graph statistics: Earth mover distance how to compare sets of graph statistics: Maximum Mean Discrepancy Earth mover distance: measure the minimum effort that move earth from one pile to the other.\nMaximum Mean Discrepancy:\nApplication of deep graph generation molecule generation GCPN: use reinforcement learning to decide whether take action to link two nodes. Position-aware GNN structure-aware task position-aware task: use anchor nodes to locate nodes in the graph more anchors can better characterize node position in different regions of the graph. Identity-aware GNN assign a color to the node we want to embed heterogenous message passing: another GNN applies different message to nodes with different colorings. scaling up GNNS when nodes too many, hard to train GraphSAGE neighbor sampling randomly sample M nodes, get k-hop neighborhood of each node, tehn construct computational graph to train. sampling at most H neighbors at each hop to reduce computaion complexity. cluster GCN sample a small subgraph of the large graph and perform layer-wise node embeddings simplifying GCN ",
+  "wordCount" : "2297",
+  "inLanguage": "en",
+  "datePublished": "2022-06-10T18:29:35Z",
+  "dateModified": "2022-06-10T18:29:35Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x423xu.github.io/posts/2022-06-10-graph-cs224w/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xiaoyu's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x423xu.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://x423xu.github.io/" accesskey="h" title="Xiaoyu&#39;s blog (Alt + H)">Xiaoyu&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://x423xu.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://x423xu.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://x423xu.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      graph and machine learning
+    </h1>
+    <div class="post-meta"><span title='2022-06-10 18:29:35 +0000 UTC'>June 10, 2022</span>&nbsp;·&nbsp;11 min
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#why-graphs" aria-label="Why graphs">Why graphs</a></li>
+                <li>
+                    <a href="#applications-of-graph-ml" aria-label="Applications of Graph ML">Applications of Graph ML</a></li>
+                <li>
+                    <a href="#choice-of-graph-representation" aria-label="Choice of Graph representation">Choice of Graph representation</a></li>
+                <li>
+                    <a href="#traditional-methods-node" aria-label="Traditional methods: Node">Traditional methods: Node</a><ul>
+                        
+                <li>
+                    <a href="#node-level" aria-label="Node-level">Node-level</a></li>
+                <li>
+                    <a href="#link-level" aria-label="Link-level">Link-level</a></li>
+                <li>
+                    <a href="#graph-level" aria-label="graph-level">graph-level</a></li></ul>
+                </li>
+                <li>
+                    <a href="#node-embedding" aria-label="Node embedding">Node embedding</a></li>
+                <li>
+                    <a href="#embed-entire-graph" aria-label="Embed entire graph">Embed entire graph</a></li>
+                <li>
+                    <a href="#pagerank-random-walk-and-embeddings" aria-label="PageRank, random walk and embeddings">PageRank, random walk and embeddings</a></li>
+                <li>
+                    <a href="#random-walk-with-restarts-and-personalized-pagerank" aria-label="Random walk with restarts and personalized pagerank">Random walk with restarts and personalized pagerank</a></li>
+                <li>
+                    <a href="#matrix-factorization" aria-label="Matrix factorization">Matrix factorization</a></li>
+                <li>
+                    <a href="#graph-neural-network" aria-label="Graph neural network">Graph neural network</a></li>
+                <li>
+                    <a href="#message-passing-and-node-classification" aria-label="Message passing and node classification">Message passing and node classification</a></li>
+                <li>
+                    <a href="#relational-classification-and-iterative-classification" aria-label="Relational classification and Iterative classification">Relational classification and Iterative classification</a></li>
+                <li>
+                    <a href="#collective-classification" aria-label="Collective classification">Collective classification</a></li>
+                <li>
+                    <a href="#graph-neural-networks" aria-label="Graph neural networks">Graph neural networks</a></li>
+                <li>
+                    <a href="#deep-learning-for-graphs" aria-label="Deep learning for graphs">Deep learning for graphs</a></li>
+                <li>
+                    <a href="#a-general-perspective-on-gnn" aria-label="A general perspective on GNN">A general perspective on GNN</a></li>
+                <li>
+                    <a href="#a-single-layer-of-gnn" aria-label="A single layer of GNN">A single layer of GNN</a></li>
+                <li>
+                    <a href="#stacking-layers-of-a-gnn" aria-label="Stacking layers of a GNN">Stacking layers of a GNN</a></li>
+                <li>
+                    <a href="#graph-augmentation" aria-label="Graph augmentation">Graph augmentation</a></li>
+                <li>
+                    <a href="#train-a-gnn" aria-label="Train a GNN">Train a GNN</a></li>
+                <li>
+                    <a href="#setting-up-graph-training" aria-label="Setting up graph training">Setting up graph training</a></li>
+                <li>
+                    <a href="#how-expressive-are-graph-neural-networks" aria-label="How expressive are graph neural networks">How expressive are graph neural networks</a><ul>
+                        
+                <li>
+                    <a href="#how-powerful-are-gnns" aria-label="how powerful are GNNs">how powerful are GNNs</a></li></ul>
+                </li>
+                <li>
+                    <a href="#design-the-most-expressive-gnn" aria-label="Design the most expressive GNN">Design the most expressive GNN</a><ul>
+                        
+                <li>
+                    <a href="#relation-to-wl-kernel" aria-label="relation to WL kernel">relation to WL kernel</a></li></ul>
+                </li>
+                <li>
+                    <a href="#heterogeneous-graphs" aria-label="Heterogeneous graphs">Heterogeneous graphs</a></li>
+                <li>
+                    <a href="#knowledge-graph-completion" aria-label="Knowledge graph completion">Knowledge graph completion</a></li>
+                <li>
+                    <a href="#reasoning-in-kg" aria-label="Reasoning in KG">Reasoning in KG</a></li>
+                <li>
+                    <a href="#answering-in-kgs" aria-label="Answering in KGs">Answering in KGs</a></li>
+                <li>
+                    <a href="#kgs-and-box-embeddings" aria-label="KGs and Box embeddings:">KGs and Box embeddings:</a></li>
+                <li>
+                    <a href="#generative-models-for-graphs" aria-label="Generative models for graphs">Generative models for graphs</a></li>
+                <li>
+                    <a href="#erdos-renyi-random-graphs" aria-label="Erdos-Renyi Random Graphs">Erdos-Renyi Random Graphs</a></li>
+                <li>
+                    <a href="#deep-grah-generation" aria-label="Deep grah generation">Deep grah generation</a><ul>
+                        
+                <li>
+                    <a href="#graphrnn" aria-label="GraphRNN">GraphRNN</a></li>
+                <li>
+                    <a href="#application-of-deep-graph-generation" aria-label="Application of deep graph generation">Application of deep graph generation</a></li></ul>
+                </li>
+                <li>
+                    <a href="#position-aware-gnn" aria-label="Position-aware GNN">Position-aware GNN</a></li>
+                <li>
+                    <a href="#identity-aware-gnn" aria-label="Identity-aware GNN">Identity-aware GNN</a></li>
+                <li>
+                    <a href="#scaling-up-gnns" aria-label="scaling up GNNS">scaling up GNNS</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Jure Leskovec, Stanford CS224W: Machine Learning with Graphs, http://cs224w.stanford.edu
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="why-graphs">Why graphs<a hidden class="anchor" aria-hidden="true" href="#why-graphs">#</a></h1>
+<ul>
+<li>relations of entities</li>
+<li>Similar data points</li>
+<li>arbitrary sizes, no spatial index,</li>
+<li>no reference order</li>
+<li>representation learning</li>
+<li>Map nodes to d-dimensional embeddings-&gt; similar nodes in the network are embedded close together</li>
+</ul>
+<h1 id="applications-of-graph-ml">Applications of Graph ML<a hidden class="anchor" aria-hidden="true" href="#applications-of-graph-ml">#</a></h1>
+<ul>
+<li>different tasks:
+<ul>
+<li>Node classification</li>
+<li>Link prediction: knowledge graph completion</li>
+<li>Graph classification: molecule property prediction</li>
+<li>Clustering</li>
+<li>Graph generation</li>
+<li>Graph evolution: physical simulation</li>
+</ul>
+</li>
+<li>Examples:
+<ul>
+<li>node-level: Protein folding</li>
+<li>Recommender system: recommend related pins to users by edge level classification</li>
+<li>subgraph-level: traffic prediction: nodes: road segments, edges: connectivity between nodes-&gt; predict time arrival etc</li>
+<li>graph-level: drug discovery: nodes: atoms, edges: chemical bonds. graph generation, generate new molecules in a targeted way.</li>
+<li>physicalsimulation: nodes: particles, edges interactions between particles-&gt; predict how a graph will evolve over.</li>
+</ul>
+</li>
+</ul>
+<h1 id="choice-of-graph-representation">Choice of Graph representation<a hidden class="anchor" aria-hidden="true" href="#choice-of-graph-representation">#</a></h1>
+<ul>
+<li>Node degree (ubdirected): the number of edges adjacent to node i</li>
+<li>in-degree, out-degree(directed)</li>
+<li>Bipartite graph: two disjoint sets U and V. e. author to papers. two different type of nodes</li>
+<li>Adjacency matrix. For a directed graph, adjacency matrix is not symmetric</li>
+<li>Adjacency sparse for most real-word networks.</li>
+<li>represent as a list of edges.</li>
+<li>represent as an adjacency list</li>
+<li>node and edge attributes: weight, ranking, type, sign, etc.</li>
+<li>weighted and unweighted adjacency matrix.</li>
+<li>self-loop node, multigraph-&gt;adjacency matrix different.</li>
+<li>connected graph: any two nodes canbe joined by a graph.</li>
+<li>A graph with mutiple components: adjacency matrix can be written in a block way.</li>
+<li>Strongly connected directed graph: has a directed path to every other node. weakly connected directed: is connected if disregard the edge direction</li>
+<li>strongly connected directed components: in the component, it is strongly connected.</li>
+</ul>
+<h1 id="traditional-methods-node">Traditional methods: Node<a hidden class="anchor" aria-hidden="true" href="#traditional-methods-node">#</a></h1>
+<ul>
+<li>hand-designed features</li>
+</ul>
+<h2 id="node-level">Node-level<a hidden class="anchor" aria-hidden="true" href="#node-level">#</a></h2>
+<ol>
+<li>node degree</li>
+<li>node centrality:
+<ul>
+<li>A node is important if surrounded by important neighboring nodes $u\in N(v)$
+$$c_v = \frac{1}{\lambda}\sum_{u\in N(v)}c_u \rightarrow \lambda \mathbb{c}=\mathbb{Ac}$$
+Where &amp;A&amp; is adjacency matrix.</li>
+<li>Clossness centrality:</li>
+<li>clustering coefficient: count triangles that a node touches</li>
+</ul>
+</li>
+<li>graphlets:</li>
+</ol>
+<ul>
+<li>graph degree vector: counts the occurence of the graphlets</li>
+</ul>
+<h2 id="link-level">Link-level<a hidden class="anchor" aria-hidden="true" href="#link-level">#</a></h2>
+<ul>
+<li>the key is design of the feature of pair nodes.</li>
+<li>Links missing prediction</li>
+<li>links overtime prediction</li>
+<li>compute score c(x,y)-&gt; sort score-&gt; keep top k</li>
+<li>representation:
+<ul>
+<li>shortest path between two nodes.</li>
+<li>common neighbors between two nodes</li>
+<li>jaccard&rsquo;s coefficient</li>
+<li>Adamic-adar index</li>
+</ul>
+</li>
+<li>Global neighborhood overlap:
+<ul>
+<li>computing number of paths between two nodes: can be obtained by computing power of adjacency matrix</li>
+<li>power: $P^{(K)} = A^K$-&gt; means # paths of length K between $u$ and $v$.
+<img loading="lazy" src="/assets/images/paths.png" alt="paths"  />
+</li>
+<li>katz index:$S_{v_1 v_2} = \sum_{l=1}^{\inf}\beta^lA_{v_1 v_2}^l$</li>
+<li>katz index matrix: $S=\sum_{i=1}^{\inf}\beta^i A^i= (I-\beta A)^{-1}-I$</li>
+</ul>
+</li>
+</ul>
+<h2 id="graph-level">graph-level<a hidden class="anchor" aria-hidden="true" href="#graph-level">#</a></h2>
+<ul>
+<li>features to characterize the structure of an entire graph</li>
+<li>Kernel methods: $K(a,b) = \phi(a)^T\phi(b)$. kernel matrix K has to be semi-definite and can be orthogonally decomposed.</li>
+<li>goal: design graph feature vector $\phi(G)$</li>
+<li>Key idea: bag of words for a graph.</li>
+<li>bag of degrees nodes</li>
+<li>graphlet kernel: # different graphlets in a graph.
+<ul>
+<li>graphlets list(g1,g2,g3,&hellip;) (not need to be connected different from nodel-level graphlets which has to be connected)
+-limitations: counting graphlets is expensive</li>
+</ul>
+</li>
+<li>weisfeiler-Lehman kernel
+<ul>
+<li>goal: design an efficient graph feature desciptor</li>
+<li>idea: use neighborhood structure to iteratively enrich node vocabulary.-&gt; color refinement</li>
+<li>$c^{k+1}(v) = HASH({c^{k}(v), {c^k(u)}}_{u\in N(v)})$. HASH maps input to colors. K steps summarize the structure of k-hop neighborhood</li>
+</ul>
+</li>
+</ul>
+<h1 id="node-embedding">Node embedding<a hidden class="anchor" aria-hidden="true" href="#node-embedding">#</a></h1>
+<p>eg. 2d embedding of nodes of the Zachary&rsquo;s Karate Club network from <a href="https://scholar.google.ca/scholar?q=Deepwalk:Online+learning+of+social+representations&amp;hl=zh-CN&amp;as_sdt=0&amp;as_vis=1&amp;oi=scholart">&ldquo;Deepwalk:Online learning of social representations&rdquo;</a></p>
+<ul>
+<li>key idea: define a node similarity function</li>
+<li>$P(v|z_u)$ the probability of visiting node v on random walk starting from the node u.</li>
+<li>Softmax function/Sigmoid</li>
+<li>Random walk; $z_u^Tz_v$ probability u and v cooccur at a random walk</li>
+<li>unsupervised feature learning: maximize log-likelihood: $\max_f\sum_{u\in V}logP(N(u)|Z_u)$</li>
+<li>Given a node U, we want to learn feature representations that are predictive of the nodes in its random walk neighborhood $N_R(u)$, wehere R is ramdom walk strategy</li>
+<li>Intuition: optimize embeddings to maximize the likelihood of random walk co-occurrences</li>
+<li>Negative sampling: $P(v|z_u) = softmax(z_u^Tz_v)\rightarrow log(\frac{exp(z_u^Tz_v)}{\sum_{n\in V}exp(z_u^Tz_n)})\rightarrow log(\sigma(z_u^Tz_v))-\sum_{i=1}^k\log(\sigma(z_u^Tz_{n_i})), n_i~P_V, \sigma Sigmoid$</li>
+<li>NCE approximation</li>
+<li>How to select strategy
+<ul>
+<li>Node2vec:
+<ul>
+<li>local and global: BFS and DFS</li>
+<li>biased fixed-length random walk:
+<ul>
+<li>2-nd order random walks: return/ BFS/DFS</li>
+<li>two parameters: p and q</li>
+<li>parallelizable</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="embed-entire-graph">Embed entire graph<a hidden class="anchor" aria-hidden="true" href="#embed-entire-graph">#</a></h1>
+<ul>
+<li>simple idea: just sum up the node embeddings in the graph-&gt; classification</li>
+<li>Virtual node to represent the (sub)graph</li>
+<li>Anonymous walk embeddings
+<ul>
+<li>represent the graph as a probability distribution over these walks</li>
+<li>Learn walk embeddings</li>
+</ul>
+</li>
+</ul>
+<h1 id="pagerank-random-walk-and-embeddings">PageRank, random walk and embeddings<a hidden class="anchor" aria-hidden="true" href="#pagerank-random-walk-and-embeddings">#</a></h1>
+<ul>
+<li>$r = Mr$ for directed graph.</li>
+<li>eigen vector centrality: $\lambda c = Ac$ for undirected graph.</li>
+</ul>
+<h1 id="random-walk-with-restarts-and-personalized-pagerank">Random walk with restarts and personalized pagerank<a hidden class="anchor" aria-hidden="true" href="#random-walk-with-restarts-and-personalized-pagerank">#</a></h1>
+<ul>
+<li>Personalized pagerank: ranks proximity of nodes to the teleport nodes S.</li>
+<li>idea every node has importance; importance gets evenly split among all edges and pushed to the neighbors.</li>
+</ul>
+<h1 id="matrix-factorization">Matrix factorization<a hidden class="anchor" aria-hidden="true" href="#matrix-factorization">#</a></h1>
+<p><strong>above all random walk based methods</strong></p>
+<hr>
+<hr>
+<h1 id="graph-neural-network">Graph neural network<a hidden class="anchor" aria-hidden="true" href="#graph-neural-network">#</a></h1>
+<h1 id="message-passing-and-node-classification">Message passing and node classification<a hidden class="anchor" aria-hidden="true" href="#message-passing-and-node-classification">#</a></h1>
+<ul>
+<li>Correlation: nearby nodes same class</li>
+<li>Homophily: the tendency of individuals to associate and bond with similar others.
+Influence: social connections can influence the individual charactersictis of a person</li>
+</ul>
+<h1 id="relational-classification-and-iterative-classification">Relational classification and Iterative classification<a hidden class="anchor" aria-hidden="true" href="#relational-classification-and-iterative-classification">#</a></h1>
+<ul>
+<li>Relational: class probability of node v is a weighted average of class probability of its neighbors.</li>
+<li>Iterative: use attributes and labels of neighbor nodes.</li>
+</ul>
+<h1 id="collective-classification">Collective classification<a hidden class="anchor" aria-hidden="true" href="#collective-classification">#</a></h1>
+<ul>
+<li>A dynamic programming approach answering probability queries in a graph</li>
+<li>iterative way: neighbor nodes talk to each other.</li>
+<li>I believe you belong to class 1 with likelihood.</li>
+</ul>
+<h1 id="graph-neural-networks">Graph neural networks<a hidden class="anchor" aria-hidden="true" href="#graph-neural-networks">#</a></h1>
+<ul>
+<li>Encoder: $z(v) = ENC(v)$, decoder: similarity function.</li>
+<li>can also embed subgraphs, graphs</li>
+<li>modern depplearning tool box is designed for simple sequences and grids.</li>
+<li>networks: arbitrary size, complex topological structure, no fixed ordering or reference point, dynamic</li>
+</ul>
+<h1 id="deep-learning-for-graphs">Deep learning for graphs<a hidden class="anchor" aria-hidden="true" href="#deep-learning-for-graphs">#</a></h1>
+<ul>
+<li>A naive appproach
+<ul>
+<li>join adjacency matrix and features</li>
+</ul>
+</li>
+<li>Challenges: no ordering nodes, how to use convolutiuon</li>
+<li>Solution: $\sum W_i h_i$. Node&rsquo;s neighborhood defines a computation graph.
+<ul>
+<li>step 1, define computation graph</li>
+<li>step 2, propagat einformation.</li>
+</ul>
+</li>
+<li>Aggregate neighbors: nodes aggregate information from their neighbors using neural network.</li>
+<li>Every node define a computation graph based on its neighborhood.</li>
+<li>Model can be of arbitrary depth. Only do for limited steps. layer-k embeddings get k-hop information.</li>
+<li>Permutation invariant</li>
+<li>How to train the model: feed embedding into any loss function and run SGD to train the parameters.</li>
+<li>Unsupervised settingL use the graph structure as the supervision. $L = \sum_{z_u,z_v}CE(y_{u,v},DEC(z_u, z_v))$</li>
+</ul>
+<h1 id="a-general-perspective-on-gnn">A general perspective on GNN<a hidden class="anchor" aria-hidden="true" href="#a-general-perspective-on-gnn">#</a></h1>
+<ul>
+<li>GNN layer = Message + Aggregation</li>
+</ul>
+<h1 id="a-single-layer-of-gnn">A single layer of GNN<a hidden class="anchor" aria-hidden="true" href="#a-single-layer-of-gnn">#</a></h1>
+<ul>
+<li>GraphSAGE: $h_v^{(l)} = \sigma(w^{(l)}\cdot CONCAT(h_v^{(l-1)}, AGG({h_u^{(l-1)},\forall u \in N(v)})))$</li>
+<li>Graph attention networks: $h_v^{(l)} = \sigma(\sum_{u\in N(v)}\alpha_{vu}W^{(l)}h_u^{(l-1)})$, where $a_{vu}$ is attention weight. in graphSAGE, it is $\frac{1}{|N(v)|}$</li>
+<li>multi-head attention: $a_{vu}^1, a_{vu}^2,a_{vu}^3$</li>
+</ul>
+<h1 id="stacking-layers-of-a-gnn">Stacking layers of a GNN<a hidden class="anchor" aria-hidden="true" href="#stacking-layers-of-a-gnn">#</a></h1>
+<ul>
+<li>GNN suffers from over-smoothing problem: all the node embeddings coverge to the same value.</li>
+<li>Why it happens: the receptive of the GNN is too big, so all the node receive the same information, so the final output tend to be the same.
+<img loading="lazy" src="/assets/images/over-smoothing.png" alt="over-smoothing"  />
+</li>
+<li>Explanation: two nodes have highly overlapped receptive fields, their embeddings are highly similar.</li>
+<li>Overcome: be cautious when adding GNN layers.</li>
+<li>Increase the expressive power within each GNN layer: linear aggregation to non-linear/ deep neural network.</li>
+<li>Add layers do not pass messages.</li>
+<li>Add skip connection in GNNs</li>
+</ul>
+<h1 id="graph-augmentation">Graph augmentation<a hidden class="anchor" aria-hidden="true" href="#graph-augmentation">#</a></h1>
+<ul>
+<li>Idea: Raw input graph $\neq$ computational graph
+<ul>
+<li>graph feature augmentation: input graph lacks features-&gt; feature computation</li>
+<li>graph structure augmentation: too sparse, too dense, too large-&gt;add virtual nodes/edges</li>
+<li>it is unlikely the input graph to be the optimal computational graph.-&gt;sample subgraphs</li>
+</ul>
+</li>
+<li>Feature augmentation:
+<ul>
+<li>input graph doesn&rsquo;t have node fatures:
+<ul>
+<li>assign constant values to nodes</li>
+<li>assign IDs to nodes and onr-hot encoding</li>
+</ul>
+</li>
+<li>node cannot differentiate the circle and infinitely long series
+<ul>
+<li>Use cycle count as node features:[0,0,0,1,0,0] and [0,0,0,0,1,0]</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Structure augmentation
+<ul>
+<li>Add virtual edges:
+<ul>
+<li>connect 2-hop neighbors via virtual edges</li>
+<li>intuition: adjacency matrix: $A+A^2$</li>
+</ul>
+</li>
+<li>Add virtual nodes:
+<ul>
+<li>in a sparse graph the fdistance too large</li>
+<li>adding virtual nodes, distance will be two</li>
+</ul>
+</li>
+<li>Node neighborhood sampling
+<ul>
+<li>sample a node&rsquo;s neighborhood for messgae passing</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="train-a-gnn">Train a GNN<a hidden class="anchor" aria-hidden="true" href="#train-a-gnn">#</a></h1>
+<p><img loading="lazy" src="/assets/images/train-gnn.png" alt="training-pipeline"  />
+</p>
+<ul>
+<li>prediction head:
+<ul>
+<li>node-level tasks</li>
+<li>edge-level tasks</li>
+<li>graph-level tasks</li>
+</ul>
+</li>
+<li>options for edge:
+<ol>
+<li>concatenation of $h_u, h_v$ + Linear prediction</li>
+<li>dot product: $\hat{y}_{uv} = h_u\cdot h_v$</li>
+</ol>
+</li>
+<li>graph-level prediction
+<ul>
+<li>make prediction using all node embeddings</li>
+<li>options
+<ul>
+<li>global mean pooling</li>
+<li>global max pooling</li>
+<li>global sum pooling</li>
+</ul>
+</li>
+<li>issues
+<ul>
+<li>lose information</li>
+</ul>
+</li>
+<li>hierarchical pooling: aggregate partially and then aggregate aggregations</li>
+</ul>
+</li>
+<li>supervised vs unsupervised
+<ul>
+<li>e.g. link prediction</li>
+</ul>
+</li>
+<li>Unsupervised -&gt; self-supervised</li>
+</ul>
+<h1 id="setting-up-graph-training">Setting up graph training<a hidden class="anchor" aria-hidden="true" href="#setting-up-graph-training">#</a></h1>
+<ul>
+<li>
+<p>each data point is a node, test data influence prediction on training data</p>
+</li>
+<li>
+<p>options:</p>
+<ul>
+<li>transductive settings: the graph structure can be observed over all stages</li>
+<li>inductive setting: different graphs for different stages</li>
+</ul>
+</li>
+<li>
+<p>link prediction: self-supervised</p>
+<ul>
+<li>two kinds of edges: message passing and predictive edges</li>
+<li>transductive or inductive setting</li>
+</ul>
+</li>
+<li>
+<p>tools: <a href="https://github.com/snap-stanford/deepsnap">DeepSNAP</a>, <a href="https://github.com/snap-stanford/GraphGym">GraphGym</a></p>
+</li>
+</ul>
+<h1 id="how-expressive-are-graph-neural-networks">How expressive are graph neural networks<a hidden class="anchor" aria-hidden="true" href="#how-expressive-are-graph-neural-networks">#</a></h1>
+<ul>
+<li>Key idea: generate node embedding based on local network neighborhoods</li>
+<li>Intuition: Nodes aggregate information from neighbors using NN</li>
+</ul>
+<h2 id="how-powerful-are-gnns">how powerful are GNNs<a hidden class="anchor" aria-hidden="true" href="#how-powerful-are-gnns">#</a></h2>
+<ul>
+<li>proposed: GCN, GAT, graphsage, design space
+<ul>
+<li>GCN: Meanpooling</li>
+<li>GraphSAGE: max pooling</li>
+</ul>
+</li>
+<li>How  well can a GNN distinguish different graph structures
+<ul>
+<li>can GNN node embeddings distinguish different node&rsquo;s local neighborhood structures? if so, when? if not when will a GNN fail?</li>
+<li>How a GNN captures local neighborhood structure?-&gt; computational graph.</li>
+<li>computational structure = rooted subtree structure</li>
+</ul>
+</li>
+<li>Injective function:
+<ul>
+<li>function: injective if it maps different elements into different outputs.</li>
+<li>it retains all information of the input</li>
+</ul>
+</li>
+<li>Most expressuve GNN should map subtrees to the node embeddings injectively.</li>
+<li>If each step of GNN&rsquo;s aggregation can fully retain the neighboring information the generated node embeddings can distinguish different rooted subtrees</li>
+<li>In another words, most expressive GNN would use an injective neighbor aggregation function at each step.</li>
+</ul>
+<h1 id="design-the-most-expressive-gnn">Design the most expressive GNN<a hidden class="anchor" aria-hidden="true" href="#design-the-most-expressive-gnn">#</a></h1>
+<ul>
+<li>key idea: expressive power of GNNs can be characterized by that of neighbor aggregation functions they use.</li>
+<li>ObeservationL neighbor aggregation can be abstracted as a function over a multi-set</li>
+<li>GCN: $Mean({x_u}<em>{u\in N(v)})$, GraphSAGE: $Max({x_u}</em>{u\in N(v)})$</li>
+<li>GCN &amp; GraphSAGE cannot distinguish different multi-sets with the same color proportion.</li>
+<li>Any injective multi-set function can be expressed as :$\phi(\sum_{x\in S}f(x))$, where $\phi, f$ refer to non-linear function</li>
+<li>Graph Isomorphism Network</li>
+</ul>
+<h2 id="relation-to-wl-kernel">relation to WL kernel<a hidden class="anchor" aria-hidden="true" href="#relation-to-wl-kernel">#</a></h2>
+<p><img loading="lazy" src="/assets/images/WL-kernel.png" alt="wl-kernel"  />
+</p>
+<h1 id="heterogeneous-graphs">Heterogeneous graphs<a hidden class="anchor" aria-hidden="true" href="#heterogeneous-graphs">#</a></h1>
+<ul>
+<li>relational GCNs, Knowledge graph, embeddings for KG Completion</li>
+<li>$G = (V,E,R,T)$, nodes, edges, node type, relation type</li>
+<li>Relational GCn
+<ul>
+<li>multiple edge types</li>
+<li>recap GCN: <img loading="lazy" src="/assets/images/GCN.png" alt="GCN"  />
+</li>
+<li>what if the GCN has multiple relation types</li>
+<li>Use different network weights for different relation types:$h_v^{(l+1)} = \sigma(\sum_{r\in R}\sum_{u \in N_v^r}\frac{1}{C_{v,r}}W_r^{(l)}h_u^{(l)}+W_0^{(l)}h_v^{(l)})$</li>
+</ul>
+</li>
+<li>Share weights across relations
+<ul>
+<li>represent the matrix of each relation as a linear combination of basis transformations</li>
+<li>$W_r = \sub_b a_{rb}V_b$, where $V_b$ is share across all relations, so each relation only needs to learn $a_{rb}$</li>
+</ul>
+</li>
+<li>link prediction:
+<img loading="lazy" src="/assets/images/rgcn-link-prediction.png" alt="rgcn-link-prediction"  />
+</li>
+</ul>
+<h1 id="knowledge-graph-completion">Knowledge graph completion<a hidden class="anchor" aria-hidden="true" href="#knowledge-graph-completion">#</a></h1>
+<ul>
+<li>KG in graph: entities, types, relationships.</li>
+<li>KG task: predict the missing tails.</li>
+<li>shallow encoding: the encoder is just an embedding lookup</li>
+<li>KG representation: (head relation, tail)=(h,r,t)
+<ul>
+<li>given the (h,r,t), the embedding (h,r) should be close to t.</li>
+<li>scoring function: $f_r(h,t) = -||h+r-t||$</li>
+</ul>
+</li>
+<li>relations in a heterougeneous KG have different properties.</li>
+<li>relation patterns:
+<ul>
+<li>symmetric, antisymmetric, inverse, composition, 1-to-N</li>
+</ul>
+</li>
+<li>antisymmetric:
+<ul>
+<li>TansE cannot model symmetric or antisymmetric, 1-to-N</li>
+</ul>
+</li>
+<li>TransR:
+<ul>
+<li>$h^\prime = M_r h, t^\prime = M_r t$</li>
+<li>scoring function: $f_r(h,t) = -||h^\prime+r-t^\prime||$</li>
+</ul>
+</li>
+<li>DisMult: cannot model antisymmetric, inverse, compositional. scoring function (hrt)</li>
+<li>ComplEx</li>
+</ul>
+<p><img loading="lazy" src="/assets/images/KG.png" alt="KG"  />
+</p>
+<h1 id="reasoning-in-kg">Reasoning in KG<a hidden class="anchor" aria-hidden="true" href="#reasoning-in-kg">#</a></h1>
+<ul>
+<li>Goal: How to perform multi-hop reasoning over KGs</li>
+<li>one-hop, path, conjunctive</li>
+<li>KG incompleteness
+is not able to identify all anser entities.</li>
+</ul>
+<h1 id="answering-in-kgs">Answering in KGs<a hidden class="anchor" aria-hidden="true" href="#answering-in-kgs">#</a></h1>
+<ul>
+<li>TransE: $a = v_a + r_1 + r_2 + \cdots$, TransR, DistMult, ComplEx cannot handle the path queries</li>
+</ul>
+<h1 id="kgs-and-box-embeddings">KGs and Box embeddings:<a hidden class="anchor" aria-hidden="true" href="#kgs-and-box-embeddings">#</a></h1>
+<ul>
+<li>entity embeddings: entites are seen as a zero-volume boxes</li>
+<li>relation: each relation takes a box and produces a new box:</li>
+</ul>
+<h1 id="generative-models-for-graphs">Generative models for graphs<a hidden class="anchor" aria-hidden="true" href="#generative-models-for-graphs">#</a></h1>
+<ul>
+<li>motivation for graph generation: we want to generate realistic graph
+<ul>
+<li>understand formulation of graphs</li>
+<li>predictions graph</li>
+<li>use same process to general novel graph instances</li>
+</ul>
+</li>
+<li>Road map
+<ul>
+<li>properties of real-world graphs</li>
+<li>traditional fraph generative models</li>
+<li>deep graph generative models</li>
+</ul>
+</li>
+<li>propertites:
+<ul>
+<li>degree distribution: probability a randomly chosen node has degree k</li>
+<li>clustering coefficient: how connected are i&rsquo;s neighbors to each other</li>
+<li>connectivity: size of the largest connected component</li>
+<li>Path length: 90% within 8 hops-&gt; small world model</li>
+</ul>
+</li>
+</ul>
+<h1 id="erdos-renyi-random-graphs">Erdos-Renyi Random Graphs<a hidden class="anchor" aria-hidden="true" href="#erdos-renyi-random-graphs">#</a></h1>
+<ul>
+<li>$G_{np}$ undirected graph on n nodes where each edge iid with probability -.</li>
+<li>propertities:
+<ul>
+<li>Degree distribution: binomial distribution</li>
+<li>clustering coefficient</li>
+<li>path length</li>
+</ul>
+</li>
+</ul>
+<h1 id="deep-grah-generation">Deep grah generation<a hidden class="anchor" aria-hidden="true" href="#deep-grah-generation">#</a></h1>
+<ol>
+<li>generate graph are similar to a given set of graphs</li>
+<li>goal-direted graph generation</li>
+</ol>
+<ul>
+<li>given $p_{data}(G)$ learn the distribution $p_{model}(G)$</li>
+<li>sample $p_{model}(G)$
+<ul>
+<li>the most common approach: sample $z_i$ and transform to graph $x$ with $f(z_i)$</li>
+<li>auto-regressive models: $p_{model}(x;\theta)$ is used for both density estimation and sampling. (VAE and GAN have 2 or more models, each playing one of the rules)
+<ul>
+<li>idea: chain rule. $p_{model}(x;\theta) = \prod_{t=1}^n p_{model}(x_t|x_1,x_2, \cdots, x_{t-1};\theta)$ where $x_t$ will be the t-th action (add node, add edge)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="graphrnn">GraphRNN<a hidden class="anchor" aria-hidden="true" href="#graphrnn">#</a></h2>
+<ul>
+<li>
+<p>generating graphs via sequentially adding nodes and edges.</p>
+<ul>
+<li>node-level: add nodes, one at a time</li>
+<li>edge-level: add edges</li>
+<li>each node step is an edge sequences. each time add a new node, decision on edge connection to every former nodes has to be made.</li>
+<li>Summary: a graph + a node ordering = a sequence of sequences.</li>
+<li>transform to a sequence generation problem-&gt; RNN</li>
+<li>has a nodel-level RNN adn an edge-level RNN</li>
+</ul>
+</li>
+<li>
+<p>scaling up by Breadth First Search (BFS)</p>
+</li>
+<li>
+<p>Compare sets of training graph statistics and generated graph statistics</p>
+<ul>
+<li>how to compare two graph statistics: Earth mover distance</li>
+<li>how to compare sets of graph statistics: Maximum Mean Discrepancy</li>
+</ul>
+</li>
+<li>
+<p>Earth mover distance: measure the minimum effort that move earth from one pile to the other.</p>
+</li>
+<li>
+<p>Maximum Mean Discrepancy:</p>
+</li>
+</ul>
+<h2 id="application-of-deep-graph-generation">Application of deep graph generation<a hidden class="anchor" aria-hidden="true" href="#application-of-deep-graph-generation">#</a></h2>
+<ul>
+<li>molecule generation</li>
+<li>GCPN: use reinforcement learning to decide whether take action to link two nodes.</li>
+</ul>
+<h1 id="position-aware-gnn">Position-aware GNN<a hidden class="anchor" aria-hidden="true" href="#position-aware-gnn">#</a></h1>
+<ul>
+<li>structure-aware task</li>
+<li>position-aware task: use anchor nodes to locate nodes in the graph
+<ul>
+<li>more anchors can better characterize node position in different regions of the graph.</li>
+</ul>
+</li>
+</ul>
+<h1 id="identity-aware-gnn">Identity-aware GNN<a hidden class="anchor" aria-hidden="true" href="#identity-aware-gnn">#</a></h1>
+<ul>
+<li>assign a color to the node we want to embed</li>
+<li>heterogenous message passing: another GNN applies different message to nodes with different colorings.</li>
+</ul>
+<h1 id="scaling-up-gnns">scaling up GNNS<a hidden class="anchor" aria-hidden="true" href="#scaling-up-gnns">#</a></h1>
+<ul>
+<li>when nodes too many, hard to train</li>
+<li>GraphSAGE neighbor sampling randomly sample M nodes, get k-hop neighborhood of each node, tehn construct computational graph to train.
+<ul>
+<li>sampling at most H neighbors at each hop to reduce computaion complexity.</li>
+</ul>
+</li>
+<li>cluster GCN
+<ul>
+<li>sample a small subgraph of the large graph and perform layer-wise node embeddings</li>
+</ul>
+</li>
+<li>simplifying GCN</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://x423xu.github.io/tags/paper-reading/">paper-reading</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://x423xu.github.io/posts/2022-07-24-point-cloud-cvpr2022/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>point-cloud-CVPR2022</span>
+  </a>
+  <a class="next" href="https://x423xu.github.io/posts/2022-06-01-gupta-dissertation-visual-text/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Gupta-dissertation-visual-text</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share graph and machine learning on twitter"
+        href="https://twitter.com/intent/tweet/?text=graph%20and%20machine%20learning&amp;url=https%3a%2f%2fx423xu.github.io%2fposts%2f2022-06-10-graph-cs224w%2f&amp;hashtags=paper-reading">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://x423xu.github.io/">Xiaoyu&#39;s blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

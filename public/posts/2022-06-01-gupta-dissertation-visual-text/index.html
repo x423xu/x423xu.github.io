@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Gupta-dissertation-visual-text | Xiaoyu&#39;s blog</title>
+<meta name="keywords" content="paper-reading">
+<meta name="description" content="keywords: unsupervised, visual&#43;text, representations
+Challenges Challenge 1: Accurate and generalizable representations The model learn a representation does not generalize, by overfitting. Concepts such as objects, attributes, relationships or interactions are shared across vision-language tasks. Such representations are multi-modal. Now separately. Work towards the challenge Concepts of objects and attributes are shared across tasks. Word-region verification sub-task by inner product. ? Shared visual-language representations leads to a greater inductive transfer
+Using images to improve word representations Limitations of learning only from text:">
+<meta name="author" content="">
+<link rel="canonical" href="https://x423xu.github.io/posts/2022-06-01-gupta-dissertation-visual-text/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://x423xu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://x423xu.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://x423xu.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://x423xu.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://x423xu.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<meta property="og:title" content="Gupta-dissertation-visual-text" />
+<meta property="og:description" content="keywords: unsupervised, visual&#43;text, representations
+Challenges Challenge 1: Accurate and generalizable representations The model learn a representation does not generalize, by overfitting. Concepts such as objects, attributes, relationships or interactions are shared across vision-language tasks. Such representations are multi-modal. Now separately. Work towards the challenge Concepts of objects and attributes are shared across tasks. Word-region verification sub-task by inner product. ? Shared visual-language representations leads to a greater inductive transfer
+Using images to improve word representations Limitations of learning only from text:" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://x423xu.github.io/posts/2022-06-01-gupta-dissertation-visual-text/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-06-01T14:41:09+00:00" />
+<meta property="article:modified_time" content="2022-06-01T14:41:09+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Gupta-dissertation-visual-text"/>
+<meta name="twitter:description" content="keywords: unsupervised, visual&#43;text, representations
+Challenges Challenge 1: Accurate and generalizable representations The model learn a representation does not generalize, by overfitting. Concepts such as objects, attributes, relationships or interactions are shared across vision-language tasks. Such representations are multi-modal. Now separately. Work towards the challenge Concepts of objects and attributes are shared across tasks. Word-region verification sub-task by inner product. ? Shared visual-language representations leads to a greater inductive transfer
+Using images to improve word representations Limitations of learning only from text:"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://x423xu.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Gupta-dissertation-visual-text",
+      "item": "https://x423xu.github.io/posts/2022-06-01-gupta-dissertation-visual-text/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Gupta-dissertation-visual-text",
+  "name": "Gupta-dissertation-visual-text",
+  "description": "keywords: unsupervised, visual+text, representations\nChallenges Challenge 1: Accurate and generalizable representations The model learn a representation does not generalize, by overfitting. Concepts such as objects, attributes, relationships or interactions are shared across vision-language tasks. Such representations are multi-modal. Now separately. Work towards the challenge Concepts of objects and attributes are shared across tasks. Word-region verification sub-task by inner product. ? Shared visual-language representations leads to a greater inductive transfer\nUsing images to improve word representations Limitations of learning only from text:",
+  "keywords": [
+    "paper-reading"
+  ],
+  "articleBody": "keywords: unsupervised, visual+text, representations\nChallenges Challenge 1: Accurate and generalizable representations The model learn a representation does not generalize, by overfitting. Concepts such as objects, attributes, relationships or interactions are shared across vision-language tasks. Such representations are multi-modal. Now separately. Work towards the challenge Concepts of objects and attributes are shared across tasks. Word-region verification sub-task by inner product. ? Shared visual-language representations leads to a greater inductive transfer\nUsing images to improve word representations Limitations of learning only from text:\nText consists of intepretations of concepts, rather than description of visual appearance. Single co-occurrence type, actually more than one way. Challenge 2: Mapping tectual references to image-regions without strong supervision. Challeng 3: MOdelling interactions between object Background Visual representations Mean pooling or learned transformations for CNN features Region-level representations: unsupervised [13], [14]. Language representations Word-level representations: co-occurrence Sentence-level representations Contextualized word representations ",
+  "wordCount" : "143",
+  "inLanguage": "en",
+  "datePublished": "2022-06-01T14:41:09Z",
+  "dateModified": "2022-06-01T14:41:09Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x423xu.github.io/posts/2022-06-01-gupta-dissertation-visual-text/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xiaoyu's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x423xu.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://x423xu.github.io/" accesskey="h" title="Xiaoyu&#39;s blog (Alt + H)">Xiaoyu&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://x423xu.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://x423xu.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://x423xu.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Gupta-dissertation-visual-text
+    </h1>
+    <div class="post-meta"><span title='2022-06-01 14:41:09 +0000 UTC'>June 1, 2022</span>&nbsp;·&nbsp;1 min
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#challenges" aria-label="Challenges">Challenges</a><ul>
+                        
+                <li>
+                    <a href="#challenge-1-accurate-and-generalizable-representations" aria-label="Challenge 1: Accurate and generalizable representations">Challenge 1: Accurate and generalizable representations</a><ul>
+                        
+                <li>
+                    <a href="#work-towards-the-challenge" aria-label="Work towards the challenge">Work towards the challenge</a></li>
+                <li>
+                    <a href="#using-images-to-improve-word-representations" aria-label="Using images to improve word representations">Using images to improve word representations</a></li></ul>
+                </li>
+                <li>
+                    <a href="#challenge-2-mapping-tectual-references-to-image-regions-without-strong-supervision" aria-label="Challenge 2: Mapping tectual references to image-regions without strong supervision.">Challenge 2: Mapping tectual references to image-regions without strong supervision.</a></li>
+                <li>
+                    <a href="#challeng-3-modelling-interactions-between-object" aria-label="Challeng 3: MOdelling interactions between object">Challeng 3: MOdelling interactions between object</a></li></ul>
+                </li>
+                <li>
+                    <a href="#background" aria-label="Background">Background</a><ul>
+                        
+                <li>
+                    <a href="#visual-representations" aria-label="Visual representations">Visual representations</a></li>
+                <li>
+                    <a href="#language-representations" aria-label="Language representations">Language representations</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p><strong>keywords: unsupervised, visual+text, representations</strong></p>
+<h1 id="challenges">Challenges<a hidden class="anchor" aria-hidden="true" href="#challenges">#</a></h1>
+<h2 id="challenge-1-accurate-and-generalizable-representations">Challenge 1: Accurate and generalizable representations<a hidden class="anchor" aria-hidden="true" href="#challenge-1-accurate-and-generalizable-representations">#</a></h2>
+<ol>
+<li>The model learn a representation does not generalize, by overfitting.</li>
+<li>Concepts such as objects, attributes, relationships or interactions are shared across vision-language tasks.</li>
+<li>Such representations are multi-modal. Now separately.</li>
+</ol>
+<h3 id="work-towards-the-challenge">Work towards the challenge<a hidden class="anchor" aria-hidden="true" href="#work-towards-the-challenge">#</a></h3>
+<ol>
+<li>Concepts of objects and attributes are shared across tasks.</li>
+<li>Word-region verification sub-task by inner product.</li>
+</ol>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>? Shared visual-language representations leads to a greater inductive transfer</p>
+<h3 id="using-images-to-improve-word-representations">Using images to improve word representations<a hidden class="anchor" aria-hidden="true" href="#using-images-to-improve-word-representations">#</a></h3>
+<p>Limitations of learning only from text:</p>
+<ol>
+<li>Text consists of intepretations of concepts, rather than description of visual appearance.</li>
+<li>Single co-occurrence type, actually more than one way.</li>
+</ol>
+<h2 id="challenge-2-mapping-tectual-references-to-image-regions-without-strong-supervision">Challenge 2: Mapping tectual references to image-regions without strong supervision.<a hidden class="anchor" aria-hidden="true" href="#challenge-2-mapping-tectual-references-to-image-regions-without-strong-supervision">#</a></h2>
+<h2 id="challeng-3-modelling-interactions-between-object">Challeng 3: MOdelling interactions between object<a hidden class="anchor" aria-hidden="true" href="#challeng-3-modelling-interactions-between-object">#</a></h2>
+<hr>
+<h1 id="background">Background<a hidden class="anchor" aria-hidden="true" href="#background">#</a></h1>
+<h2 id="visual-representations">Visual representations<a hidden class="anchor" aria-hidden="true" href="#visual-representations">#</a></h2>
+<ol>
+<li>Mean pooling or learned transformations for CNN features</li>
+<li>Region-level representations: unsupervised [13], [14].</li>
+</ol>
+<h2 id="language-representations">Language representations<a hidden class="anchor" aria-hidden="true" href="#language-representations">#</a></h2>
+<ol>
+<li>Word-level representations: co-occurrence</li>
+<li>Sentence-level representations</li>
+<li>Contextualized word representations</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://x423xu.github.io/tags/paper-reading/">paper-reading</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://x423xu.github.io/posts/2022-06-10-graph-cs224w/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>graph and machine learning</span>
+  </a>
+  <a class="next" href="https://x423xu.github.io/posts/2022-05-30-shortcuts-collection/">
+    <span class="title">Next »</span>
+    <br>
+    <span>shortcuts-collection</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Gupta-dissertation-visual-text on twitter"
+        href="https://twitter.com/intent/tweet/?text=Gupta-dissertation-visual-text&amp;url=https%3a%2f%2fx423xu.github.io%2fposts%2f2022-06-01-gupta-dissertation-visual-text%2f&amp;hashtags=paper-reading">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://x423xu.github.io/">Xiaoyu&#39;s blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

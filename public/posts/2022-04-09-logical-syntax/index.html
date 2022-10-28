@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Logical Syntax | Xiaoyu&#39;s blog</title>
+<meta name="keywords" content="paper-reading">
+<meta name="description" content="Content
+Background Preface Introduction What is logical syntax Language as calculi THE DEFINITE LANGUAGE 1
+Rules of formation for language 1 Predicates and functors Syntactical gothic symbols The junction symbols Content Background What is syntax
+In logic, syntax is anything having to do with formal languages or formal systems without regard to any interpretation or meaning given to them. Syntax is concerned with the rules used for constructing, or transforming the symbols and words of a language, as contrasted with the semantics of a language which is concerned with its meaning">
+<meta name="author" content="">
+<link rel="canonical" href="https://x423xu.github.io/posts/2022-04-09-logical-syntax/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://x423xu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://x423xu.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://x423xu.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://x423xu.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://x423xu.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<meta property="og:title" content="Logical Syntax" />
+<meta property="og:description" content="Content
+Background Preface Introduction What is logical syntax Language as calculi THE DEFINITE LANGUAGE 1
+Rules of formation for language 1 Predicates and functors Syntactical gothic symbols The junction symbols Content Background What is syntax
+In logic, syntax is anything having to do with formal languages or formal systems without regard to any interpretation or meaning given to them. Syntax is concerned with the rules used for constructing, or transforming the symbols and words of a language, as contrasted with the semantics of a language which is concerned with its meaning" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://x423xu.github.io/posts/2022-04-09-logical-syntax/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-09T17:14:27+00:00" />
+<meta property="article:modified_time" content="2022-04-09T17:14:27+00:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Logical Syntax"/>
+<meta name="twitter:description" content="Content
+Background Preface Introduction What is logical syntax Language as calculi THE DEFINITE LANGUAGE 1
+Rules of formation for language 1 Predicates and functors Syntactical gothic symbols The junction symbols Content Background What is syntax
+In logic, syntax is anything having to do with formal languages or formal systems without regard to any interpretation or meaning given to them. Syntax is concerned with the rules used for constructing, or transforming the symbols and words of a language, as contrasted with the semantics of a language which is concerned with its meaning"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://x423xu.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Logical Syntax",
+      "item": "https://x423xu.github.io/posts/2022-04-09-logical-syntax/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Logical Syntax",
+  "name": "Logical Syntax",
+  "description": "Content\nBackground Preface Introduction What is logical syntax Language as calculi THE DEFINITE LANGUAGE 1\nRules of formation for language 1 Predicates and functors Syntactical gothic symbols The junction symbols Content Background What is syntax\nIn logic, syntax is anything having to do with formal languages or formal systems without regard to any interpretation or meaning given to them. Syntax is concerned with the rules used for constructing, or transforming the symbols and words of a language, as contrasted with the semantics of a language which is concerned with its meaning",
+  "keywords": [
+    "paper-reading"
+  ],
+  "articleBody": "Content\nBackground Preface Introduction What is logical syntax Language as calculi THE DEFINITE LANGUAGE 1\nRules of formation for language 1 Predicates and functors Syntactical gothic symbols The junction symbols Content Background What is syntax\nIn logic, syntax is anything having to do with formal languages or formal systems without regard to any interpretation or meaning given to them. Syntax is concerned with the rules used for constructing, or transforming the symbols and words of a language, as contrasted with the semantics of a language which is concerned with its meaning\nThe symbols, formulas, systems, theorems, proofs, and interpretations expressed in formal languages are syntactic entities whose properties may be studied without regard to any meaning they may be given, and, in fact, need not be given any.\nPreface The purpose of present work is to give a systematic exposition of such a mthod, namely, of the method of “logical syntax”. The aim of logical syntax is to provide a system of cocncepts, a language, by the help of which the results of logical analysis will be exactly formulable. phylosophy is to be replaced by he logical syntax of the language of science. Language I covers a narrow field of concepts, lanuage II is richer in modes of expression. Introduction What is logical syntax The logical syntax mean the formal theory of the linguistic forms of a language-the systematic statement of the formal rules which govern it together with the development of consequences which follow from these rules.\nThe syntax of a language is supposed to lay down rules according to which the linguistic structures (e.g. the sentences) are to be built up from the elements (e.g. words). The chief task of logic is supposed to be that of formulating rules according to which judgemets may be inferred from other judgements; in other words, according to which conclusions may be drawn from premisses.\nThe logic can be studied with any degree of accuracy when it is based not on judgements (thoughts, or the content of thoughts) but rather on linguistic expressions. Sentence is the most important. The rules of logic are formal, logical characteristics of sentences and the logical relations are dependent on syntactic structure of the sentences. -\u003e logic will become a part of syntax. -\u003e difference: formation rules \u0026 transformation rules. -\u003e designate as logical syntax the system which comprises the rules of formation and transformation\nnatural word-language (such as German \u0026 Latin) is unsystematic and logically imperfect structured. The same arises in the artificial word-languages.\nRules of formation and transformation permit of being formally apprehended.\n-\u003e Consider the syntax of two artificially constructed formal symbolic language (employ formal symbols instead of words).\nThe sentences, definitions, and rules of the syntax of a language are concerned with the forms of that language.\nhow are them correctly expressed? is a kind of super-language necessary? a third language to explain the super-language? is it possible to formulate the syntax of a language with in the language itself? -\u003e it is possible to express the syntax of a language in the language itself. start by constructing the syntax, then procced to formalize its concepts and thereby determine its logical character. object-language, syntax-language\nLanguage as calculi A system of conventions or rules is understood by a calculus. The rules are concerned with symbols about the nature, and relations of the nature are distributed in various classes. Any finite series of these symbols is called an expression of the calculus in question. The rules of the calculus determine the condition under which an expression can be said to belong to a certain category of expressions. -\u003e formation = syntactic rules under what conditions the transformation of one or more expressions into another or others are allowed. -\u003e transformation = logical laws of deduction. a system of a language is a calculus every well-determined mathematical discipline is a calculus. logical syntax is the same thing as the construction and manipulation of a calculus. Languages are the most important examples of calculi. The syntax is only concerned with the formal properties of expressions, thw design of the individual symbols is indifferent. Any series of any things will equally well serve as terms or expressions in a calculus, or in a language. pure syntax and descriptive syntax ~ mathmetical geometry and physical geometry pure syntax concerned with the forms of sentences. THE DEFINITE LANGUAGE 1 Rules of formation for language 1 Predicates and functors previous knowledge: objects: proper names. e.g. house name, color names. name-language sysematic positional co-ordinates (symbols show the place of the objects in the system, and their positions in relation to one another). e.g. house number, color figures/letters. co-ordinate-language In language 1, natural numbers as co-ordinates. predicates: to express a property of an object, or of a position, or a relation between several objects or positions. predicates are proper names for the properties of positions. descripptive predicates: express empirical properties or relations logical predicates: functors: express properties or relations of position by means of numbers. descriptive functors, logical functors. numerical expression: an expression which in any way designates a number. e.g. “te(3), sum(3,4)” sentence: an expression which corresponds to a propositional sentence of a word-language. e.g.“te(3)=5, sum(3,4)=7, blue(3)” Syntactical gothic symbols two expressions are equal when their corresponding symbols are equal symbols. If two symbols or two expressions are equal, they have same syntactical design. An exprssion of I consists of an ordered series of symbols of I. By a syntactic form we understand any kind or category of expressions which is syntactically determined. Five kinds of symbols: eleven indivisual symbols: variables constant predicates fuctors The junction symbols The one-term or two-term junction symols are used to costruct a new sentences outof one or two sentences respectively. ",
+  "wordCount" : "954",
+  "inLanguage": "en",
+  "datePublished": "2022-04-09T17:14:27Z",
+  "dateModified": "2022-04-09T17:14:27Z",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x423xu.github.io/posts/2022-04-09-logical-syntax/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xiaoyu's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x423xu.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://x423xu.github.io/" accesskey="h" title="Xiaoyu&#39;s blog (Alt + H)">Xiaoyu&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://x423xu.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://x423xu.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://x423xu.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Logical Syntax
+    </h1>
+    <div class="post-meta"><span title='2022-04-09 17:14:27 +0000 UTC'>April 9, 2022</span>&nbsp;·&nbsp;5 min
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#content" aria-label="Content">Content</a><ul>
+                        
+                <li>
+                    <a href="#background" aria-label="Background">Background</a></li>
+                <li>
+                    <a href="#preface" aria-label="Preface">Preface</a></li>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a><ul>
+                        
+                <li>
+                    <a href="#what-is-logical-syntax" aria-label="What is logical syntax">What is logical syntax</a></li>
+                <li>
+                    <a href="#language-as-calculi" aria-label="Language as calculi">Language as calculi</a></li></ul>
+                </li></ul>
+                </li>
+                <li>
+                    <a href="#the-definite-language-1" aria-label="THE DEFINITE LANGUAGE 1">THE DEFINITE LANGUAGE 1</a><ul>
+                        
+                <li>
+                    <a href="#rules-of-formation-for-language-1" aria-label="Rules of formation for language 1">Rules of formation for language 1</a><ul>
+                        
+                <li>
+                    <a href="#predicates-and-functors" aria-label="Predicates and functors">Predicates and functors</a></li>
+                <li>
+                    <a href="#syntactical-gothic-symbols" aria-label="Syntactical gothic symbols">Syntactical gothic symbols</a></li>
+                <li>
+                    <a href="#the-junction-symbols" aria-label="The junction symbols">The junction symbols</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p><a href="#content">Content</a></p>
+<ul>
+<li><a href="#background">Background</a></li>
+<li><a href="#preface">Preface</a></li>
+<li><a href="#introduction">Introduction</a>
+<ol>
+<li><a href="#what-is-logical-syntax">What is logical syntax</a></li>
+<li><a href="#language-as-calculi">Language as calculi</a></li>
+</ol>
+</li>
+</ul>
+<p><a href="#the-definite-language-1">THE DEFINITE LANGUAGE 1</a></p>
+<ul>
+<li><a href="#rules-of-formation-for-language-1">Rules of formation for language 1</a>
+<ol>
+<li><a href="#predicates-and-functors">Predicates and functors</a></li>
+<li><a href="#syntactical-gothic-symbols">Syntactical gothic symbols</a></li>
+<li><a href="#the-junction-symbols">The junction symbols</a></li>
+</ol>
+</li>
+</ul>
+<hr>
+<h1 id="content">Content<a hidden class="anchor" aria-hidden="true" href="#content">#</a></h1>
+<h2 id="background">Background<a hidden class="anchor" aria-hidden="true" href="#background">#</a></h2>
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Syntax_(logic)">What is syntax</a></p>
+<blockquote>
+<p>In logic, syntax is anything having to do with formal languages or formal systems without regard to any interpretation or meaning given to them. Syntax is concerned with the rules used for constructing, or transforming the symbols and words of a language, as contrasted with the semantics of a language which is concerned with its meaning</p>
+<p>The symbols, formulas, systems, theorems, proofs, and interpretations expressed in formal languages are syntactic entities whose properties may be studied without regard to any meaning they may be given, and, in fact, need not be given any.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="preface">Preface<a hidden class="anchor" aria-hidden="true" href="#preface">#</a></h2>
+<ul>
+<li>The purpose of present work is to give a systematic exposition of <em>such a mthod</em>, namely, of the method of &ldquo;logical syntax&rdquo;.</li>
+<li>The aim of logical syntax is to provide a system of cocncepts, a language, by the help of which the results of logical analysis will be exactly formulable. <em>phylosophy is to be replaced by he logical syntax of the language of science</em>.</li>
+<li><em>Language I</em> covers a narrow field of concepts, <em>lanuage II</em> is richer in modes of expression.</li>
+</ul>
+<h2 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h2>
+<h3 id="what-is-logical-syntax">What is logical syntax<a hidden class="anchor" aria-hidden="true" href="#what-is-logical-syntax">#</a></h3>
+<ul>
+<li>
+<p>The logical syntax mean the formal theory of the linguistic forms of a language-the systematic statement of the formal rules which govern it together with the development of consequences which follow from these rules.</p>
+</li>
+<li>
+<p>The syntax of a language is supposed to lay down rules according to which the linguistic structures (e.g. the sentences) are to be built up from the elements (e.g. words). The chief task of logic is supposed to be that of formulating rules according to which judgemets may be inferred from other judgements; in other words, according to which conclusions may be drawn from premisses.</p>
+</li>
+<li>
+<p>The logic can be studied with any degree of accuracy when it is based not on judgements (thoughts, or the content of thoughts) but rather on linguistic expressions. <strong>Sentence is the most important</strong>. The rules of logic are formal, logical characteristics of sentences and the logical relations are dependent on syntactic structure of the sentences. -&gt; <strong>logic will become a part of syntax</strong>. -&gt; difference: <em>formation rules</em> &amp; <em>transformation rules</em>. -&gt; <strong>designate as  <em>logical syntax</em> the system which comprises the rules of formation and transformation</strong></p>
+</li>
+<li>
+<p>natural word-language (such as German &amp; Latin) is unsystematic and logically imperfect structured. The same arises in the artificial word-languages.</p>
+</li>
+<li>
+<p>Rules of formation and transformation permit of being formally apprehended.</p>
+</li>
+<li>
+<p>-&gt; Consider the syntax of two artificially constructed formal symbolic language (employ formal symbols instead of words).</p>
+</li>
+<li>
+<p>The sentences, definitions, and rules of the syntax of a language are concerned with the forms of that language.</p>
+<ol>
+<li>how are them correctly expressed?</li>
+<li>is a kind of super-language necessary?</li>
+<li>a third language to explain the super-language?</li>
+<li>is it possible to formulate  the syntax of a language with in the language itself?</li>
+</ol>
+<ul>
+<li>-&gt; it is possible to express the syntax of a language in the language itself.</li>
+<li>start by constructing the syntax, then procced to formalize its concepts and thereby determine its logical character.</li>
+</ul>
+</li>
+<li>
+<p>object-language, syntax-language</p>
+</li>
+</ul>
+<h3 id="language-as-calculi">Language as calculi<a hidden class="anchor" aria-hidden="true" href="#language-as-calculi">#</a></h3>
+<ul>
+<li></li>
+</ul>
+<ol>
+<li>A system of conventions or rules is understood by a calculus.</li>
+<li>The rules are concerned with <strong>symbols</strong> about the nature, and relations of the nature are distributed in various classes.</li>
+<li>Any finite series of these symbols is called an <strong>expression</strong> of the calculus in question.</li>
+</ol>
+<ul>
+<li>The rules of the calculus determine
+<ol>
+<li>the condition under which an expression can be said to belong to a certain category of expressions. -&gt; formation = syntactic rules</li>
+<li>under what conditions the transformation of one or more expressions into another or others are allowed. -&gt; transformation = logical laws of deduction.</li>
+</ol>
+<ul>
+<li>a system of a language is a calculus</li>
+<li>every well-determined mathematical discipline is a calculus.</li>
+</ul>
+</li>
+<li><em>logical syntax</em> is the same thing as the construction and manipulation of a calculus. Languages are the most important examples of calculi.</li>
+<li>The syntax is only concerned with the formal properties of expressions, thw design of the individual symbols is indifferent.</li>
+<li>Any series of any things will equally well serve as terms or expressions in a calculus, or in a language.</li>
+<li>pure syntax and descriptive syntax ~ mathmetical geometry and physical geometry
+<ol>
+<li>pure syntax <em>concerned with</em> the forms of sentences.</li>
+</ol>
+</li>
+</ul>
+<h1 id="the-definite-language-1">THE DEFINITE LANGUAGE 1<a hidden class="anchor" aria-hidden="true" href="#the-definite-language-1">#</a></h1>
+<h2 id="rules-of-formation-for-language-1">Rules of formation for language 1<a hidden class="anchor" aria-hidden="true" href="#rules-of-formation-for-language-1">#</a></h2>
+<h3 id="predicates-and-functors">Predicates and functors<a hidden class="anchor" aria-hidden="true" href="#predicates-and-functors">#</a></h3>
+<ul>
+<li>previous knowledge:
+<ol>
+<li>objects: proper names. e.g. house name, color names. name-language</li>
+<li>sysematic positional co-ordinates (symbols show the place of the objects in the system, and their positions in relation to one another). e.g. house number, color figures/letters. co-ordinate-language</li>
+</ol>
+</li>
+<li>In language 1, natural numbers as co-ordinates.</li>
+<li>predicates: to express a property of an object, or of a position, or a relation between several objects or positions.</li>
+<li>predicates are proper names for the properties of positions.</li>
+<li>descripptive predicates: express empirical properties or relations</li>
+<li>logical predicates:</li>
+<li>functors: express properties or relations of position by means of numbers.</li>
+<li>descriptive functors, logical functors.</li>
+<li>numerical expression: an expression which in any way designates a number. e.g. &ldquo;te(3), sum(3,4)&rdquo;</li>
+<li>sentence: an expression which corresponds to a propositional sentence of a word-language. e.g.&ldquo;te(3)=5, sum(3,4)=7, blue(3)&rdquo;</li>
+</ul>
+<h3 id="syntactical-gothic-symbols">Syntactical gothic symbols<a hidden class="anchor" aria-hidden="true" href="#syntactical-gothic-symbols">#</a></h3>
+<ul>
+<li>two expressions are equal when their corresponding symbols are equal symbols. If two symbols or two expressions are equal, they have same syntactical design.</li>
+<li>An exprssion of I consists of an ordered series of symbols of I.</li>
+<li>By a syntactic <em>form</em> we understand any kind or category of expressions which is syntactically determined.</li>
+<li>Five kinds of symbols:
+<ol>
+<li>eleven indivisual symbols:</li>
+<li>variables</li>
+<li>constant</li>
+<li>predicates</li>
+<li>fuctors</li>
+</ol>
+</li>
+</ul>
+<h3 id="the-junction-symbols">The junction symbols<a hidden class="anchor" aria-hidden="true" href="#the-junction-symbols">#</a></h3>
+<ul>
+<li>The one-term or two-term junction symols are used to costruct a new sentences outof one or two sentences respectively.</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://x423xu.github.io/tags/paper-reading/">paper-reading</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="https://x423xu.github.io/posts/2022-04-18-visual&#43;text-review/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>visual text review</span>
+  </a>
+  <a class="next" href="https://x423xu.github.io/posts/2022-04-06-paper-summary-last-weekend/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Paper summary</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Logical Syntax on twitter"
+        href="https://twitter.com/intent/tweet/?text=Logical%20Syntax&amp;url=https%3a%2f%2fx423xu.github.io%2fposts%2f2022-04-09-logical-syntax%2f&amp;hashtags=paper-reading">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://x423xu.github.io/">Xiaoyu&#39;s blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
