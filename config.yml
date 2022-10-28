@@ -34,7 +34,7 @@ Params:
 
   # for profile mode
   profileMode:
-        enabled: false
+        enabled: true
         title: "Hi! Welcome to xiaoyu's blog" # optional default will be site title
         subtitle: "This webpageis to record learned contents, including research, tools, mathematics, algorithms, paper readings and all other stuffs."
         imageUrl: "/assets/avatar/xxy.png" # optional

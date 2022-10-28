@@ -2,3 +2,4 @@
 - [ ] add list at the left colum
 - [ ] add paypal and kofi icon
 - [ ] add emoji support
+- [ ] colorful
