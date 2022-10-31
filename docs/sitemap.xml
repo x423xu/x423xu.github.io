@@ -2,19 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://x423xu.github.io/posts/</loc>
+    <lastmod>2022-10-31T16:43:31-04:00</lastmod>
+  </url><url>
+    <loc>https://x423xu.github.io/posts/pytorch-lightning/</loc>
+    <lastmod>2022-10-31T16:43:31-04:00</lastmod>
+  </url><url>
+    <loc>https://x423xu.github.io/tags/</loc>
+    <lastmod>2022-10-31T16:43:31-04:00</lastmod>
+  </url><url>
+    <loc>https://x423xu.github.io/tags/tools/</loc>
+    <lastmod>2022-10-31T16:43:31-04:00</lastmod>
+  </url><url>
+    <loc>https://x423xu.github.io/</loc>
+    <lastmod>2022-10-31T16:43:31-04:00</lastmod>
+  </url><url>
     <loc>https://x423xu.github.io/tags/paper-reading/</loc>
     <lastmod>2022-10-27T22:05:32-04:00</lastmod>
   </url><url>
-    <loc>https://x423xu.github.io/posts/</loc>
-    <lastmod>2022-10-27T22:05:32-04:00</lastmod>
-  </url><url>
     <loc>https://x423xu.github.io/posts/2022-10-27-spectral-gnn/</loc>
-    <lastmod>2022-10-27T22:05:32-04:00</lastmod>
-  </url><url>
-    <loc>https://x423xu.github.io/tags/</loc>
-    <lastmod>2022-10-27T22:05:32-04:00</lastmod>
-  </url><url>
-    <loc>https://x423xu.github.io/</loc>
     <lastmod>2022-10-27T22:05:32-04:00</lastmod>
   </url><url>
     <loc>https://x423xu.github.io/posts/2022-08-17-pedestrain-trajectory/</loc>
@@ -30,9 +36,6 @@
     <lastmod>2022-06-01T14:41:09+00:00</lastmod>
   </url><url>
     <loc>https://x423xu.github.io/posts/2022-05-24-singularity-deployment/</loc>
-    <lastmod>2022-05-24T11:20:09+00:00</lastmod>
-  </url><url>
-    <loc>https://x423xu.github.io/tags/tools/</loc>
     <lastmod>2022-05-24T11:20:09+00:00</lastmod>
   </url><url>
     <loc>https://x423xu.github.io/posts/2022-04-18-visual&#43;text-review/</loc>

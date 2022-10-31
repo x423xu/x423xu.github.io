@@ -1,15 +1,14 @@
 ---
 title: "Pytorch Lightning"
 date: 2022-10-31T16:43:31-04:00
-draft: true
+# draft: true
+layout: post
 tags: ["tools"]
 ---
 
 # what is pytorch lightning
 
 PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale.
-
-[quick start](https://pl-bolts-doc-images.s3.us-east-2.amazonaws.com/pl_docs/pl_docs_animation_final.m4v)
 
 <details open="" class="details-reset border rounded-2">
   <summary class="px-3 py-2 border-bottom">
