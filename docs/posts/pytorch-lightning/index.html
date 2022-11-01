@@ -7,7 +7,10 @@
 <meta name="robots" content="index, follow">
 <title>Pytorch Lightning | Xiaoyu&#39;s blog</title>
 <meta name="keywords" content="tools">
-<meta name="description" content="what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale. Your browser does not support the video tag. ">
+<meta name="description" content="what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale.
+quick start
+Your browser does not support the video tag. summary steps:
+lightning module forward func configure optimizers def training_step def validation_step remove .cuda() backward and step as hook init lightning module init trainer add other functions as call back explanation about dataloader and sampler ">
 <meta name="author" content="">
 <link rel="canonical" href="https://x423xu.github.io/posts/pytorch-lightning/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
@@ -53,7 +56,10 @@
 <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 <meta property="og:title" content="Pytorch Lightning" />
-<meta property="og:description" content="what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale. Your browser does not support the video tag. " />
+<meta property="og:description" content="what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale.
+quick start
+Your browser does not support the video tag. summary steps:
+lightning module forward func configure optimizers def training_step def validation_step remove .cuda() backward and step as hook init lightning module init trainer add other functions as call back explanation about dataloader and sampler " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://x423xu.github.io/posts/pytorch-lightning/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2022-10-31T16:43:31-04:00" />
@@ -61,7 +67,10 @@
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Pytorch Lightning"/>
-<meta name="twitter:description" content="what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale. Your browser does not support the video tag. "/>
+<meta name="twitter:description" content="what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale.
+quick start
+Your browser does not support the video tag. summary steps:
+lightning module forward func configure optimizers def training_step def validation_step remove .cuda() backward and step as hook init lightning module init trainer add other functions as call back explanation about dataloader and sampler "/>
 
 
 <script type="application/ld+json">
@@ -90,12 +99,12 @@
   "@type": "BlogPosting",
   "headline": "Pytorch Lightning",
   "name": "Pytorch Lightning",
-  "description": "what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale. Your browser does not support the video tag. ",
+  "description": "what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale.\nquick start\nYour browser does not support the video tag. summary steps:\nlightning module forward func configure optimizers def training_step def validation_step remove .cuda() backward and step as hook init lightning module init trainer add other functions as call back explanation about dataloader and sampler ",
   "keywords": [
     "tools"
   ],
-  "articleBody": "what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale. Your browser does not support the video tag. ",
-  "wordCount" : "39",
+  "articleBody": "what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale.\nquick start\nYour browser does not support the video tag. summary steps:\nlightning module forward func configure optimizers def training_step def validation_step remove .cuda() backward and step as hook init lightning module init trainer add other functions as call back explanation about dataloader and sampler ",
+  "wordCount" : "76",
   "inLanguage": "en",
   "datePublished": "2022-10-31T16:43:31-04:00",
   "dateModified": "2022-10-31T16:43:31-04:00",
@@ -198,7 +207,13 @@
 
         <div class="inner"><ul>
                 <li>
-                    <a href="#what-is-pytorch-lightning" aria-label="what is pytorch lightning">what is pytorch lightning</a>
+                    <a href="#what-is-pytorch-lightning" aria-label="what is pytorch lightning">what is pytorch lightning</a><ul>
+                        
+                <li>
+                    <a href="#summary" aria-label="summary">summary</a></li></ul>
+                </li>
+                <li>
+                    <a href="#explanation-about-dataloader-and-sampler" aria-label="explanation about dataloader and sampler">explanation about dataloader and sampler</a>
                 </li>
             </ul>
         </div>
@@ -206,13 +221,29 @@
 </div>
 
   <div class="post-content"><h1 id="what-is-pytorch-lightning">what is pytorch lightning<a hidden class="anchor" aria-hidden="true" href="#what-is-pytorch-lightning">#</a></h1>
-<p>PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale.
+<p>PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale.</p>
+<p><strong>quick start</strong></p>
 
 <video width=100% controls autoplay>
     <source src="https://pl-bolts-doc-images.s3.us-east-2.amazonaws.com/pl_docs/pl_docs_animation_final.m4v" type="video/webm">
     Your browser does not support the video tag.  
 </video>
-</p>
+
+<h2 id="summary">summary<a hidden class="anchor" aria-hidden="true" href="#summary">#</a></h2>
+<p>steps:</p>
+<ol>
+<li>lightning module</li>
+<li>forward func</li>
+<li>configure optimizers</li>
+<li>def training_step</li>
+<li>def validation_step</li>
+<li>remove .cuda()</li>
+<li>backward and step as hook</li>
+<li>init lightning module</li>
+<li>init trainer</li>
+<li>add other functions as call back</li>
+</ol>
+<h1 id="explanation-about-dataloader-and-sampler">explanation about dataloader and sampler<a hidden class="anchor" aria-hidden="true" href="#explanation-about-dataloader-and-sampler">#</a></h1>
 
 
   </div>
