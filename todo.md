@@ -3,3 +3,4 @@
 - [ ] add paypal and kofi icon
 - [ ] add emoji support
 - [ ] colorful
+- [ ] add about me
