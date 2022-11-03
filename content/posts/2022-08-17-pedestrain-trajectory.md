@@ -65,3 +65,46 @@ FOV-based initial heatmap.
 **how different modalities should be jointly learned for performing effective gaze target detection**
 
 - solve domain shift problem
+
+# Beyon 3D Siamese Tracking: A motion-Centric Paradigm for 3D single Object Tracking in Point Clouds
+
+- point clouds are usually textureless and incomplete, which hinders effective appearance matching.
+- Overlook motion clues among targets.
+- propose a motion-centric paradigm
+    1. $M^2-Track$ localizes the target within successive frames via motion transformation.
+    2. refines the target box through motion-assisted shape completion
+
+## Motivation
+
+![motivaation](/assets/images/m2track.png)
+- the upper one obtain a canonical target template using the previous target box and search for the target in thecurrent frame according to the matching similarity. It is sensitive to distractors
+- The bottom one learns relative target motion from two consecutive frames. Robustly localize the target.
+
+## framework
+
+![framework](/assets/images/m2track-framework.png)
+
+- input: last point cloud, last 3D BBox, current point cloud
+- output current 3D BBox.
+
+- ? how many frame used and how many frame predicted.
+
+    - 1 frame used, 1 frame predicted.
+
+- quick comment: this task is not suitable for our goal. But it gives a good benchmark for kitti dataset.
+
+# Motion CNN
+
+- plan a safe and efficient route.
+- a baseline form multimodal motion prediction.
+
+## explanation
+
+![motion-cnn](/assets/images/motioncnn.png)
+
+## framework
+
+![motioncnn-framework](/assets/images/motioncnn-framework.png)
+- input: image
+- output trajectories.
+- use 1 second of images to predict 8 seconds'.
