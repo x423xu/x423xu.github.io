@@ -108,3 +108,9 @@ FOV-based initial heatmap.
 - input: image
 - output trajectories.
 - use 1 second of images to predict 8 seconds'.
+
+# 3D Multi-Object Tracking in Point Clouds Based on Prediction confidence-Guided Data Association
+
+- 3D multi-object tracker to more robustly track objects that are temporarily missed by detectors.
+- a predictor employs constant acceleration motion model to estimate future positions and prediction confidence.
+- a new pairwise cost. 
