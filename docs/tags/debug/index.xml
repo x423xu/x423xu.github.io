@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>debug on Xiaoyu&#39;s blog</title>
+    <link>https://x423xu.github.io/tags/debug/</link>
+    <description>Recent content in debug on Xiaoyu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Nov 2022 17:08:52 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/tags/debug/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debugs</title>
+      <link>https://x423xu.github.io/posts/debugs/</link>
+      <pubDate>Sun, 06 Nov 2022 17:08:52 -0500</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/debugs/</guid>
+      <description>1 2 3 4 5 X Error of failed request: GLXBadContext Major opcode of failed request: 152 (GLX) Minor opcode of failed request: 6 (X_GLXIsDirect) Serial number of failed request: 39 Current serial number in output stream: 38 Reproduce: on compute canada, with singularity, installed mesa-utils, libgl1-mesa-glx. 1 2 3 4 python from vedo import Plotter v = Plotter() v.show() Solution: use --nv args in singularity shell command.
+Experience: the mesa requires nvidia graphical card to run correctly.</description>
+    </item>
+    
+  </channel>
+</rss>

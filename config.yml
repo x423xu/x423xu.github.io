@@ -20,7 +20,7 @@ Params:
   # for home page
   # homeInfoParams:
   #     Title: Hi! Welcome to xiaoyu's blog
-  #     Content: This webpageis to record learned contents, including research, tools, mathematics, algorithms, paper readings and all other stuffs.
+  #     Content: This webpage is to record learned contents, including research, tools, mathematics, algorithms, paper readings and all other stuffs.
 
   socialIcons: # optional
     - name: "github"
@@ -36,7 +36,7 @@ Params:
   profileMode:
         enabled: true
         title: "Hi! Welcome to xiaoyu's blog" # optional default will be site title
-        subtitle: "This webpageis to record learned contents, including research, tools, mathematics, algorithms, paper readings and all other stuffs."
+        subtitle: "This webpage is to record learned contents, including research, tools, mathematics, algorithms, paper readings and all other stuffs."
         imageUrl: "/assets/avatar/xxy.png" # optional
         imageTitle: "UoW-xxy" # optional
         imageWidth: 120 # custom size

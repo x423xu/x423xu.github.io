@@ -5,12 +5,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>RemoteX11 configuration on vscode | Xiaoyu&#39;s blog</title>
-<meta name="keywords" content="tools">
-<meta name="description" content="Remote X11 understanding Suppose we have a local machine (windows/linux), wanna do some deep learning training or data analysis in a remote linux server to . To show images like plt.plot() &amp; plt.show() in local machine we need X11 forwarding which directly renderes images in local machine.
-Ok, first step we should connect to a remote linux server from our local machine. Supposing using SSH connection in MobaXterm, we need a private key in local machine and a public key in remote server.">
+<title>Debugs | Xiaoyu&#39;s blog</title>
+<meta name="keywords" content="debug">
+<meta name="description" content="1 2 3 4 5 X Error of failed request: GLXBadContext Major opcode of failed request: 152 (GLX) Minor opcode of failed request: 6 (X_GLXIsDirect) Serial number of failed request: 39 Current serial number in output stream: 38 Reproduce: on compute canada, with singularity, installed mesa-utils, libgl1-mesa-glx. 1 2 3 4 python from vedo import Plotter v = Plotter() v.show() Solution: use --nv args in singularity shell command.
+Experience: the mesa requires nvidia graphical card to run correctly.">
 <meta name="author" content="">
-<link rel="canonical" href="https://x423xu.github.io/posts/2022-03-20-x11-for-vscode/">
+<link rel="canonical" href="https://x423xu.github.io/posts/debugs/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
     onload="hljs.initHighlightingOnLoad();"></script>
@@ -53,18 +53,18 @@ Ok, first step we should connect to a remote linux server from our local machine
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script type="text/javascript" id="MathJax-script" async
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-<meta property="og:title" content="RemoteX11 configuration on vscode" />
-<meta property="og:description" content="Remote X11 understanding Suppose we have a local machine (windows/linux), wanna do some deep learning training or data analysis in a remote linux server to . To show images like plt.plot() &amp; plt.show() in local machine we need X11 forwarding which directly renderes images in local machine.
-Ok, first step we should connect to a remote linux server from our local machine. Supposing using SSH connection in MobaXterm, we need a private key in local machine and a public key in remote server." />
+<meta property="og:title" content="Debugs" />
+<meta property="og:description" content="1 2 3 4 5 X Error of failed request: GLXBadContext Major opcode of failed request: 152 (GLX) Minor opcode of failed request: 6 (X_GLXIsDirect) Serial number of failed request: 39 Current serial number in output stream: 38 Reproduce: on compute canada, with singularity, installed mesa-utils, libgl1-mesa-glx. 1 2 3 4 python from vedo import Plotter v = Plotter() v.show() Solution: use --nv args in singularity shell command.
+Experience: the mesa requires nvidia graphical card to run correctly." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://x423xu.github.io/posts/2022-03-20-x11-for-vscode/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-03-20T13:57:00-04:00" />
-<meta property="article:modified_time" content="2022-03-20T13:57:00-04:00" />
+<meta property="og:url" content="https://x423xu.github.io/posts/debugs/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-06T17:08:52-05:00" />
+<meta property="article:modified_time" content="2022-11-06T17:08:52-05:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="RemoteX11 configuration on vscode"/>
-<meta name="twitter:description" content="Remote X11 understanding Suppose we have a local machine (windows/linux), wanna do some deep learning training or data analysis in a remote linux server to . To show images like plt.plot() &amp; plt.show() in local machine we need X11 forwarding which directly renderes images in local machine.
-Ok, first step we should connect to a remote linux server from our local machine. Supposing using SSH connection in MobaXterm, we need a private key in local machine and a public key in remote server."/>
+<meta name="twitter:title" content="Debugs"/>
+<meta name="twitter:description" content="1 2 3 4 5 X Error of failed request: GLXBadContext Major opcode of failed request: 152 (GLX) Minor opcode of failed request: 6 (X_GLXIsDirect) Serial number of failed request: 39 Current serial number in output stream: 38 Reproduce: on compute canada, with singularity, installed mesa-utils, libgl1-mesa-glx. 1 2 3 4 python from vedo import Plotter v = Plotter() v.show() Solution: use --nv args in singularity shell command.
+Experience: the mesa requires nvidia graphical card to run correctly."/>
 
 
 <script type="application/ld+json">
@@ -81,8 +81,8 @@ Ok, first step we should connect to a remote linux server from our local machine
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "RemoteX11 configuration on vscode",
-      "item": "https://x423xu.github.io/posts/2022-03-20-x11-for-vscode/"
+      "name": "Debugs",
+      "item": "https://x423xu.github.io/posts/debugs/"
     }
   ]
 }
@@ -91,20 +91,20 @@ Ok, first step we should connect to a remote linux server from our local machine
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "RemoteX11 configuration on vscode",
-  "name": "RemoteX11 configuration on vscode",
-  "description": "Remote X11 understanding Suppose we have a local machine (windows/linux), wanna do some deep learning training or data analysis in a remote linux server to . To show images like plt.plot() \u0026amp; plt.show() in local machine we need X11 forwarding which directly renderes images in local machine.\nOk, first step we should connect to a remote linux server from our local machine. Supposing using SSH connection in MobaXterm, we need a private key in local machine and a public key in remote server.",
+  "headline": "Debugs",
+  "name": "Debugs",
+  "description": "1 2 3 4 5 X Error of failed request: GLXBadContext Major opcode of failed request: 152 (GLX) Minor opcode of failed request: 6 (X_GLXIsDirect) Serial number of failed request: 39 Current serial number in output stream: 38 Reproduce: on compute canada, with singularity, installed mesa-utils, libgl1-mesa-glx. 1 2 3 4 python from vedo import Plotter v = Plotter() v.show() Solution: use --nv args in singularity shell command.\nExperience: the mesa requires nvidia graphical card to run correctly.",
   "keywords": [
-    "tools"
+    "debug"
   ],
-  "articleBody": "Remote X11 understanding Suppose we have a local machine (windows/linux), wanna do some deep learning training or data analysis in a remote linux server to . To show images like plt.plot() \u0026 plt.show() in local machine we need X11 forwarding which directly renderes images in local machine.\nOk, first step we should connect to a remote linux server from our local machine. Supposing using SSH connection in MobaXterm, we need a private key in local machine and a public key in remote server. Then ssh user@ip -X. The -X here enables X11 forwarding. W.o. -X, any plot command like plt.plot() \u0026 plt.show() wouldn’t be shown in local machine. Next, what we need to care about is the $DISPLAY variable in remote server. Using echo $DISPLAY in local terminal to check the value. If the -X args is enabled, the it will output something like localhost:10.0, wehre localhost refers to hostname of your computer (I’m not sure whether it refers to remote server or local machine). 10 display name, 0 screen name. Generally speaking, a display is composed of a screen, a keyboard and a mouse. Now use xclock in your terminal to test GUI. configure on vscode Install remoet X11 and remote X11 (ssh) Use echo $DISPLAY in vscode terminal to check display value If display value is none, add export DISPLAY=localhost:10.0 to ~/.bashrc and source ~/.bashrc. Open vscode configuration ctrl+shit+p and find out remote X11 settings, set up the display 10, screen 0. Using xclock to test Notice The default X11 forwarding can’t render images or videos generated by python gym library. Because, the X11 forwarding only supports OPENGL1.5 and gym requires higher version. To render gym images, it involves a technique named “VirtualGL”. It is complicated, I need some time to figure it out. Maybe next time.\nConfigure GUI backend for singularity Sometimes although the RemoteX11 is setup for ssh login, the matplotlib in singularity cannot show as expected. A common warning is UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure..\nSolution for remote node: For a remote node, we have to ssh with x11 forwarding, -X. For a interactive node or computation node on remote cluster, we have to apply with arg --x11. To show matplotlib.pyplot -\u003e plt.switch_backend('tkAgg'). ",
-  "wordCount" : "379",
+  "articleBody": " 1 2 3 4 5 X Error of failed request: GLXBadContext Major opcode of failed request: 152 (GLX) Minor opcode of failed request: 6 (X_GLXIsDirect) Serial number of failed request: 39 Current serial number in output stream: 38 Reproduce: on compute canada, with singularity, installed mesa-utils, libgl1-mesa-glx. 1 2 3 4 python from vedo import Plotter v = Plotter() v.show() Solution: use --nv args in singularity shell command.\nExperience: the mesa requires nvidia graphical card to run correctly. It is necessary to have one GPU.\n1 2 libGL error: No matching fbConfigs or visuals found libGL error: failed to load driver: swrast Solution: export LIBGL_ALWAYS_INDIRECT=1, apt-get install -y mesa-utils libgl1-mesa-glx ",
+  "wordCount" : "110",
   "inLanguage": "en",
-  "datePublished": "2022-03-20T13:57:00-04:00",
-  "dateModified": "2022-03-20T13:57:00-04:00",
+  "datePublished": "2022-11-06T17:08:52-05:00",
+  "dateModified": "2022-11-06T17:08:52-05:00",
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://x423xu.github.io/posts/2022-03-20-x11-for-vscode/"
+    "@id": "https://x423xu.github.io/posts/debugs/"
   },
   "publisher": {
     "@type": "Organization",
@@ -188,59 +188,72 @@ Ok, first step we should connect to a remote linux server from our local machine
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://x423xu.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://x423xu.github.io/posts/">Posts</a></div>
     <h1 class="post-title">
-      RemoteX11 configuration on vscode
+      Debugs
     </h1>
-    <div class="post-meta"><span title='2022-03-20 13:57:00 -0400 EDT'>March 20, 2022</span>&nbsp;·&nbsp;2 min
+    <div class="post-meta"><span title='2022-11-06 17:08:52 -0500 EST'>November 6, 2022</span>&nbsp;·&nbsp;1 min
 
 </div>
-  </header> <div class="toc">
-    <details  open>
-        <summary accesskey="c" title="(Alt + C)">
-            <span class="details">Table of Contents</span>
-        </summary>
+  </header> 
 
-        <div class="inner"><ul>
-                <li>
-                    <a href="#remote-x11-understanding" aria-label="Remote X11 understanding">Remote X11 understanding</a></li>
-                <li>
-                    <a href="#configure-on-vscode" aria-label="configure on vscode">configure on vscode</a></li>
-                <li>
-                    <a href="#notice" aria-label="Notice">Notice</a></li>
-                <li>
-                    <a href="#configure-gui-backend-for-singularity" aria-label="Configure GUI backend for singularity">Configure GUI backend for singularity</a>
-                </li>
-            </ul>
-        </div>
-    </details>
-</div>
-
-  <div class="post-content"><h1 id="remote-x11-understanding">Remote X11 understanding<a hidden class="anchor" aria-hidden="true" href="#remote-x11-understanding">#</a></h1>
-<p>Suppose we have a local machine (windows/linux), wanna do some deep learning training or data analysis in a remote linux server to . To show images like <code>plt.plot() &amp; plt.show()</code> in local machine we need X11 forwarding which directly renderes images in local machine.</p>
-<ul>
-<li>Ok, first step we should connect to a remote linux server from our local machine. Supposing using SSH connection in MobaXterm, we need a private key in local machine and a public key in remote server. Then <code>ssh user@ip -X</code>. The <code>-X</code> here enables X11 forwarding. W.o. <code>-X</code>, any plot command like <code>plt.plot() &amp; plt.show()</code> wouldn&rsquo;t be shown in local machine.</li>
-<li>Next, what we need to care about is the <code>$DISPLAY</code> variable in remote server. Using <code>echo $DISPLAY</code> in local terminal to check the value. If the <code>-X</code> args is enabled, the it will output something like <code>localhost:10.0</code>, wehre <code>localhost</code> refers to hostname of your computer (<strong>I&rsquo;m not sure whether it refers to remote server or local machine</strong>). <code>10</code> display name, <code>0</code> screen name. Generally speaking, a display is composed of a screen, a keyboard and a mouse.</li>
-<li>Now use <code>xclock</code> in your terminal to test GUI.</li>
-</ul>
-<h1 id="configure-on-vscode">configure on vscode<a hidden class="anchor" aria-hidden="true" href="#configure-on-vscode">#</a></h1>
-<ul>
-<li>Install <code>remoet X11</code> and <code>remote X11 (ssh)</code></li>
-<li>Use <code>echo $DISPLAY</code> in vscode terminal to check display value</li>
-<li>If display value is none, add <code>export DISPLAY=localhost:10.0</code> to <code>~/.bashrc</code> and <code>source ~/.bashrc</code>.</li>
-<li>Open vscode configuration <code>ctrl+shit+p</code> and find out <code>remote X11 settings</code>, set up the display <code>10</code>, screen <code>0</code>.</li>
-<li>Using <code>xclock</code> to test</li>
-</ul>
-<h1 id="notice">Notice<a hidden class="anchor" aria-hidden="true" href="#notice">#</a></h1>
-<p>The default X11 forwarding can&rsquo;t render images or videos generated by python <code>gym</code> library. Because, the X11 forwarding only supports OPENGL1.5 and <code>gym</code> requires higher version. To render <code>gym</code> images, it involves a technique named &ldquo;VirtualGL&rdquo;. It is complicated, I need some time to figure it out. Maybe next time.</p>
-<h1 id="configure-gui-backend-for-singularity">Configure GUI backend for singularity<a hidden class="anchor" aria-hidden="true" href="#configure-gui-backend-for-singularity">#</a></h1>
-<p>Sometimes although the <code>RemoteX11</code> is setup for ssh login, the matplotlib in singularity cannot show as expected. A common warning is <code>UserWarning: Matplotlib is currently using agg, which is a non-GUI backend, so cannot show the figure.</code>.</p>
-<ul>
-<li>Solution for remote node:
-<ol>
-<li>For a remote node, we have to ssh with x11 forwarding, <code>-X</code>.</li>
-<li>For a interactive node or computation node on remote cluster, we have to apply with arg  <code>--x11</code>.</li>
-<li>To show <code>matplotlib.pyplot</code> -&gt; <code>plt.switch_backend('tkAgg')</code>.</li>
+  <div class="post-content"><ol>
+<li></li>
 </ol>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>X Error of failed request:  GLXBadContext
+</span></span><span style="display:flex;"><span>Major opcode of failed request:  152 (GLX)
+</span></span><span style="display:flex;"><span>Minor opcode of failed request:  6 (X_GLXIsDirect)
+</span></span><span style="display:flex;"><span>Serial number of failed request:  39
+</span></span><span style="display:flex;"><span>Current serial number in output stream:  38
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Reproduce: on compute canada, with singularity, installed <code>mesa-utils</code>, <code>libgl1-mesa-glx</code>.</li>
+</ul>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>python
+</span></span><span style="display:flex;"><span>from vedo import Plotter
+</span></span><span style="display:flex;"><span>v = Plotter()
+</span></span><span style="display:flex;"><span>v.show()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>
+<p>Solution: use <code>--nv</code> args in <code>singularity shell</code> command.</p>
 </li>
+<li>
+<p>Experience: the mesa requires nvidia graphical card to run correctly. It is necessary to have one GPU.</p>
+</li>
+</ul>
+<ol start="2">
+<li></li>
+</ol>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>libGL error: No matching fbConfigs or visuals found
+</span></span><span style="display:flex;"><span>libGL error: failed to load driver: swrast
+</span></span></code></pre></td></tr></table>
+</div>
+</div><ul>
+<li>Solution: <code>export LIBGL_ALWAYS_INDIRECT=1</code>, <code>apt-get install -y mesa-utils libgl1-mesa-glx</code></li>
 </ul>
 
 
@@ -248,25 +261,20 @@ Ok, first step we should connect to a remote linux server from our local machine
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="https://x423xu.github.io/tags/tools/">tools</a></li>
+      <li><a href="https://x423xu.github.io/tags/debug/">debug</a></li>
     </ul>
 <nav class="paginav">
-  <a class="prev" href="https://x423xu.github.io/posts/2022-04-06-paper-summary-last-weekend/">
-    <span class="title">« Prev</span>
-    <br>
-    <span>Paper summary</span>
-  </a>
-  <a class="next" href="https://x423xu.github.io/posts/2022-03-20-jekyll/">
+  <a class="next" href="https://x423xu.github.io/posts/pytorch-lightning/">
     <span class="title">Next »</span>
     <br>
-    <span>Jekyll</span>
+    <span>Pytorch Lightning</span>
   </a>
 </nav>
 
 
 <div class="share-buttons">
-    <a target="_blank" rel="noopener noreferrer" aria-label="share RemoteX11 configuration on vscode on twitter"
-        href="https://twitter.com/intent/tweet/?text=RemoteX11%20configuration%20on%20vscode&amp;url=https%3a%2f%2fx423xu.github.io%2fposts%2f2022-03-20-x11-for-vscode%2f&amp;hashtags=tools">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Debugs on twitter"
+        href="https://twitter.com/intent/tweet/?text=Debugs&amp;url=https%3a%2f%2fx423xu.github.io%2fposts%2fdebugs%2f&amp;hashtags=debug">
         <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
             <path
                 d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />

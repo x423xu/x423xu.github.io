@@ -6,7 +6,17 @@
     <description>Recent content in Posts on Xiaoyu&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 31 Oct 2022 16:43:31 -0400</lastBuildDate><atom:link href="https://x423xu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 06 Nov 2022 17:08:52 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debugs</title>
+      <link>https://x423xu.github.io/posts/debugs/</link>
+      <pubDate>Sun, 06 Nov 2022 17:08:52 -0500</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/debugs/</guid>
+      <description>1 2 3 4 5 X Error of failed request: GLXBadContext Major opcode of failed request: 152 (GLX) Minor opcode of failed request: 6 (X_GLXIsDirect) Serial number of failed request: 39 Current serial number in output stream: 38 Reproduce: on compute canada, with singularity, installed mesa-utils, libgl1-mesa-glx. 1 2 3 4 python from vedo import Plotter v = Plotter() v.show() Solution: use --nv args in singularity shell command.
+Experience: the mesa requires nvidia graphical card to run correctly.</description>
+    </item>
+    
     <item>
       <title>Pytorch Lightning</title>
       <link>https://x423xu.github.io/posts/pytorch-lightning/</link>
@@ -16,7 +26,7 @@
       <description>what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale.
 quick start
 Your browser does not support the video tag. summary steps:
-lightning module forward func configure optimizers def training_step def validation_step remove .cuda() backward and step as hook init lightning module init trainer add other functions as call back explanation about dataloader and sampler </description>
+lightning module forward func configure optimizers def training_step def validation_step remove .cuda() backward and step as hook init lightning module init trainer add other functions as call back explanation about dataloader and sampler LightningDataModule was designed as a way of decoupling data-related hooks from the LightningDataModule, so you can develop dataset agonostic models.</description>
     </item>
     
     <item>

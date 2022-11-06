@@ -16,7 +16,7 @@
       <description>what is pytorch lightning PyTorch Lightning is the deep learning framework with “batteries included” for professional AI researchers and machine learning engineers who need maximal flexibility while super-charging performance at scale.
 quick start
 Your browser does not support the video tag. summary steps:
-lightning module forward func configure optimizers def training_step def validation_step remove .cuda() backward and step as hook init lightning module init trainer add other functions as call back explanation about dataloader and sampler </description>
+lightning module forward func configure optimizers def training_step def validation_step remove .cuda() backward and step as hook init lightning module init trainer add other functions as call back explanation about dataloader and sampler LightningDataModule was designed as a way of decoupling data-related hooks from the LightningDataModule, so you can develop dataset agonostic models.</description>
     </item>
     
     <item>
