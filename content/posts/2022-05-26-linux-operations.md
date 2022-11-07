@@ -29,7 +29,7 @@ tags: ["tools"]
     singularity shell --nv -B /scratch/xiaoyu -B /project/def-zhouwang/xiaoyu /project/def-zhouwang/xiaoyu/xiaoyu.sif
     singularity shell --nv -B /scratch/xiaoyu -B /project/def-zhouwang/xiaoyu /scratch/xiaoyu/xiaoyu.sif
 
-    CC交互模式:  salloc --time=3:0:0 --nodes=1 --gres=gpu:4 --cpus-per-task=8 --mem-per-cpu=3000M --account=rrg-zhouwang
+    CC交互模式:  salloc --time=3:0:0 --nodes=1 --gres=gpu:4 --cpus-per-task=8 --mem-per-cpu=3000M --account=rrg-zhouwang --x11
 
     CC singularity使用: 1.打开交互模式；2. module load singularity; 3. singularity加载sif文件。或者: 1. module load singularity; 2. sbatch挂载任务
 
