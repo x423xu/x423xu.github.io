@@ -2,19 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://x423xu.github.io/posts/jupyterhub/</loc>
-    <lastmod>2022-11-07T12:59:14-05:00</lastmod>
+    <loc>https://x423xu.github.io/posts/2022-05-26-linux-operations/</loc>
+    <lastmod>2022-11-09T17:08:52-05:00</lastmod>
   </url><url>
     <loc>https://x423xu.github.io/posts/</loc>
-    <lastmod>2022-11-07T12:59:14-05:00</lastmod>
+    <lastmod>2022-11-09T17:08:52-05:00</lastmod>
   </url><url>
     <loc>https://x423xu.github.io/tags/</loc>
-    <lastmod>2022-11-07T12:59:14-05:00</lastmod>
+    <lastmod>2022-11-09T17:08:52-05:00</lastmod>
   </url><url>
     <loc>https://x423xu.github.io/tags/tools/</loc>
-    <lastmod>2022-11-07T12:59:14-05:00</lastmod>
+    <lastmod>2022-11-09T17:08:52-05:00</lastmod>
   </url><url>
     <loc>https://x423xu.github.io/</loc>
+    <lastmod>2022-11-09T17:08:52-05:00</lastmod>
+  </url><url>
+    <loc>https://x423xu.github.io/posts/jupyterhub/</loc>
     <lastmod>2022-11-07T12:59:14-05:00</lastmod>
   </url><url>
     <loc>https://x423xu.github.io/tags/debug/</loc>
@@ -65,8 +68,6 @@
     <loc>https://x423xu.github.io/archives/</loc>
   </url><url>
     <loc>https://x423xu.github.io/categories/</loc>
-  </url><url>
-    <loc>https://x423xu.github.io/posts/2022-05-26-linux-operations/</loc>
   </url><url>
     <loc>https://x423xu.github.io/search/</loc>
   </url>

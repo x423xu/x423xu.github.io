@@ -6,7 +6,16 @@
     <description>Recent content on Xiaoyu&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 07 Nov 2022 12:59:14 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Nov 2022 17:08:52 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>linux-operations</title>
+      <link>https://x423xu.github.io/posts/2022-05-26-linux-operations/</link>
+      <pubDate>Wed, 09 Nov 2022 17:08:52 -0500</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/2022-05-26-linux-operations/</guid>
+      <description>Mout a disk using gparted to format the disk to ext4 file system: sudo apt-get install gparted -&amp;gt; sudo gparted -&amp;gt; format the disk mount the disk to mountpoint, eg: sudo mount /dev/sda2 ~/HDD Permanently mounting: cat /etc/fstab to get UUID -&amp;gt; here change the ownership of the folder ~/HDD: sudo chown xxy ~/ vim cheatsheet vscode cheetsheat 1 2 3 4 5 skip to the front of the line: `home` skip to the end of the line: `end` select to the end: `shift+end` close editor:`ctrl+w` open recent: `ctrl+R` singularity cheatsheet 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 build sif file: sudo singularity build xiaoyu.</description>
+    </item>
+    
     <item>
       <title>Jupyterhub</title>
       <link>https://x423xu.github.io/posts/jupyterhub/</link>
@@ -151,15 +160,6 @@ Ruby is a dynamic, open source programming language with a focus on simplicity a
 Ruby is most used for building web applications. However, it is a general-purpose language similar to Python, so it has many other applications like data analysis, prototyping, and proof of concepts.</description>
     </item>
     
-    
-    <item>
-      <title>linux-operations</title>
-      <link>https://x423xu.github.io/posts/2022-05-26-linux-operations/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://x423xu.github.io/posts/2022-05-26-linux-operations/</guid>
-      <description>Mout a disk using gparted to format the disk to ext4 file system: sudo apt-get install gparted -&amp;gt; sudo gparted -&amp;gt; format the disk mount the disk to mountpoint, eg: sudo mount /dev/sda2 ~/HDD Permanently mounting: cat /etc/fstab to get UUID -&amp;gt; here change the ownership of the folder ~/HDD: sudo chown xxy ~/ vim cheatsheet vscode cheetsheat 1 2 3 4 5 skip to the front of the line: `home` skip to the end of the line: `end` select to the end: `shift+end` close editor:`ctrl+w` open recent: `ctrl+R` singularity cheatsheet 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 build sif file: sudo singularity build xiaoyu.</description>
-    </item>
     
     
   </channel>
