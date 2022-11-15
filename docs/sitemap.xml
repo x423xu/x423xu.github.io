@@ -2,25 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://x423xu.github.io/posts/jupyterhub/</loc>
+    <lastmod>2022-11-07T12:59:14-05:00</lastmod>
+  </url><url>
+    <loc>https://x423xu.github.io/posts/</loc>
+    <lastmod>2022-11-07T12:59:14-05:00</lastmod>
+  </url><url>
+    <loc>https://x423xu.github.io/tags/</loc>
+    <lastmod>2022-11-07T12:59:14-05:00</lastmod>
+  </url><url>
+    <loc>https://x423xu.github.io/tags/tools/</loc>
+    <lastmod>2022-11-07T12:59:14-05:00</lastmod>
+  </url><url>
+    <loc>https://x423xu.github.io/</loc>
+    <lastmod>2022-11-07T12:59:14-05:00</lastmod>
+  </url><url>
     <loc>https://x423xu.github.io/tags/debug/</loc>
     <lastmod>2022-11-06T17:08:52-05:00</lastmod>
   </url><url>
     <loc>https://x423xu.github.io/posts/debugs/</loc>
     <lastmod>2022-11-06T17:08:52-05:00</lastmod>
   </url><url>
-    <loc>https://x423xu.github.io/posts/</loc>
-    <lastmod>2022-11-06T17:08:52-05:00</lastmod>
-  </url><url>
-    <loc>https://x423xu.github.io/tags/</loc>
-    <lastmod>2022-11-06T17:08:52-05:00</lastmod>
-  </url><url>
-    <loc>https://x423xu.github.io/</loc>
-    <lastmod>2022-11-06T17:08:52-05:00</lastmod>
-  </url><url>
     <loc>https://x423xu.github.io/posts/pytorch-lightning/</loc>
-    <lastmod>2022-10-31T16:43:31-04:00</lastmod>
-  </url><url>
-    <loc>https://x423xu.github.io/tags/tools/</loc>
     <lastmod>2022-10-31T16:43:31-04:00</lastmod>
   </url><url>
     <loc>https://x423xu.github.io/tags/paper-reading/</loc>

@@ -6,7 +6,18 @@
     <description>Recent content on Xiaoyu&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Nov 2022 17:08:52 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 07 Nov 2022 12:59:14 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Jupyterhub</title>
+      <link>https://x423xu.github.io/posts/jupyterhub/</link>
+      <pubDate>Mon, 07 Nov 2022 12:59:14 -0500</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/jupyterhub/</guid>
+      <description>Here I would introduce how to use jupyter hub in HPC
+Introduction JupyterHub is the best way to serve Jupyter notebook for multiple users. Because jupyterhub manages a separate Jupyter encironment for each user, it can be used in a class of students, a corporate data scientific research group. It is a multi-user Hub that spawns, manages, and proxies multiple instances of the sinfle0user Jupyter notebook server.
+It offers distributions for different use cases.</description>
+    </item>
+    
     <item>
       <title>Debugs</title>
       <link>https://x423xu.github.io/posts/debugs/</link>

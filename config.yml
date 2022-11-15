@@ -3,6 +3,7 @@ publishDir: "docs"
 languageCode: en-us
 title: Xiaoyu's blog
 theme: "PaperMod"
+
 Params:
   # configurations
   math: true

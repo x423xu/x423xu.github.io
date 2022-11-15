@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Jupyterhub | Xiaoyu&#39;s blog</title>
+<meta name="keywords" content="tools">
+<meta name="description" content="Here I would introduce how to use jupyter hub in HPC
+Introduction JupyterHub is the best way to serve Jupyter notebook for multiple users. Because jupyterhub manages a separate Jupyter encironment for each user, it can be used in a class of students, a corporate data scientific research group. It is a multi-user Hub that spawns, manages, and proxies multiple instances of the sinfle0user Jupyter notebook server.
+It offers distributions for different use cases.">
+<meta name="author" content="">
+<link rel="canonical" href="https://x423xu.github.io/posts/jupyterhub/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.bc1149f4a72aa4858d3a9f71462f75e5884ffe8073ea9d6d5761d5663d651e20.css" integrity="sha256-vBFJ9KcqpIWNOp9xRi915YhP/oBz6p1tV2HVZj1lHiA=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://x423xu.github.io/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://x423xu.github.io/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://x423xu.github.io/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://x423xu.github.io/apple-touch-icon.png">
+<link rel="mask-icon" href="https://x423xu.github.io/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript>
+<script>
+    MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        options: {
+            skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+        }
+    };
+
+    window.addEventListener('load', (event) => {
+        document.querySelectorAll("mjx-container").forEach(function (x) {
+            x.parentElement.classList += 'has-jax'
+        })
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<meta property="og:title" content="Jupyterhub" />
+<meta property="og:description" content="Here I would introduce how to use jupyter hub in HPC
+Introduction JupyterHub is the best way to serve Jupyter notebook for multiple users. Because jupyterhub manages a separate Jupyter encironment for each user, it can be used in a class of students, a corporate data scientific research group. It is a multi-user Hub that spawns, manages, and proxies multiple instances of the sinfle0user Jupyter notebook server.
+It offers distributions for different use cases." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://x423xu.github.io/posts/jupyterhub/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-07T12:59:14-05:00" />
+<meta property="article:modified_time" content="2022-11-07T12:59:14-05:00" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Jupyterhub"/>
+<meta name="twitter:description" content="Here I would introduce how to use jupyter hub in HPC
+Introduction JupyterHub is the best way to serve Jupyter notebook for multiple users. Because jupyterhub manages a separate Jupyter encironment for each user, it can be used in a class of students, a corporate data scientific research group. It is a multi-user Hub that spawns, manages, and proxies multiple instances of the sinfle0user Jupyter notebook server.
+It offers distributions for different use cases."/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://x423xu.github.io/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Jupyterhub",
+      "item": "https://x423xu.github.io/posts/jupyterhub/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Jupyterhub",
+  "name": "Jupyterhub",
+  "description": "Here I would introduce how to use jupyter hub in HPC\nIntroduction JupyterHub is the best way to serve Jupyter notebook for multiple users. Because jupyterhub manages a separate Jupyter encironment for each user, it can be used in a class of students, a corporate data scientific research group. It is a multi-user Hub that spawns, manages, and proxies multiple instances of the sinfle0user Jupyter notebook server.\nIt offers distributions for different use cases.",
+  "keywords": [
+    "tools"
+  ],
+  "articleBody": "Here I would introduce how to use jupyter hub in HPC\nIntroduction JupyterHub is the best way to serve Jupyter notebook for multiple users. Because jupyterhub manages a separate Jupyter encironment for each user, it can be used in a class of students, a corporate data scientific research group. It is a multi-user Hub that spawns, manages, and proxies multiple instances of the sinfle0user Jupyter notebook server.\nIt offers distributions for different use cases.\nThe little JupyterHub for numbre of users (1-100) Zero to JupyterHub with Kubernets deploy dynamic servers on the cloud for more users. Four subsystems:\na Hub is the heart aconfigurable HTTP Procy receives the requests from the client’s browser multiple Single-User Jupyter Notebook Servers monitores by Spawners. an Authentication Class manages how users can access the system. Functions:\nThe Hub launches a proxy The proxy forwards all requests to the Hub by default The Hub handles user login and spawns single-user servers on demand The Hub configures the procy to forward URL prefixes to the single-user notebook servers. By default, a notebook server runs locally at 127.0.0.1:8888 and is accessible only from localhost. You may access the notebook server from the browser using http://127.0.0.1:8888.\nHowTo 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 Steps: first login: 0. cd scratch 1. module load python 2. virtualenv --no-download jupyter_py3 3. source jupyter_py3/bin/activate 4. pip install --no-index --upgrade pip 5. pip install --no-index jupyterlab 6. echo -e '#!/bin/bash\\nunset XDG_RUNTIME_DIR\\njupyter lab --ip $(hostname -f) --no-browser' \u003e $VIRTUAL_ENV/bin/jupyterlab.sh 7. chmod u+x $VIRTUAL_ENV/bin/jupyterlab.sh next login: source jupyter_py3/bin/activate salloc --time=3:0:0 --nodes=1 --gres=gpu:1 --ntasks=1 --cpus-per-task=8 --mem-per-cpu=3000M --account=def-zhouwang --x11 srun $VIRTUAL_ENV/bin/jupyterlab.sh local: sshuttle --dns -Nr xiaoyu@beluga.computecanada.ca ",
+  "wordCount" : "279",
+  "inLanguage": "en",
+  "datePublished": "2022-11-07T12:59:14-05:00",
+  "dateModified": "2022-11-07T12:59:14-05:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://x423xu.github.io/posts/jupyterhub/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Xiaoyu's blog",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://x423xu.github.io/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class=" dark" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://x423xu.github.io/" accesskey="h" title="Xiaoyu&#39;s blog (Alt + H)">Xiaoyu&#39;s blog</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://x423xu.github.io/" title="home">
+                    <span>home</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/archives/" title="archives">
+                    <span>archives</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/categories/" title="categories">
+                    <span>categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/tags/" title="tags">
+                    <span>tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://x423xu.github.io/search/" title="search (Alt &#43; /)" accesskey=/>
+                    <span>search</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://x423xu.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://x423xu.github.io/posts/">Posts</a></div>
+    <h1 class="post-title">
+      Jupyterhub
+    </h1>
+    <div class="post-meta"><span title='2022-11-07 12:59:14 -0500 EST'>November 7, 2022</span>&nbsp;·&nbsp;2 min
+
+</div>
+  </header> <div class="toc">
+    <details  open>
+        <summary accesskey="c" title="(Alt + C)">
+            <span class="details">Table of Contents</span>
+        </summary>
+
+        <div class="inner"><ul>
+                <li>
+                    <a href="#introduction" aria-label="Introduction">Introduction</a></li>
+                <li>
+                    <a href="#howto" aria-label="HowTo">HowTo</a>
+                </li>
+            </ul>
+        </div>
+    </details>
+</div>
+
+  <div class="post-content"><p>Here I would introduce how to use jupyter hub in HPC</p>
+<h1 id="introduction">Introduction<a hidden class="anchor" aria-hidden="true" href="#introduction">#</a></h1>
+<p>JupyterHub is the best way to serve Jupyter notebook for multiple users. Because jupyterhub manages a separate Jupyter encironment for each user, it can be used in a class of students, a corporate data scientific research group. It is a multi-user Hub that spawns, manages, and proxies multiple instances of the sinfle0user Jupyter notebook server.</p>
+<p>It offers distributions for different use cases.</p>
+<ol>
+<li><strong>The little JupyterHub</strong> for numbre of users (1-100)</li>
+<li><strong>Zero to JupyterHub with Kubernets</strong> deploy dynamic servers on the cloud for more users.</li>
+</ol>
+<p>Four subsystems:</p>
+<ul>
+<li>a <strong>Hub</strong> is the heart</li>
+<li>a<strong>configurable HTTP Procy</strong> receives the requests from the client&rsquo;s browser</li>
+<li>multiple <strong>Single-User Jupyter Notebook Servers</strong> monitores by Spawners.</li>
+<li>an <strong>Authentication Class</strong> manages how users can access the system.</li>
+</ul>
+<p><img loading="lazy" src="/assets/images/jupyterhub.png" alt="jupyterhub"  />
+</p>
+<p>Functions:</p>
+<ul>
+<li>The Hub launches a proxy</li>
+<li>The proxy forwards all requests to the Hub by default</li>
+<li>The Hub handles user login and spawns single-user servers on demand</li>
+<li>The Hub configures the procy to forward URL prefixes to the single-user notebook servers.</li>
+</ul>
+<p>By default, a notebook server runs locally at 127.0.0.1:8888 and is accessible only from localhost. You may access the notebook server from the browser using http://127.0.0.1:8888.</p>
+<h1 id="howto">HowTo<a hidden class="anchor" aria-hidden="true" href="#howto">#</a></h1>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-v" data-lang="v"><span style="display:flex;"><span><span style="color:#a6e22e">Steps</span>:
+</span></span><span style="display:flex;"><span>    first login:
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">0</span>. cd scratch
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">1</span>. <span style="color:#f92672">module</span> load python
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">2</span>. virtualenv <span style="color:#f92672">--</span>no<span style="color:#f92672">-</span>download jupyter_py3
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">3</span>. source jupyter_py3<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>activate
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">4</span>. pip install <span style="color:#f92672">--</span>no<span style="color:#f92672">-</span>index <span style="color:#f92672">--</span>upgrade pip
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">5</span>. pip install <span style="color:#f92672">--</span>no<span style="color:#f92672">-</span>index jupyterlab
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">6</span>. echo <span style="color:#f92672">-</span>e <span style="color:#e6db74">&#39;#!/bin/bash</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">unset XDG_RUNTIME_DIR</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">jupyter lab --ip </span><span style="color:#f92672">$</span><span style="color:#e6db74">(hostname -f) --no-browser&#39;</span> &gt; <span style="color:#f92672">$</span><span style="color:#a6e22e">VIRTUAL_ENV</span><span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>jupyterlab.sh
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">7</span>. chmod u<span style="color:#f92672">+</span>x <span style="color:#f92672">$</span><span style="color:#a6e22e">VIRTUAL_ENV</span><span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>jupyterlab.sh
+</span></span><span style="display:flex;"><span>    next login:
+</span></span><span style="display:flex;"><span>        source jupyter_py3<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>activate
+</span></span><span style="display:flex;"><span>        salloc <span style="color:#f92672">--</span>time<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>:<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">0</span> <span style="color:#f92672">--</span>nodes<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">--</span>gres<span style="color:#f92672">=</span>gpu:<span style="color:#ae81ff">1</span> <span style="color:#f92672">--</span>ntasks<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">--</span>cpus<span style="color:#f92672">-</span>per<span style="color:#f92672">-</span>task<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span> <span style="color:#f92672">--</span>mem<span style="color:#f92672">-</span>per<span style="color:#f92672">-</span>cpu<span style="color:#f92672">=</span><span style="color:#ae81ff">3000</span><span style="color:#a6e22e">M</span> <span style="color:#f92672">--</span>account<span style="color:#f92672">=</span>def<span style="color:#f92672">-</span>zhouwang <span style="color:#f92672">--</span>x11 srun <span style="color:#f92672">$</span><span style="color:#a6e22e">VIRTUAL_ENV</span><span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>jupyterlab.sh
+</span></span><span style="display:flex;"><span>    local:
+</span></span><span style="display:flex;"><span>        sshuttle <span style="color:#f92672">--</span>dns <span style="color:#f92672">-</span><span style="color:#a6e22e">Nr</span> xiaoyu<span style="color:#f92672">@</span>beluga.computecanada.ca
+</span></span><span style="display:flex;"><span>    
+</span></span></code></pre></td></tr></table>
+</div>
+</div>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://x423xu.github.io/tags/tools/">tools</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="next" href="https://x423xu.github.io/posts/debugs/">
+    <span class="title">Next »</span>
+    <br>
+    <span>Debugs</span>
+  </a>
+</nav>
+
+
+<div class="share-buttons">
+    <a target="_blank" rel="noopener noreferrer" aria-label="share Jupyterhub on twitter"
+        href="https://twitter.com/intent/tweet/?text=Jupyterhub&amp;url=https%3a%2f%2fx423xu.github.io%2fposts%2fjupyterhub%2f&amp;hashtags=tools">
+        <svg version="1.1" viewBox="0 0 512 512" xml:space="preserve" height="30px" width="30px" fill="currentColor">
+            <path
+                d="M449.446,0c34.525,0 62.554,28.03 62.554,62.554l0,386.892c0,34.524 -28.03,62.554 -62.554,62.554l-386.892,0c-34.524,0 -62.554,-28.03 -62.554,-62.554l0,-386.892c0,-34.524 28.029,-62.554 62.554,-62.554l386.892,0Zm-253.927,424.544c135.939,0 210.268,-112.643 210.268,-210.268c0,-3.218 0,-6.437 -0.153,-9.502c14.406,-10.421 26.973,-23.448 36.935,-38.314c-13.18,5.824 -27.433,9.809 -42.452,11.648c15.326,-9.196 26.973,-23.602 32.49,-40.92c-14.252,8.429 -30.038,14.56 -46.896,17.931c-13.487,-14.406 -32.644,-23.295 -53.946,-23.295c-40.767,0 -73.87,33.104 -73.87,73.87c0,5.824 0.613,11.494 1.992,16.858c-61.456,-3.065 -115.862,-32.49 -152.337,-77.241c-6.284,10.881 -9.962,23.601 -9.962,37.088c0,25.594 13.027,48.276 32.95,61.456c-12.107,-0.307 -23.448,-3.678 -33.41,-9.196l0,0.92c0,35.862 25.441,65.594 59.311,72.49c-6.13,1.686 -12.72,2.606 -19.464,2.606c-4.751,0 -9.348,-0.46 -13.946,-1.38c9.349,29.426 36.628,50.728 68.965,51.341c-25.287,19.771 -57.164,31.571 -91.8,31.571c-5.977,0 -11.801,-0.306 -17.625,-1.073c32.337,21.15 71.264,33.41 112.95,33.41Z" />
+        </svg>
+    </a>
+</div>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2022 <a href="https://x423xu.github.io/">Xiaoyu&#39;s blog</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

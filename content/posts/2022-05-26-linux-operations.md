@@ -1,6 +1,7 @@
 ---
 layout: post
 title: linux-operations
+date: 2022-11-09T17:08:52-05:00
 tags: ["tools"]
 ---
 # Mout a disk
@@ -156,16 +157,43 @@ search in tab `ctrl+k/ctrl+e/ctrl+l/alt+d`
 
 # vnc cheatsheet
 ```
-server:
+For login node: 
+  server:
     ssh graham
     vncserver -MaxConnectionTime 3600 -AlwaysShared	
     grep port /home/xiaoyu/.vnc/gra-login1:3.log
     
     vncserver -list
     vncserver -kill :44
-local:
+  local:
     ssh graham -L 5901:gra-login1:5903
     vncviewer localhost:5901
+
+For compute node:
+  server:
+    1. export XDG_RUNTIME_DIR=${SLURM_TMPDIR}
+    2. vncserver
+    3. grep port /home/xiaoyu/.vnc/cdr348.int.cedar.computecanada.ca:1.log
+  local:
+    1. ssh username@cedar.computecanada.ca -L 5902:cdr348:5901
+    2. vncviewer localhost:5902
+
+```
+
+# Slurm cheatsheet
+```
+Filename Pattern:
+    %% The character "%".
+    %A Job array's master job allocation number.
+    %a Job array ID (index) number.
+    %J jobid.stepid of the running job. (e.g. "128.0")
+    %j jobid of the running job.
+    %N short hostname. This will create a separate IO file per node.
+    %n Node identifier relative to current job (e.g. "0" is the first node of the running job) This will create a separate IO file per node.
+    %s stepid of the running job.
+    %t task identifier (rank) relative to current job. This will create a separate IO file per task.
+    %u User name.
+    %x Job name.
 ```
 
 # other collections
