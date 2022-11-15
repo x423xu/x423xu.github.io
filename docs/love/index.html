@@ -11,6 +11,12 @@
             font-family: digit;
             src: url('/heart/digital-7_mono.ttf') format("truetype");
         }
+
+        .img {
+            position: absolute;
+            left: 130px;
+            top: 80px;
+        }
     </style>
 
     <link href="/heart/assets/css/default.css" type="text/css" rel="stylesheet">
@@ -29,29 +35,11 @@
 
     <div id="mainDiv">
         <div id="content">
-            <!-- <div id="code">
-                我很努力的<br />
-                要成为一个</span><br />
-                <span class="keyword">优秀的男朋友</span><br /><br />
+            <div id="code">
+                <img src="/assets/images/family.jpg" class="img" alt="HTML5 Icon" style="width:512px;height:682px;">
 
-                你也很努力的<br />
-                在成为一个<br />
-                <span class="keyword">优秀的女朋友的路上</span><br /><br />
 
-                这种感觉<br />
-                真的是<br />
-                <span class="keyword">太好了</span><br /><br />
-
-                唯有梦想与好姑娘<br />
-                <span class="keyword">不可辜负</span><br /><br />
-
-                <hr />
-                <span class="keyword">I want to say:</span><br />
-                Mrs.Right<br />
-                <span class="keyword"> I love you! </span><br />
-                -- 钟先森<br />
-
-            </div> -->
+            </div>
             <div id="loveHeart">
                 <canvas id="garden"></canvas>
                 <div id="words">
@@ -95,7 +83,7 @@
             }, 500);
 
             adjustCodePosition();
-            $("#code").typewriter();
+            // $("#code").typewriter();
         }
     </script>
     <div style="text-align:center;clear:both">
