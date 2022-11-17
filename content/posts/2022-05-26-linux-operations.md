@@ -87,13 +87,18 @@ uncommit 1 committing: git reset HEAD~1
     查看当前文件夹下每个文件的大小：ls ./ -lht
     查看cuda版本：nvcc --version
     linux查看进程详细信息：ll /proc/PID
-    传输命令: rsync -avz --no-p --no-g xiaoyu.sif xiaoyu@graham.computecanada.ca:/project/def-zhouwang/xiaoyu/ --progress
+    
     查看cuda路径: python -c "import torch;from torch.utils.cpp_extension import CUDA_HOME;print(CUDA_HOME);print(torch.cuda.is_available())"
     统计当前目录下文件的个数（不包括目录）： ls -l | grep "^-" | wc -l
     统计当前目录下文件的个数（包括子目录）： ls -lR| grep "^-" | wc -l
     查看某目录下文件夹(目录)的个数（包括子目录）： ls -lR | grep "^d" | wc -l
     复制ssh key: ssh-copy-id -i id_rsa.pub zduanmu@129.97.68.248
+    
+
+    rsync:
+    传输命令: rsync -avz --no-p --no-g xiaoyu.sif xiaoyu@graham.computecanada.ca:/project/def-zhouwang/xiaoyu/ --progress
     按规则同步: rsync -av --include="*.jpg" --exclude=* ./ xiaoyu@graham.computecanada.ca:/scratch/xiaoyu/depth-estimation/source/RaMDE/test_imgs/ --progress
+    ignore existing: rsync -av --include="*.jpg" --ignore-existing --exclude=* ./ xiaoyu@graham.computecanada.ca:/scratch/xiaoyu/depth-estimation/source/RaMDE/test_imgs/ --progress
 
     open html in remote server:
     1. remote server: python -m http.server 8000
