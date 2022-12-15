@@ -175,6 +175,4 @@ So attention (dynamic weighting) is brought in.
 
 > The exact values for Q,K, and V depend on exactly which attention mechnism is being referred to. For the trasformer, 3 types: 1. Encoder Attention, 2, Decoder Attention, 3. Encoder-decoder Attention. [(Here for reference)](https://medium.com/@b.terryjack/deep-learning-the-transformer-9ae5e9c5a190)
 
-
-
 ---
