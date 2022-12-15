@@ -114,3 +114,67 @@ FOV-based initial heatmap.
 - 3D multi-object tracker to more robustly track objects that are temporarily missed by detectors.
 - a predictor employs constant acceleration motion model to estimate future positions and prediction confidence.
 - a new pairwise cost. 
+
+# Multimodal Trajectory Prediction Conditioned on Lane-Graph Traversals
+
+- Predicting the future motion of surrounding vehicles requires reasoning about the inherent uncertainty in driving behavior.
+- Early works encodes HD maps using a rasterized bird's eye view image.
+- Recent wotks represent lane polylines as nodes of a graph.
+- Represent HD map as a graph and encode the input context into a single context vector.
+## challenges:
+- The prediction header go off the road, violate traffic rules because of the complex mapping.
+- lateral or route variability (e.g. will the driver change lane, will they turn right etc.). longitudinal variability (will the driver accelerate, brake, maintain spped)
+## insights
+- graph structure of the scene explicitly model the lateral or route variability in trajectories
+- predictions conditioned on traversals:
+    1. selectively aggregate part of scene context by **sampling path traversals from a learned policy**
+    2. it lessens representational demands  on the output decoder.
+    - the probabilistic policy leads to adiverse set of sampled paths.
+- latent variable for longitudinal variability:
+    1. condition the predictions with a sampled latent variable.
+    2. enable to predict distinct trajectories even for identical path traversals.
+## method
+- predict the future trajectories of vehicles of interest,
+- conditioned on 
+    1. their past trajectories
+    2. the past trajectories of nearby vehicles and pedestrians
+    3. the HD map of the scene
+- represent the scene, predict in the bird's eye view and use an agent-centric frame of reference aligned along the agent's instantaneous direction of motion.
+### Trajectory representation
+$$s_{-t_h:0}^i=[s_{-t_h}^i,\cdots,s_{-1}^i,s_{0}^i]$$ 
+$$s_t^i = [x_t^i, y_t^i, v_t^i, a_t^i, w_t^i,I_t^i]$$
+### HD maps as lane graphs
+- Nodes: lane centerlines $f_{1:N}^v = [f_{1}^v, cdots,f_{N}^v ]$, $f_n^v = [x_n^v, y_n^v, \theta_n^v, I_n^v]$
+- Edges: successor edges->legal route; proximal edges-> lane changes
+### Output representation
+K trajectories.
+### Model
+- graph encoder: forms the backbone of our model, outputs representations for each node of the lane graph, incorporate HD map and surrounding agent context. 
+- policy header: output a discrete probability distribution over outgoing edeges at each node, allowing us to sample paths in the graph.
+- trajectory decoder: output trajectories conditioned on paths traversed by the policy and a sampled latent variable.
+#### Encoding scene and agent context
+- GRU encoders: target vehicle trajectory $s_{-t_h:0}^0$ -> $h_{motion}$; surrounding vehicle trajectories $s_{-t_h:0}^i$ -> $h_{agent}^i$; node features $f_{1:N}^v$->$h_{node}^v$.
+- agent node attention: update node encodings with nearby agent encodings. keys and values from $h_{agent}^i$, query by $h_{node}^v$ 
+- output of agent-node-attention as the attention mask for GAT. Only attended nodes are employed for updating
+
+**An explanation of Q, K, V**
+
+The Seq2Seq task always has encoder+decoder. The encoders job is to take in an input sequence and output a context vector/thought vector. The context vector is then input to decoder.
+
+However, the performance drops drastically for longer sentences.
+
+One solution is to use skip-connection, by simple concatenation or summing up. -> assume all hidden states are equally important.
+
+So attention (dynamic weighting) is brought in. 
+
+---
+> An attention mechanism calculates the dynamic weights representing the relative importance of the inputs in the sequence (**keys**) for the particular output (**query**). Multiplying the dynamic weights with the input sequence (**values**) will then weight the sequence. 
+
+![qkv](/assets/images/qkv.png)
+![qkv](/assets/images/calc_qkv.png)
+
+> The exact values for Q,K, and V depend on exactly which attention mechnism is being referred to. For the trasformer, 3 types: 1. Encoder Attention, 2, Decoder Attention, 3. Encoder-decoder Attention
+
+![encoder-attention](/assets/images/encoder_att.png)
+
+---
