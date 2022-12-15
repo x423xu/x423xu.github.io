@@ -177,4 +177,11 @@ So attention (dynamic weighting) is brought in.
 
 ---
 
-Done
+#### Discrete policy for graph traversal
+
+- A policy $\pi_{route}$ for graph traversal -> sampled roll-outs of the policy correspond to likely routes the target might take in the future.
+- policy: a discrete probability distribution over outgoing edges at each node.
+- additionally add an edge to an *end* state, terminate at a goal location.
+$$score(u,v)=MLP(concat(h_{motion}, h_{node}^u, h_{node}^v, 1_{(u,v)\in E}))$$
+$$\pi_{route}(v|u) = softmax(\{score(u,v)|(u,v)\in E\})$$
+$$L_{BC} = \sum_{(u,v)\in E_{g,t}}-\log(\pi_{route}(v|u))$$
