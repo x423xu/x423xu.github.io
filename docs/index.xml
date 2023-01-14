@@ -6,7 +6,16 @@
     <description>Recent content on Xiaoyu&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Nov 2022 17:08:52 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Nov 2022 20:07:03 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Formal Algorithm for Transformers</title>
+      <link>https://x423xu.github.io/posts/formal-algorithm-for-transformers/</link>
+      <pubDate>Tue, 22 Nov 2022 20:07:03 -0500</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/formal-algorithm-for-transformers/</guid>
+      <description>Introduction Transformers have been tremendously successful in natural language processing tasks and other domains. Many variants have been suggested. Descriptions of transformers are usually graphical, verbal, partial, or incremental. No pseudocode has ever been published for any variant. </description>
+    </item>
+    
     <item>
       <title>linux-operations</title>
       <link>https://x423xu.github.io/posts/2022-05-26-linux-operations/</link>
@@ -86,17 +95,6 @@ SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVP
       
       <guid>https://x423xu.github.io/posts/2022-06-10-graph-cs224w/</guid>
       <description>1 Jure Leskovec, Stanford CS224W: Machine Learning with Graphs, http://cs224w.stanford.edu Why graphs relations of entities Similar data points arbitrary sizes, no spatial index, no reference order representation learning Map nodes to d-dimensional embeddings-&amp;gt; similar nodes in the network are embedded close together Applications of Graph ML different tasks: Node classification Link prediction: knowledge graph completion Graph classification: molecule property prediction Clustering Graph generation Graph evolution: physical simulation Examples: node-level: Protein folding Recommender system: recommend related pins to users by edge level classification subgraph-level: traffic prediction: nodes: road segments, edges: connectivity between nodes-&amp;gt; predict time arrival etc graph-level: drug discovery: nodes: atoms, edges: chemical bonds.</description>
-    </item>
-    
-    <item>
-      <title>Gupta-dissertation-visual-text</title>
-      <link>https://x423xu.github.io/posts/2022-06-01-gupta-dissertation-visual-text/</link>
-      <pubDate>Wed, 01 Jun 2022 14:41:09 +0000</pubDate>
-      
-      <guid>https://x423xu.github.io/posts/2022-06-01-gupta-dissertation-visual-text/</guid>
-      <description>keywords: unsupervised, visual+text, representations
-Challenges Challenge 1: Accurate and generalizable representations The model learn a representation does not generalize, by overfitting. Concepts such as objects, attributes, relationships or interactions are shared across vision-language tasks. Such representations are multi-modal. Now separately. Work towards the challenge Concepts of objects and attributes are shared across tasks. Word-region verification sub-task by inner product. ? Shared visual-language representations leads to a greater inductive transfer
-Using images to improve word representations Limitations of learning only from text:</description>
     </item>
     
     <item>

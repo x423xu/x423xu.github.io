@@ -37,8 +37,14 @@ p.join()
 
 # Difference between subprocess and multiprocess
 
-`subprocess` helps the python code spawn a new process to execute external source code like `c++`, `shell`
+- `subprocess` helps the python code spawn a new process to execute external source code like `c++`, `shell`
 
-`multiprocess` spawns multiple processes for data processing or other parallel works.
+- `multiprocess` spawns multiple processes for data processing or other parallel works.
 
 # Difference between Pool and Process
+In my setting:
+- `Pool` for multiple threads
+- `Process` for multiple processes
+
+# Deploy on HPC
+Note to specify `cpus-per-task` $\geq$ `Processes` $\times$ `Pools`.

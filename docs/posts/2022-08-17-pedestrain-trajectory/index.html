@@ -97,8 +97,8 @@ SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVP
   "keywords": [
     "paper-reading"
   ],
-  "articleBody": "Pedestrain trajectory Questions: 1. only pedestrain relation considered? hoe about environment 2. what is the general framework for pedestrain trajectory prediction.\nSGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021) SGCN framework superfulous interactions: dense interaction -\u003e one pedestrain is related to all other pedestrains while in fact it is not sparse undirected -\u003e equal interactions for a pair of pedestrains spatial GCN -\u003e sparse directed -\u003e not all pedestrains + not equal interaction temporal GCN -\u003e motion tendency Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021) Use CNN to generalize complex interpersonal relations a graph representation: node as pedestrian, edges correspond to distance challeges only simple social relationship like collision avoidance is aggregated modelling social norms is not suitable for determining the end-points of pedestrians in the last frame (over-avoidance) contributions disentangled multi-scale aggregation to clearly distinguish between relevant pedestrians multi-relational GCN to extract sophisticated social interaction in a scene. a global temporal aggregation to compensate accumulated errors from over-avoidance. Gaze target estimation Dual Attention Guided Gaze Target Detection in the Wild challenges: prior works: gaze direction in 2D representations + barely depth-channel gaze. forward, backward, sideward. (refer to one person) salient objects from 2d cues. two candidates different depth along same gaze direction, hard to tell apart. (refer to one person with the scene understanding) fixation inconsistency: facing forward looking downward. solutions: estimate 3D gaze direction from head image. dual attention module -\u003e depth-aware perspective in the scene ?hasn’t found effective solution in the paper? -\u003e solved in the first stage? so is it still an independent challenge? or should be merged to the first challenge? ESCNet: Gaze Target Detection with the Understanding of 3D Scenes hard to handle: multiple salient objects lie in the same depth layer and field of view. occlusion plays an important role in gaze estimation , one cannot see through occluders. 3D geometry could br reconstructed by absolute depth and camera parameters FOV-based initial heatmap.\nMultimodal Across Domains Gaze Target Detection gaze target detection also referred as gaze-following false detections occur when there are multiple object-of-interests at different depths but along with the subject’s gaze direction ‘dual’ potentially being error-prone in real-life processing, e.g., when the eyes are not visible or not detectable ‘ESCNET’ auxiliary estimating depth, depend on depth and pseudo labels. not require gaze angles as supervision only spatial processing, but still detect gaze target use depth image how different modalities should be jointly learned for performing effective gaze target detection\nsolve domain shift problem Beyon 3D Siamese Tracking: A motion-Centric Paradigm for 3D single Object Tracking in Point Clouds point clouds are usually textureless and incomplete, which hinders effective appearance matching. Overlook motion clues among targets. propose a motion-centric paradigm $M^2-Track$ localizes the target within successive frames via motion transformation. refines the target box through motion-assisted shape completion Motivation the upper one obtain a canonical target template using the previous target box and search for the target in thecurrent frame according to the matching similarity. It is sensitive to distractors The bottom one learns relative target motion from two consecutive frames. Robustly localize the target. framework input: last point cloud, last 3D BBox, current point cloud\noutput current 3D BBox.\n? how many frame used and how many frame predicted.\n1 frame used, 1 frame predicted. quick comment: this task is not suitable for our goal. But it gives a good benchmark for kitti dataset.\nMotion CNN plan a safe and efficient route. a baseline form multimodal motion prediction. explanation framework input: image output trajectories. use 1 second of images to predict 8 seconds’. 3D Multi-Object Tracking in Point Clouds Based on Prediction confidence-Guided Data Association 3D multi-object tracker to more robustly track objects that are temporarily missed by detectors. a predictor employs constant acceleration motion model to estimate future positions and prediction confidence. a new pairwise cost. ",
-  "wordCount" : "641",
+  "articleBody": "Pedestrain trajectory Questions: 1. only pedestrain relation considered? hoe about environment 2. what is the general framework for pedestrain trajectory prediction.\nSGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVPR2021) SGCN framework superfulous interactions: dense interaction -\u003e one pedestrain is related to all other pedestrains while in fact it is not sparse undirected -\u003e equal interactions for a pair of pedestrains spatial GCN -\u003e sparse directed -\u003e not all pedestrains + not equal interaction temporal GCN -\u003e motion tendency Disentangled Multi-Relational Graph Convolutional Network for Pedestrian Trajectory Prediction (AAAI2021) Use CNN to generalize complex interpersonal relations a graph representation: node as pedestrian, edges correspond to distance challeges only simple social relationship like collision avoidance is aggregated modelling social norms is not suitable for determining the end-points of pedestrians in the last frame (over-avoidance) contributions disentangled multi-scale aggregation to clearly distinguish between relevant pedestrians multi-relational GCN to extract sophisticated social interaction in a scene. a global temporal aggregation to compensate accumulated errors from over-avoidance. Gaze target estimation Dual Attention Guided Gaze Target Detection in the Wild challenges: prior works: gaze direction in 2D representations + barely depth-channel gaze. forward, backward, sideward. (refer to one person) salient objects from 2d cues. two candidates different depth along same gaze direction, hard to tell apart. (refer to one person with the scene understanding) fixation inconsistency: facing forward looking downward. solutions: estimate 3D gaze direction from head image. dual attention module -\u003e depth-aware perspective in the scene ?hasn’t found effective solution in the paper? -\u003e solved in the first stage? so is it still an independent challenge? or should be merged to the first challenge? ESCNet: Gaze Target Detection with the Understanding of 3D Scenes hard to handle: multiple salient objects lie in the same depth layer and field of view. occlusion plays an important role in gaze estimation , one cannot see through occluders. 3D geometry could br reconstructed by absolute depth and camera parameters FOV-based initial heatmap.\nMultimodal Across Domains Gaze Target Detection gaze target detection also referred as gaze-following false detections occur when there are multiple object-of-interests at different depths but along with the subject’s gaze direction ‘dual’ potentially being error-prone in real-life processing, e.g., when the eyes are not visible or not detectable ‘ESCNET’ auxiliary estimating depth, depend on depth and pseudo labels. not require gaze angles as supervision only spatial processing, but still detect gaze target use depth image how different modalities should be jointly learned for performing effective gaze target detection\nsolve domain shift problem Beyon 3D Siamese Tracking: A motion-Centric Paradigm for 3D single Object Tracking in Point Clouds point clouds are usually textureless and incomplete, which hinders effective appearance matching. Overlook motion clues among targets. propose a motion-centric paradigm $M^2-Track$ localizes the target within successive frames via motion transformation. refines the target box through motion-assisted shape completion Motivation the upper one obtain a canonical target template using the previous target box and search for the target in thecurrent frame according to the matching similarity. It is sensitive to distractors The bottom one learns relative target motion from two consecutive frames. Robustly localize the target. framework input: last point cloud, last 3D BBox, current point cloud\noutput current 3D BBox.\n? how many frame used and how many frame predicted.\n1 frame used, 1 frame predicted. quick comment: this task is not suitable for our goal. But it gives a good benchmark for kitti dataset.\nMotion CNN plan a safe and efficient route. a baseline form multimodal motion prediction. explanation framework input: image output trajectories. use 1 second of images to predict 8 seconds’. 3D Multi-Object Tracking in Point Clouds Based on Prediction confidence-Guided Data Association 3D multi-object tracker to more robustly track objects that are temporarily missed by detectors. a predictor employs constant acceleration motion model to estimate future positions and prediction confidence. a new pairwise cost. Multimodal Trajectory Prediction Conditioned on Lane-Graph Traversals Predicting the future motion of surrounding vehicles requires reasoning about the inherent uncertainty in driving behavior. Early works encodes HD maps using a rasterized bird’s eye view image. Recent wotks represent lane polylines as nodes of a graph. Represent HD map as a graph and encode the input context into a single context vector. challenges: The prediction header go off the road, violate traffic rules because of the complex mapping. lateral or route variability (e.g. will the driver change lane, will they turn right etc.). longitudinal variability (will the driver accelerate, brake, maintain spped) insights graph structure of the scene explicitly model the lateral or route variability in trajectories predictions conditioned on traversals: selectively aggregate part of scene context by sampling path traversals from a learned policy it lessens representational demands on the output decoder. the probabilistic policy leads to adiverse set of sampled paths. latent variable for longitudinal variability: condition the predictions with a sampled latent variable. enable to predict distinct trajectories even for identical path traversals. method predict the future trajectories of vehicles of interest, conditioned on their past trajectories the past trajectories of nearby vehicles and pedestrians the HD map of the scene represent the scene, predict in the bird’s eye view and use an agent-centric frame of reference aligned along the agent’s instantaneous direction of motion. Trajectory representation $$s_{-t_h:0}^i=[s_{-t_h}^i,\\cdots,s_{-1}^i,s_{0}^i]$$ $$s_t^i = [x_t^i, y_t^i, v_t^i, a_t^i, w_t^i,I_t^i]$$\nHD maps as lane graphs Nodes: lane centerlines $f_{1:N}^v = [f_{1}^v, cdots,f_{N}^v ]$, $f_n^v = [x_n^v, y_n^v, \\theta_n^v, I_n^v]$ Edges: successor edges-\u003elegal route; proximal edges-\u003e lane changes Output representation K trajectories.\nModel graph encoder: forms the backbone of our model, outputs representations for each node of the lane graph, incorporate HD map and surrounding agent context. policy header: output a discrete probability distribution over outgoing edeges at each node, allowing us to sample paths in the graph. trajectory decoder: output trajectories conditioned on paths traversed by the policy and a sampled latent variable. Encoding scene and agent context GRU encoders: target vehicle trajectory $s_{-t_h:0}^0$ -\u003e $h_{motion}$; surrounding vehicle trajectories $s_{-t_h:0}^i$ -\u003e $h_{agent}^i$; node features $f_{1:N}^v$-\u003e$h_{node}^v$. agent node attention: update node encodings with nearby agent encodings. keys and values from $h_{agent}^i$, query by $h_{node}^v$ output of agent-node-attention as the attention mask for GAT. Only attended nodes are employed for updating An explanation of Q, K, V\nThe Seq2Seq task always has encoder+decoder. The encoders job is to take in an input sequence and output a context vector/thought vector. The context vector is then input to decoder.\nHowever, the performance drops drastically for longer sentences.\nOne solution is to use skip-connection, by simple concatenation or summing up. -\u003e assume all hidden states are equally important.\nSo attention (dynamic weighting) is brought in.\nAn attention mechanism calculates the dynamic weights representing the relative importance of the inputs in the sequence (keys) for the particular output (query). Multiplying the dynamic weights with the input sequence (values) will then weight the sequence.\nThe exact values for Q,K, and V depend on exactly which attention mechnism is being referred to. For the trasformer, 3 types: 1. Encoder Attention, 2, Decoder Attention, 3. Encoder-decoder Attention. (Here for reference)\nDiscrete policy for graph traversal A policy $\\pi_{route}$ for graph traversal -\u003e sampled roll-outs of the policy correspond to likely routes the target might take in the future. policy: a discrete probability distribution over outgoing edges at each node. additionally add an edge to an end state, terminate at a goal location. $$score(u,v)=MLP(concat(h_{motion}, h_{node}^u, h_{node}^v, 1_{(u,v)\\in E}))$$ $$\\pi_{route}(v|u) = softmax({score(u,v)|(u,v)\\in E})$$ $$L_{BC} = \\sum_{(u,v)\\in E_{g,t}}-\\log(\\pi_{route}(v|u))$$ ",
+  "wordCount" : "1234",
   "inLanguage": "en",
   "datePublished": "2022-08-17T13:30:03Z",
   "dateModified": "2022-08-17T13:30:03Z",
@@ -190,7 +190,7 @@ SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVP
     <h1 class="post-title">
       pedestrain-trajectory
     </h1>
-    <div class="post-meta"><span title='2022-08-17 13:30:03 +0000 UTC'>August 17, 2022</span>&nbsp;·&nbsp;4 min
+    <div class="post-meta"><span title='2022-08-17 13:30:03 +0000 UTC'>August 17, 2022</span>&nbsp;·&nbsp;6 min
 
 </div>
   </header> <div class="toc">
@@ -241,8 +241,37 @@ SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVP
                     <a href="#framework-1" aria-label="framework">framework</a></li></ul>
                 </li>
                 <li>
-                    <a href="#3d-multi-object-tracking-in-point-clouds-based-on-prediction-confidence-guided-data-association" aria-label="3D Multi-Object Tracking in Point Clouds Based on Prediction confidence-Guided Data Association">3D Multi-Object Tracking in Point Clouds Based on Prediction confidence-Guided Data Association</a>
+                    <a href="#3d-multi-object-tracking-in-point-clouds-based-on-prediction-confidence-guided-data-association" aria-label="3D Multi-Object Tracking in Point Clouds Based on Prediction confidence-Guided Data Association">3D Multi-Object Tracking in Point Clouds Based on Prediction confidence-Guided Data Association</a></li>
+                <li>
+                    <a href="#multimodal-trajectory-prediction-conditioned-on-lane-graph-traversals" aria-label="Multimodal Trajectory Prediction Conditioned on Lane-Graph Traversals">Multimodal Trajectory Prediction Conditioned on Lane-Graph Traversals</a><ul>
+                        
+                <li>
+                    <a href="#challenges" aria-label="challenges:">challenges:</a></li>
+                <li>
+                    <a href="#insights" aria-label="insights">insights</a></li>
+                <li>
+                    <a href="#method" aria-label="method">method</a><ul>
+                        
+                <li>
+                    <a href="#trajectory-representation" aria-label="Trajectory representation">Trajectory representation</a></li>
+                <li>
+                    <a href="#hd-maps-as-lane-graphs" aria-label="HD maps as lane graphs">HD maps as lane graphs</a></li>
+                <li>
+                    <a href="#output-representation" aria-label="Output representation">Output representation</a></li>
+                <li>
+                    <a href="#model" aria-label="Model">Model</a><ul>
+                        
+                <li>
+                    <a href="#encoding-scene-and-agent-context" aria-label="Encoding scene and agent context">Encoding scene and agent context</a></li>
+                <li>
+                    <a href="#discrete-policy-for-graph-traversal" aria-label="Discrete policy for graph traversal">Discrete policy for graph traversal</a>
                 </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
+            </ul>
+            </li>
             </ul>
         </div>
     </details>
@@ -380,6 +409,97 @@ SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVP
 <li>a predictor employs constant acceleration motion model to estimate future positions and prediction confidence.</li>
 <li>a new pairwise cost.</li>
 </ul>
+<h1 id="multimodal-trajectory-prediction-conditioned-on-lane-graph-traversals">Multimodal Trajectory Prediction Conditioned on Lane-Graph Traversals<a hidden class="anchor" aria-hidden="true" href="#multimodal-trajectory-prediction-conditioned-on-lane-graph-traversals">#</a></h1>
+<ul>
+<li>Predicting the future motion of surrounding vehicles requires reasoning about the inherent uncertainty in driving behavior.</li>
+<li>Early works encodes HD maps using a rasterized bird&rsquo;s eye view image.</li>
+<li>Recent wotks represent lane polylines as nodes of a graph.</li>
+<li>Represent HD map as a graph and encode the input context into a single context vector.</li>
+</ul>
+<h2 id="challenges">challenges:<a hidden class="anchor" aria-hidden="true" href="#challenges">#</a></h2>
+<ul>
+<li>The prediction header go off the road, violate traffic rules because of the complex mapping.</li>
+<li>lateral or route variability (e.g. will the driver change lane, will they turn right etc.). longitudinal variability (will the driver accelerate, brake, maintain spped)</li>
+</ul>
+<h2 id="insights">insights<a hidden class="anchor" aria-hidden="true" href="#insights">#</a></h2>
+<ul>
+<li>graph structure of the scene explicitly model the lateral or route variability in trajectories</li>
+<li>predictions conditioned on traversals:
+<ol>
+<li>selectively aggregate part of scene context by <strong>sampling path traversals from a learned policy</strong></li>
+<li>it lessens representational demands  on the output decoder.</li>
+</ol>
+<ul>
+<li>the probabilistic policy leads to adiverse set of sampled paths.</li>
+</ul>
+</li>
+<li>latent variable for longitudinal variability:
+<ol>
+<li>condition the predictions with a sampled latent variable.</li>
+<li>enable to predict distinct trajectories even for identical path traversals.</li>
+</ol>
+</li>
+</ul>
+<h2 id="method">method<a hidden class="anchor" aria-hidden="true" href="#method">#</a></h2>
+<ul>
+<li>predict the future trajectories of vehicles of interest,</li>
+<li>conditioned on
+<ol>
+<li>their past trajectories</li>
+<li>the past trajectories of nearby vehicles and pedestrians</li>
+<li>the HD map of the scene</li>
+</ol>
+</li>
+<li>represent the scene, predict in the bird&rsquo;s eye view and use an agent-centric frame of reference aligned along the agent&rsquo;s instantaneous direction of motion.</li>
+</ul>
+<h3 id="trajectory-representation">Trajectory representation<a hidden class="anchor" aria-hidden="true" href="#trajectory-representation">#</a></h3>
+<p>$$s_{-t_h:0}^i=[s_{-t_h}^i,\cdots,s_{-1}^i,s_{0}^i]$$
+$$s_t^i = [x_t^i, y_t^i, v_t^i, a_t^i, w_t^i,I_t^i]$$</p>
+<h3 id="hd-maps-as-lane-graphs">HD maps as lane graphs<a hidden class="anchor" aria-hidden="true" href="#hd-maps-as-lane-graphs">#</a></h3>
+<ul>
+<li>Nodes: lane centerlines $f_{1:N}^v = [f_{1}^v, cdots,f_{N}^v ]$, $f_n^v = [x_n^v, y_n^v, \theta_n^v, I_n^v]$</li>
+<li>Edges: successor edges-&gt;legal route; proximal edges-&gt; lane changes</li>
+</ul>
+<h3 id="output-representation">Output representation<a hidden class="anchor" aria-hidden="true" href="#output-representation">#</a></h3>
+<p>K trajectories.</p>
+<h3 id="model">Model<a hidden class="anchor" aria-hidden="true" href="#model">#</a></h3>
+<ul>
+<li>graph encoder: forms the backbone of our model, outputs representations for each node of the lane graph, incorporate HD map and surrounding agent context.</li>
+<li>policy header: output a discrete probability distribution over outgoing edeges at each node, allowing us to sample paths in the graph.</li>
+<li>trajectory decoder: output trajectories conditioned on paths traversed by the policy and a sampled latent variable.</li>
+</ul>
+<h4 id="encoding-scene-and-agent-context">Encoding scene and agent context<a hidden class="anchor" aria-hidden="true" href="#encoding-scene-and-agent-context">#</a></h4>
+<ul>
+<li>GRU encoders: target vehicle trajectory $s_{-t_h:0}^0$ -&gt; $h_{motion}$; surrounding vehicle trajectories $s_{-t_h:0}^i$ -&gt; $h_{agent}^i$; node features $f_{1:N}^v$-&gt;$h_{node}^v$.</li>
+<li>agent node attention: update node encodings with nearby agent encodings. keys and values from $h_{agent}^i$, query by $h_{node}^v$</li>
+<li>output of agent-node-attention as the attention mask for GAT. Only attended nodes are employed for updating</li>
+</ul>
+<p><strong>An explanation of Q, K, V</strong></p>
+<p>The Seq2Seq task always has encoder+decoder. The encoders job is to take in an input sequence and output a context vector/thought vector. The context vector is then input to decoder.</p>
+<p>However, the performance drops drastically for longer sentences.</p>
+<p>One solution is to use skip-connection, by simple concatenation or summing up. -&gt; assume all hidden states are equally important.</p>
+<p>So attention (dynamic weighting) is brought in.</p>
+<hr>
+<blockquote>
+<p>An attention mechanism calculates the dynamic weights representing the relative importance of the inputs in the sequence (<strong>keys</strong>) for the particular output (<strong>query</strong>). Multiplying the dynamic weights with the input sequence (<strong>values</strong>) will then weight the sequence.</p>
+</blockquote>
+<p><img loading="lazy" src="/assets/images/qkv.png" alt="qkv"  />
+
+<img loading="lazy" src="/assets/images/calc_qkv.png" alt="calc_qkv"  />
+</p>
+<blockquote>
+<p>The exact values for Q,K, and V depend on exactly which attention mechnism is being referred to. For the trasformer, 3 types: 1. Encoder Attention, 2, Decoder Attention, 3. Encoder-decoder Attention. <a href="https://medium.com/@b.terryjack/deep-learning-the-transformer-9ae5e9c5a190">(Here for reference)</a></p>
+</blockquote>
+<hr>
+<h4 id="discrete-policy-for-graph-traversal">Discrete policy for graph traversal<a hidden class="anchor" aria-hidden="true" href="#discrete-policy-for-graph-traversal">#</a></h4>
+<ul>
+<li>A policy $\pi_{route}$ for graph traversal -&gt; sampled roll-outs of the policy correspond to likely routes the target might take in the future.</li>
+<li>policy: a discrete probability distribution over outgoing edges at each node.</li>
+<li>additionally add an edge to an <em>end</em> state, terminate at a goal location.
+$$score(u,v)=MLP(concat(h_{motion}, h_{node}^u, h_{node}^v, 1_{(u,v)\in E}))$$
+$$\pi_{route}(v|u) = softmax({score(u,v)|(u,v)\in E})$$
+$$L_{BC} = \sum_{(u,v)\in E_{g,t}}-\log(\pi_{route}(v|u))$$</li>
+</ul>
 
 
   </div>
@@ -416,7 +536,7 @@ SGCN: Sparse Graph Convolution Network for Pedestrain Trajectory Prediction (CVP
     </main>
     
 <footer class="footer">
-    <span>&copy; 2022 <a href="https://x423xu.github.io/">Xiaoyu&#39;s blog</a></span>
+    <span>&copy; 2023 <a href="https://x423xu.github.io/">Xiaoyu&#39;s blog</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
