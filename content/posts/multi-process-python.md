@@ -47,3 +47,43 @@ In my setting:
 
 # Deploy on HPC
 Note to specify `cpus-per-task` $\geq$ `Processes` $\times$ `Pools`.
+
+# Ref code
+
+1. Spwan `ntasks` processes.
+
+``` python
+if args.parallel:
+        procs = []
+        NTASKS = args.ntasks
+        split_data_list = np.array_split(np.array(list_data), NTASKS)
+        for n in range(NTASKS):
+            proc = Process(target = D.worker, args = (split_data_list[n],), name = 'process_{}'.format(n))
+            proc.start()
+            procs.append(proc)
+        try:
+            for p in procs:
+                p.join()
+        except KeyboardInterrupt:
+            for p in procs:
+                p.terminate()
+                p.join()
+```
+
+__notes__
+
+- The shared data need to be split for each process
+- The `join()` method has to be called after all processes started
+- Monitor `KeyboardInterrupt` and terminate all processes. `join()` method need to follow each `terminate()` to make sure the processes are terminated one-by-one.
+
+2. Use `Pool` to create `cpus-per-task` threads.
+
+``` python
+with Pool(processes=self.num_workers) as pool:
+    pool.map(wrap_process, [(data, seq_id, videoname, self.output_root) for seq_id in range(len(data))])
+```
+
+__notes__
+- Send the whole shared data to each `Pool`, the interpreter would dispatch them in backend. Don't have to explicitly split the data.
+
+- If multiple processes wanna write or read the same file, a `Queue` of wirting/reading operation has to be created to avoid conflict.

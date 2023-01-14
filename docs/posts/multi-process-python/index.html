@@ -97,8 +97,8 @@ Understand the multiprocessing, subprocess, threading package in python The work
   "keywords": [
     "tools"
   ],
-  "articleBody": "Goals I am recently working on a computer vision task and need a large volume data to be downloaded and processed. However, it takes too much time working in a single thread. So, working in parrallel way in a HPC system would be a better choice.\nUnderstand the multiprocessing, subprocess, threading package in python The workflow for a MPI work Transfer to HPC Multiprocessing package: Process-based parallelism Pool object: parallelizing execution and distributing data (data parallelism) Basic example:\n1 2 with Pool(processes=5) as p: print(p.map(f, [1, 2, 3])) Process class: processes are spawned by creating a Process object and then calling its start() method. Basic example:\n1 2 3 p = Process(target=f, args=('bob',)) p.start() p.join() join() method blocks the execution of the main process until the process whose join method is called terminates. Without it, the main process won’t wait.\nDifference between subprocess and multiprocess subprocess helps the python code spawn a new process to execute external source code like c++, shell\nmultiprocess spawns multiple processes for data processing or other parallel works.\nDifference between Pool and Process In my setting:\nPool for multiple threads Process for multiple processes Deploy on HPC Note to specify cpus-per-task $\\geq$ Processes $\\times$ Pools.\n",
-  "wordCount" : "200",
+  "articleBody": "Goals I am recently working on a computer vision task and need a large volume data to be downloaded and processed. However, it takes too much time working in a single thread. So, working in parrallel way in a HPC system would be a better choice.\nUnderstand the multiprocessing, subprocess, threading package in python The workflow for a MPI work Transfer to HPC Multiprocessing package: Process-based parallelism Pool object: parallelizing execution and distributing data (data parallelism) Basic example:\n1 2 with Pool(processes=5) as p: print(p.map(f, [1, 2, 3])) Process class: processes are spawned by creating a Process object and then calling its start() method. Basic example:\n1 2 3 p = Process(target=f, args=('bob',)) p.start() p.join() join() method blocks the execution of the main process until the process whose join method is called terminates. Without it, the main process won’t wait.\nDifference between subprocess and multiprocess subprocess helps the python code spawn a new process to execute external source code like c++, shell\nmultiprocess spawns multiple processes for data processing or other parallel works.\nDifference between Pool and Process In my setting:\nPool for multiple threads Process for multiple processes Deploy on HPC Note to specify cpus-per-task $\\geq$ Processes $\\times$ Pools.\nRef code Spwan ntasks processes. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 if args.parallel: procs = [] NTASKS = args.ntasks split_data_list = np.array_split(np.array(list_data), NTASKS) for n in range(NTASKS): proc = Process(target = D.worker, args = (split_data_list[n],), name = 'process_{}'.format(n)) proc.start() procs.append(proc) try: for p in procs: p.join() except KeyboardInterrupt: for p in procs: p.terminate() p.join() notes\nThe shared data need to be split for each process The join() method has to be called after all processes started Monitor KeyboardInterrupt and terminate all processes. join() method need to follow each terminate() to make sure the processes are terminated one-by-one. Use Pool to create cpus-per-task threads. 1 2 with Pool(processes=self.num_workers) as pool: pool.map(wrap_process, [(data, seq_id, videoname, self.output_root) for seq_id in range(len(data))]) notes\nSend the whole shared data to each Pool, the interpreter would dispatch them in backend. Don’t have to explicitly split the data.\nIf multiple processes wanna write or read the same file, a Queue of wirting/reading operation has to be created to avoid conflict.\n",
+  "wordCount" : "372",
   "inLanguage": "en",
   "datePublished": "2023-01-13T13:19:11-05:00",
   "dateModified": "2023-01-13T13:19:11-05:00",
@@ -190,7 +190,7 @@ Understand the multiprocessing, subprocess, threading package in python The work
     <h1 class="post-title">
       Multiple Processing in Python
     </h1>
-    <div class="post-meta"><span title='2023-01-13 13:19:11 -0500 EST'>January 13, 2023</span>&nbsp;·&nbsp;1 min
+    <div class="post-meta"><span title='2023-01-13 13:19:11 -0500 EST'>January 13, 2023</span>&nbsp;·&nbsp;2 min
 
 </div>
   </header> <div class="toc">
@@ -209,7 +209,9 @@ Understand the multiprocessing, subprocess, threading package in python The work
                 <li>
                     <a href="#difference-between-pool-and-process" aria-label="Difference between Pool and Process">Difference between Pool and Process</a></li>
                 <li>
-                    <a href="#deploy-on-hpc" aria-label="Deploy on HPC">Deploy on HPC</a>
+                    <a href="#deploy-on-hpc" aria-label="Deploy on HPC">Deploy on HPC</a></li>
+                <li>
+                    <a href="#ref-code" aria-label="Ref code">Ref code</a>
                 </li>
             </ul>
         </div>
@@ -272,6 +274,74 @@ Understand the multiprocessing, subprocess, threading package in python The work
 </ul>
 <h1 id="deploy-on-hpc">Deploy on HPC<a hidden class="anchor" aria-hidden="true" href="#deploy-on-hpc">#</a></h1>
 <p>Note to specify <code>cpus-per-task</code> $\geq$ <code>Processes</code> $\times$ <code>Pools</code>.</p>
+<h1 id="ref-code">Ref code<a hidden class="anchor" aria-hidden="true" href="#ref-code">#</a></h1>
+<ol>
+<li>Spwan <code>ntasks</code> processes.</li>
+</ol>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>parallel:
+</span></span><span style="display:flex;"><span>        procs <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>        NTASKS <span style="color:#f92672">=</span> args<span style="color:#f92672">.</span>ntasks
+</span></span><span style="display:flex;"><span>        split_data_list <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array_split(np<span style="color:#f92672">.</span>array(list_data), NTASKS)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> n <span style="color:#f92672">in</span> range(NTASKS):
+</span></span><span style="display:flex;"><span>            proc <span style="color:#f92672">=</span> Process(target <span style="color:#f92672">=</span> D<span style="color:#f92672">.</span>worker, args <span style="color:#f92672">=</span> (split_data_list[n],), name <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;process_</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(n))
+</span></span><span style="display:flex;"><span>            proc<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>            procs<span style="color:#f92672">.</span>append(proc)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> procs:
+</span></span><span style="display:flex;"><span>                p<span style="color:#f92672">.</span>join()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">KeyboardInterrupt</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> p <span style="color:#f92672">in</span> procs:
+</span></span><span style="display:flex;"><span>                p<span style="color:#f92672">.</span>terminate()
+</span></span><span style="display:flex;"><span>                p<span style="color:#f92672">.</span>join()
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>notes</strong></p>
+<ul>
+<li>The shared data need to be split for each process</li>
+<li>The <code>join()</code> method has to be called after all processes started</li>
+<li>Monitor <code>KeyboardInterrupt</code> and terminate all processes. <code>join()</code> method need to follow each <code>terminate()</code> to make sure the processes are terminated one-by-one.</li>
+</ul>
+<ol start="2">
+<li>Use <code>Pool</code> to create <code>cpus-per-task</code> threads.</li>
+</ol>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="white-space:pre;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> Pool(processes<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>num_workers) <span style="color:#66d9ef">as</span> pool:
+</span></span><span style="display:flex;"><span>    pool<span style="color:#f92672">.</span>map(wrap_process, [(data, seq_id, videoname, self<span style="color:#f92672">.</span>output_root) <span style="color:#66d9ef">for</span> seq_id <span style="color:#f92672">in</span> range(len(data))])
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><strong>notes</strong></p>
+<ul>
+<li>
+<p>Send the whole shared data to each <code>Pool</code>, the interpreter would dispatch them in backend. Don&rsquo;t have to explicitly split the data.</p>
+</li>
+<li>
+<p>If multiple processes wanna write or read the same file, a <code>Queue</code> of wirting/reading operation has to be created to avoid conflict.</p>
+</li>
+</ul>
 
 
   </div>
