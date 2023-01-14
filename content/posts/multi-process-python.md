@@ -3,7 +3,6 @@ title: "Multiple Processing in Python"
 date: 2023-01-13T13:19:11-05:00
 layout: post
 tags: ["tools"]
-draft: true
 ---
 
 # Goals

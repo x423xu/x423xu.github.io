@@ -6,7 +6,17 @@
     <description>Recent content in tools on Xiaoyu&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 09 Nov 2022 17:08:52 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 13 Jan 2023 13:19:11 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/tags/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multiple Processing in Python</title>
+      <link>https://x423xu.github.io/posts/multi-process-python/</link>
+      <pubDate>Fri, 13 Jan 2023 13:19:11 -0500</pubDate>
+      
+      <guid>https://x423xu.github.io/posts/multi-process-python/</guid>
+      <description>Goals I am recently working on a computer vision task and need a large volume data to be downloaded and processed. However, it takes too much time working in a single thread. So, working in parrallel way in a HPC system would be a better choice.
+Understand the multiprocessing, subprocess, threading package in python The workflow for a MPI work Transfer to HPC Multiprocessing package: Process-based parallelism Pool object: parallelizing execution and distributing data (data parallelism) Basic example:</description>
+    </item>
+    
     <item>
       <title>linux-operations</title>
       <link>https://x423xu.github.io/posts/2022-05-26-linux-operations/</link>
