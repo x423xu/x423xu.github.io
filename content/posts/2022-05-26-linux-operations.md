@@ -202,7 +202,7 @@ Filename Pattern:
 ```
 
 # other collections
-```
+``` 
     CC setup.py:
     1. python -m venv ./venv --system-site-packages
     2. source /project/6002585/xiaoyu/venv/bin/activate
@@ -228,4 +228,6 @@ Filename Pattern:
         step 2: cd xxx
         step 3: bundle exec jekyll serve #make it available on a local server
         step 4: push to github
+    
+    check diskusage report in a specific folder: lfs find ./ -type f | wc -l
 ```
