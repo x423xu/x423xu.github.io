@@ -12,6 +12,15 @@ tags: ["tools"]
 
 # vim cheatsheet
 
+# Docker
+```
+1. build with `Dockerfile`: sudo docker build -t xxy .
+2. list images/containers: sudo docker images/ sudo docker ps -a
+3. stop: sudo docker stop xxy
+4. remove images: sudo docker rmi xxy
+5. run a gpu container: sudo docker run --gpus all -it xxy
+```
+
 # vscode cheetsheat
 ```
     skip to the front of the line: `home`

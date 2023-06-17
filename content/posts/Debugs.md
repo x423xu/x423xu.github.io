@@ -33,3 +33,5 @@ libGL error: failed to load driver: swrast
 ```
 
 - Solution: `export LIBGL_ALWAYS_INDIRECT=1`, `apt-get install -y mesa-utils libgl1-mesa-glx`
+
+3. in pytorch lightning when I use DDP for training, the code collapsed when validation loop finishes and models are checkpointed. That is caused by the valiadation batch size across each process is not same. In my case, 465 val batches in total, each process has 117 val batches

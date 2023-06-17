@@ -90,3 +90,8 @@ $$\ell_{bbox} = \mathbb{E}_{(V^j,T^j)\sim I;I\sim D}\left[\ell_{iou}(b_j,\hat{b}
   1. lead to sub-optimal results on long and complex language expressions. 
   2. Built on pre-defined structures of language queries or image scenes. 
   3. Ground object in an indirect way: candidates are sparse region proposals, or dense anchors. So the performance would be influenced by the proposals.
+
+
+# Zero-Shot Robot Manipulation from Passive Human Videos
+
+- Learn robot manipulation only by watching videos of humans doing arbitrary tasks in unstructured settings
