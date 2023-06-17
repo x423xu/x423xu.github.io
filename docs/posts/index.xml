@@ -32,7 +32,7 @@ Understand the multiprocessing, subprocess, threading package in python The work
       <pubDate>Wed, 09 Nov 2022 17:08:52 -0500</pubDate>
       
       <guid>https://x423xu.github.io/posts/2022-05-26-linux-operations/</guid>
-      <description>Mout a disk using gparted to format the disk to ext4 file system: sudo apt-get install gparted -&amp;gt; sudo gparted -&amp;gt; format the disk mount the disk to mountpoint, eg: sudo mount /dev/sda2 ~/HDD Permanently mounting: cat /etc/fstab to get UUID -&amp;gt; here change the ownership of the folder ~/HDD: sudo chown xxy ~/ vim cheatsheet vscode cheetsheat 1 2 3 4 5 skip to the front of the line: `home` skip to the end of the line: `end` select to the end: `shift+end` close editor:`ctrl+w` open recent: `ctrl+R` singularity cheatsheet 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 build sif file: sudo singularity build xiaoyu.</description>
+      <description>Mout a disk using gparted to format the disk to ext4 file system: sudo apt-get install gparted -&amp;gt; sudo gparted -&amp;gt; format the disk mount the disk to mountpoint, eg: sudo mount /dev/sda2 ~/HDD Permanently mounting: cat /etc/fstab to get UUID -&amp;gt; here change the ownership of the folder ~/HDD: sudo chown xxy ~/ vim cheatsheet Docker 1 2 3 4 5 1. build with `Dockerfile`: sudo docker build -t xxy .</description>
     </item>
     
     <item>
@@ -140,10 +140,10 @@ In logic, syntax is anything having to do with formal languages or formal system
     
     <item>
       <title>Paper summary</title>
-      <link>https://x423xu.github.io/posts/2022-04-06-paper-summary-last-weekend/</link>
+      <link>https://x423xu.github.io/posts/2022-04-06-paper-summary/</link>
       <pubDate>Wed, 06 Apr 2022 11:58:35 -0400</pubDate>
       
-      <guid>https://x423xu.github.io/posts/2022-04-06-paper-summary-last-weekend/</guid>
+      <guid>https://x423xu.github.io/posts/2022-04-06-paper-summary/</guid>
       <description>2022/3/31 ~ 2022/4/6 Order-Embeddings of images and Language Core idea Explicitly modeling the partial order structure of the hierarchy over language and image -&amp;gt; Visual sematic hierarchy How to do it Penalize order violations $$ E(x,y) = ||max(0,y-x)||^2 $$ where $E(x,y)=0 \Leftrightarrow x \preceq y$ Modeling heterogeneous hierarchies with relation-specific hyperbolic cones Core idea Embeds entities into hyperbolic cones &amp;amp; models relations as transformations between the cones How to do it Poincare entailment cone at apex $x$ $$\zeta_x = {y\in \Beta^d | \angle_xy\leq\sin^{-1}(K\frac{1-||x||^2}{||x||})}$$ embed entity: $h=(h_1,h_2,\cdots,h_{d})$, where $h_i\in\Beta^2$ is the apex of the $i-$th 2D hyperbolic cone.</description>
     </item>
     

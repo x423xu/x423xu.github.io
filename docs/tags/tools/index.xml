@@ -23,7 +23,7 @@ Understand the multiprocessing, subprocess, threading package in python The work
       <pubDate>Wed, 09 Nov 2022 17:08:52 -0500</pubDate>
       
       <guid>https://x423xu.github.io/posts/2022-05-26-linux-operations/</guid>
-      <description>Mout a disk using gparted to format the disk to ext4 file system: sudo apt-get install gparted -&amp;gt; sudo gparted -&amp;gt; format the disk mount the disk to mountpoint, eg: sudo mount /dev/sda2 ~/HDD Permanently mounting: cat /etc/fstab to get UUID -&amp;gt; here change the ownership of the folder ~/HDD: sudo chown xxy ~/ vim cheatsheet vscode cheetsheat 1 2 3 4 5 skip to the front of the line: `home` skip to the end of the line: `end` select to the end: `shift+end` close editor:`ctrl+w` open recent: `ctrl+R` singularity cheatsheet 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 build sif file: sudo singularity build xiaoyu.</description>
+      <description>Mout a disk using gparted to format the disk to ext4 file system: sudo apt-get install gparted -&amp;gt; sudo gparted -&amp;gt; format the disk mount the disk to mountpoint, eg: sudo mount /dev/sda2 ~/HDD Permanently mounting: cat /etc/fstab to get UUID -&amp;gt; here change the ownership of the folder ~/HDD: sudo chown xxy ~/ vim cheatsheet Docker 1 2 3 4 5 1. build with `Dockerfile`: sudo docker build -t xxy .</description>
     </item>
     
     <item>
