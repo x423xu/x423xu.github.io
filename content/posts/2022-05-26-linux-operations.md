@@ -239,4 +239,5 @@ Filename Pattern:
         step 4: push to github
     
     check diskusage report in a specific folder: lfs find ./ -type f | wc -l
+    quit python venv: deactivate
 ```
