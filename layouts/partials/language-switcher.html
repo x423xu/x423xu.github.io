@@ -1,0 +1,54 @@
+<div class="language-switcher">
+  {{- $currentPage := . -}}
+  {{- range .Site.Languages -}}
+    {{- if ne .Lang $currentPage.Language.Lang -}}
+      <a href="{{ $currentPage.RelPermalink | relLangURL }}" class="language-link">
+        {{- .LanguageName -}}
+      </a>
+    {{- end -}}
+  {{- end -}}
+</div>
+
+<style>
+.language-switcher {
+  display: inline-block;
+  margin-left: 1rem;
+}
+
+.language-link {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--theme-color);
+  border-radius: 4px;
+  color: var(--theme-color);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.language-link:hover {
+  background-color: var(--theme-color);
+  color: var(--theme-background-color);
+}
+</style>
+
+<script>
+// Store language preference in localStorage
+document.addEventListener('DOMContentLoaded', function() {
+  const languageLinks = document.querySelectorAll('.language-link');
+  
+  languageLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetLang = this.getAttribute('href').split('/')[1];
+      localStorage.setItem('preferred-language', targetLang);
+    });
+  });
+  
+  // Check for stored language preference and redirect if needed
+  const preferredLang = localStorage.getItem('preferred-language');
+  if (preferredLang && preferredLang !== window.location.pathname.split('/')[1]) {
+    const currentPath = window.location.pathname;
+    const newPath = '/' + preferredLang + currentPath.substring(currentPath.indexOf('/', 1));
+    window.location.href = newPath;
+  }
+});
+</script>
