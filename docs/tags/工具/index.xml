@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>工具 on Xiaoyu's blog</title><link>https://x423xu.github.io/tags/%E5%B7%A5%E5%85%B7/</link><description>Recent content in 工具 on Xiaoyu's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 20 Mar 2022 14:30:54 +0800</lastBuildDate><atom:link href="https://x423xu.github.io/tags/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml"/><item><title>Jekyll 中文版</title><link>https://x423xu.github.io/zh/posts/jekyll-chinese/</link><pubDate>Sun, 20 Mar 2022 14:30:54 +0800</pubDate><guid>https://x423xu.github.io/zh/posts/jekyll-chinese/</guid><description>在Windows上使用Jekyll创建GitHub页面 理解Jekyll、Gem、Bundle、Ruby 什么是Ruby :hear_no_evil:
-Ruby是一种动态的、开源的编程语言，专注于简单性和生产力。它具有优雅的语法，自然易读且易于编写。
-Ruby最常用于构建Web应用程序。然而，它是一种像Python一样的通用语言，所以它有许多其他应用程序，如数据分析、原型设计和概念验证。
-什么是Ruby gem？ gem是你可以下载和安装的包。当你需要一个已安装的gem时，你就是在为你的Ruby程序添加额外的功能。
-什么是Bundler？ Bundler是一个gem，它管理你Ruby应用程序的gem依赖。要开始，你需要安装Bundler gem。之后，你可以使用Bundler来安装你应用程序所需的所有gem。
-这是Jekyll中文版本的示例，展示了如何在多语言博客中提供翻译内容。</description></item></channel></rss>
