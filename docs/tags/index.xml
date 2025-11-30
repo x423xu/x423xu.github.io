@@ -1,1 +1,38 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Tags on Xiaoyu's blog</title><link>https://x423xu.github.io/tags/</link><description>Recent content in Tags on Xiaoyu's blog</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 01 Jan 2025 12:00:00 +0000</lastBuildDate><atom:link href="https://x423xu.github.io/tags/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo</title><link>https://x423xu.github.io/tags/hugo/</link><pubDate>Wed, 01 Jan 2025 12:00:00 +0000</pubDate><guid>https://x423xu.github.io/tags/hugo/</guid><description/></item><item><title>多语言</title><link>https://x423xu.github.io/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/</link><pubDate>Wed, 01 Jan 2025 12:00:00 +0000</pubDate><guid>https://x423xu.github.io/tags/%E5%A4%9A%E8%AF%AD%E8%A8%80/</guid><description/></item><item><title>教程</title><link>https://x423xu.github.io/tags/%E6%95%99%E7%A8%8B/</link><pubDate>Wed, 01 Jan 2025 12:00:00 +0000</pubDate><guid>https://x423xu.github.io/tags/%E6%95%99%E7%A8%8B/</guid><description/></item><item><title>tools</title><link>https://x423xu.github.io/tags/tools/</link><pubDate>Fri, 13 Jan 2023 13:19:11 -0500</pubDate><guid>https://x423xu.github.io/tags/tools/</guid><description/></item><item><title>paper-reading</title><link>https://x423xu.github.io/tags/paper-reading/</link><pubDate>Tue, 22 Nov 2022 20:07:03 -0500</pubDate><guid>https://x423xu.github.io/tags/paper-reading/</guid><description/></item><item><title>debug</title><link>https://x423xu.github.io/tags/debug/</link><pubDate>Sun, 06 Nov 2022 17:08:52 -0500</pubDate><guid>https://x423xu.github.io/tags/debug/</guid><description/></item><item><title>工具</title><link>https://x423xu.github.io/tags/%E5%B7%A5%E5%85%B7/</link><pubDate>Sun, 20 Mar 2022 14:30:54 +0800</pubDate><guid>https://x423xu.github.io/tags/%E5%B7%A5%E5%85%B7/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Xiaoyu&#39;s blog</title>
+    <link>https://x423xu.github.io/tags/</link>
+    <description>Recent content in Tags on Xiaoyu&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 13 Jan 2023 13:19:11 -0500</lastBuildDate><atom:link href="https://x423xu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tools</title>
+      <link>https://x423xu.github.io/tags/tools/</link>
+      <pubDate>Fri, 13 Jan 2023 13:19:11 -0500</pubDate>
+      
+      <guid>https://x423xu.github.io/tags/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>paper-reading</title>
+      <link>https://x423xu.github.io/tags/paper-reading/</link>
+      <pubDate>Tue, 22 Nov 2022 20:07:03 -0500</pubDate>
+      
+      <guid>https://x423xu.github.io/tags/paper-reading/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>debug</title>
+      <link>https://x423xu.github.io/tags/debug/</link>
+      <pubDate>Sun, 06 Nov 2022 17:08:52 -0500</pubDate>
+      
+      <guid>https://x423xu.github.io/tags/debug/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

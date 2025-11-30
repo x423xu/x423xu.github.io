@@ -1,92 +1,11 @@
 baseURL: "https://x423xu.github.io/"
 publishDir: "docs"
-defaultContentLanguage: en
+languageCode: en-us
 title: Xiaoyu's blog
 theme: "PaperMod"
 
-# add menu
-menu:
-  main:
-    - identifier: home
-      name: home
-      url: "/"
-      weight: 9
-    - identifier: categories
-      name: categories
-      url: /categories/
-      weight: 11
-    - identifier: tags
-      name: tags
-      url: /tags/
-      weight: 12
-    - identifier: archives
-      name: archives
-      url: archives/
-      weight: 10
-    - identifier: search
-      name: search
-      url: search/
-      weight: 13
-
-languages:
-  en:
-    languageName: English
-    weight: 1
-    params:
-      languageAltTitle: English
-    menu:
-      main:
-        - identifier: home
-          name: home
-          url: "/en/"
-          weight: 9
-        - identifier: categories
-          name: categories
-          url: /en/categories/
-          weight: 11
-        - identifier: tags
-          name: tags
-          url: /en/tags/
-          weight: 12
-        - identifier: archives
-          name: archives
-          url: en/archives/
-          weight: 10
-        - identifier: search
-          name: search
-          url: en/search/
-          weight: 13
-  zh:
-    languageName: 中文
-    weight: 2
-    params:
-      languageAltTitle: 中文
-    menu:
-      main:
-        - identifier: home
-          name: 首页
-          url: "/zh/"
-          weight: 9
-        - identifier: categories
-          name: 分类
-          url: /zh/categories/
-          weight: 11
-        - identifier: tags
-          name: 标签
-          url: /zh/tags/
-          weight: 12
-        - identifier: archives
-          name: 归档
-          url: zh/archives/
-          weight: 10
-        - identifier: search
-          name: 搜索
-          url: zh/search/
-          weight: 13
-
 Params:
   # configurations
-  ShowLanguageSwitcher: true
   math: true
   defaultTheme: dark
   ShowReadingTime: true
@@ -143,6 +62,30 @@ outputs:
     - HTML
     - RSS
     - JSON # is necessary
+
+# add menu
+menu:
+  main:
+    - identifier: home
+      name: home
+      url: "/"
+      weight: 9
+    - identifier: categories
+      name: categories
+      url: /categories/
+      weight: 11
+    - identifier: tags
+      name: tags
+      url: /tags/
+      weight: 12
+    - identifier: archives
+      name: archives
+      url: archives/
+      weight: 10
+    - identifier: search
+      name: search
+      url: search/
+      weight: 13
 
 # markdown highlight
 markup:
